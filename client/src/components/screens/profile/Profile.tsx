@@ -8,9 +8,9 @@ import { useMutation } from '@tanstack/react-query'
 import { clsx } from 'clsx'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useTransition } from 'react'
+import { FC, useTransition } from 'react'
 
-const Profile = () => {
+const Profile: FC = () => {
 	const { push } = useRouter()
 
 	const { user, isLoading } = useProfile()
