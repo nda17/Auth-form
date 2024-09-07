@@ -1,4 +1,4 @@
-import { IFontAwesomeIcon } from '@/components/ui/icons/font-awesome-icon'
+import { IFontAwesomeIcon } from '@/components/ui/icons/font-awesome-icon.interface'
 import { FC } from 'react'
 import * as FontAwesomeIcons from 'react-icons/fa'
 
