@@ -1,0 +1,15 @@
+.wrapper {
+	@apply text-center text-base mt-3;
+
+	.toggle-link-block {
+		@apply text-white;
+
+		.sign-in-button {
+			@apply text-green-500 text-base;
+		}
+
+		.sign-up-button {
+			@apply text-yellow-700 text-base;
+		}
+	}
+}

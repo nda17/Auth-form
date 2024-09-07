@@ -1,0 +1,17 @@
+.wrapper {
+	.image {
+		@apply rounded-full mb-4;
+	}
+
+	.subtitle {
+		@apply text-2xl font-bold mb-4;
+	}
+
+	.info-field {
+		@apply text-lg mb-4;
+	}
+
+	.logout-button {
+		@apply mt-2 bg-red-500 text-white px-4 py-2 rounded-md;
+	}
+}

@@ -1,0 +1,160 @@
+.circles-loader {
+	@apply flex justify-center items-center w-full min-h-screen;
+
+	.circle-green {
+		@apply bg-[#05c196] w-[26px] h-[26px] rounded-[50%];
+		transform: translateX(13px);
+		animation: animate-green 2s linear infinite;
+	}
+
+	.circle-red {
+		@apply bg-[#f01753] w-[26px] h-[26px] rounded-[50%];
+		transform: translateX(-13px);
+		animation: animate-red 2s linear infinite;
+	}
+}
+
+@keyframes animate-green {
+	0% {
+		background-color: #560e5c;
+	}
+
+	3% {
+		background-color: #560e5c;
+		transform: translateX(13px);
+	}
+
+	9% {
+		background-color: #05c196;
+		transform: translateX(-20px);
+	}
+
+	14% {
+		transform: translateX(2px);
+	}
+
+	18% {
+		transform: translateX(-12px);
+	}
+
+	21% {
+		transform: translateX(-3px);
+	}
+
+	23% {
+		transform: translateX(-9px);
+	}
+
+	24% {
+		transform: translateX(-7px);
+	}
+
+	30% {
+		transform: translateX(-7px) scale(1);
+		animation-timing-function: cubic-bezier(0.6, 0, 1, 1);
+	}
+
+	43% {
+		z-index: -1;
+		transform: translateX(13px) scale(0.6);
+		animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+	}
+
+	56% {
+		z-index: 1;
+		transform: translateX(33px) scale(1);
+		animation-timing-function: cubic-bezier(0.6, 0, 1, 1);
+	}
+
+	69% {
+		transform: translateX(13px) scale(1.4);
+		animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+	}
+
+	82% {
+		z-index: 1;
+		background-color: #05c196;
+		transform: translateX(-7px) scale(1);
+		animation-timing-function: ease-in;
+	}
+
+	98% {
+		background-color: #560e5c;
+		transform: translateX(13px);
+	}
+
+	100% {
+		background-color: #560e5c;
+	}
+}
+
+@keyframes animate-red {
+	0% {
+		background-color: #560e5c;
+	}
+
+	3% {
+		background-color: #560e5c;
+		transform: translateX(-13px);
+	}
+
+	9% {
+		background-color: #f01753;
+		transform: translateX(20px);
+	}
+
+	14% {
+		transform: translateX(-2px);
+	}
+
+	18% {
+		transform: translateX(12px);
+	}
+
+	21% {
+		transform: translateX(3px);
+	}
+
+	23% {
+		transform: translateX(9px);
+	}
+
+	24% {
+		transform: translateX(7px);
+	}
+
+	30% {
+		transform: translateX(7px) scale(1);
+		animation-timing-function: cubic-bezier(0.6, 0, 1, 1);
+	}
+
+	43% {
+		transform: translateX(-13px) scale(1.4);
+		animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+	}
+
+	56% {
+		transform: translateX(-33px) scale(1);
+		animation-timing-function: cubic-bezier(0.6, 0, 1, 1);
+	}
+
+	69% {
+		transform: translateX(-13px) scale(0.6);
+		animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+	}
+
+	82% {
+		background-color: #f01753;
+		transform: translateX(7px) scale(1);
+		animation-timing-function: ease-in;
+	}
+
+	98% {
+		background-color: #560e5c;
+		transform: translateX(-13px);
+	}
+
+	100% {
+		background-color: #560e5c;
+	}
+}
