@@ -1,7 +1,8 @@
+import Heading from '@/components/ui/heading/Heading'
 import { FC } from 'react'
 
 const FreeContent: FC = () => {
-	return <div>Free content page for all users</div>
+	return <Heading text="Free content page for all users" />
 }
 
 export default FreeContent
