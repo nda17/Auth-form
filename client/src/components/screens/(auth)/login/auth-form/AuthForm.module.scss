@@ -14,7 +14,7 @@
 	}
 
 	.recaptcha {
-		@apply mb-3 transform scale-[1.025];
+		@apply mb-3 transform scale-[1.025] min-h-[78px];
 
 		> div > div {
 			@apply mx-auto;
