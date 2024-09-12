@@ -1,6 +1,10 @@
 .wrapper {
-	.image {
-		@apply rounded-full mb-4;
+	.user-info {
+		@apply flex items-center;
+
+		.image {
+			@apply rounded-full mr-4 mb-4;
+		}
 	}
 
 	.subtitle {
