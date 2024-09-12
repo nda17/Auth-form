@@ -1,0 +1,7 @@
+.footer {
+	@apply w-full bg-black border-solid border border-gray-800 p-4;
+
+	.logo {
+		@apply flex w-16 h-16;
+	}
+}
