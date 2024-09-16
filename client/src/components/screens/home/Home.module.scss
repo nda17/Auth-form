@@ -1,0 +1,23 @@
+.wrapper {
+	@apply w-full flex flex-col;
+
+	.login-button {
+		@apply transition-transform w-8 h-8;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+	}
+
+	.auth-button {
+		@apply flex items-center font-bold;
+
+		> svg {
+			@apply mr-[.2rem];
+		}
+	}
+
+	.link {
+		@apply text-[#037bfc];
+	}
+}
