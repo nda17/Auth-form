@@ -1,8 +1,9 @@
+import Manager from '@/components/screens/manager/Manager'
 import type { Metadata } from 'next'
-import Manager from './Manager'
 
 export const metadata: Metadata = {
-	title: 'Manager'
+	title: 'Manager content',
+	description: 'Manager content page'
 }
 
 const ManagerPage = () => {
