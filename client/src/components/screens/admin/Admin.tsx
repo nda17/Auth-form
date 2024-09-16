@@ -14,7 +14,7 @@ const Admin: FC = () => {
 	})
 
 	return (
-		<div>
+		<div className={styles.wrapper}>
 			<Heading text="Admin page" />
 			<SubHeading text="List users:" />
 			{isLoading ? (
