@@ -1,15 +1,21 @@
 import Home from '@/components/screens/home/Home'
-import { protectPage } from '@/utils/server/protect-page'
+import { getServerAuth } from '@/utils/server/get-server-auth'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Home'
+	title: 'Home',
+	description: 'Home page'
 }
 
 const HomePage = async () => {
-	await protectPage()
+	const user = await getServerAuth()
 
-	return <Home />
+	return (
+		<Home
+			isLoggedIn={user?.isLoggedIn ? true : false}
+			rights={user?.rights}
+		/>
+	)
 }
 
 export default HomePage
