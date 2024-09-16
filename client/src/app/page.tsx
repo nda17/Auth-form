@@ -13,7 +13,8 @@ const HomePage = async () => {
 	return (
 		<Home
 			isLoggedIn={user?.isLoggedIn ? true : false}
-			rights={user?.rights}
+			isAdmin={user?.isAdmin ? true : false}
+			isManager={user?.isAdmin ? true : false}
 		/>
 	)
 }
