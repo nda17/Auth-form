@@ -1,4 +1,4 @@
-import { API_URL } from '@/config/api-config'
+import { API_URL } from '@/config/api.config'
 import {
 	getAccessToken,
 	removeFromStorage
