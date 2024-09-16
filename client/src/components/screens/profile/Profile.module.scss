@@ -1,4 +1,6 @@
 .wrapper {
+	@apply w-full;
+
 	.user-info {
 		@apply flex items-center;
 
@@ -16,6 +18,6 @@
 	}
 
 	.logout-button {
-		@apply mt-2 bg-red-500 text-white px-4 py-2 rounded-md;
+		@apply bg-red-500 text-white px-4 py-2 rounded-md max-w-[5.6rem];
 	}
 }
