@@ -14,7 +14,7 @@
 	*,
 	*::before,
 	*::after {
-		@apply p-0 m-0 border-none box-border;
+		@apply p-0 m-0 border-0 box-border;
 	}
 
 	a {
@@ -24,7 +24,7 @@
 	ul,
 	ol,
 	li {
-		@apply list-none m-0 p-0;
+		@apply list-none p-0 m-0;
 	}
 
 	img {
@@ -55,11 +55,11 @@
 
 	html,
 	body {
-		@apply text-base h-full m-0 text-black;
+		@apply text-base m-0 text-black h-full;
 	}
 
 	#root {
-		@apply flex flex-col min-h-full;
+		@apply flex flex-col;
 	}
 }
 
