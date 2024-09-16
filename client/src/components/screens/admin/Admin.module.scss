@@ -1,3 +1,7 @@
-.user {
-	@apply text-red-700;
+.wrapper {
+	@apply w-full;
+
+	.user {
+		@apply text-red-700;
+	}
 }
