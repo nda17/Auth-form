@@ -2,6 +2,7 @@
 import styles from '@/components/screens/premium-content/PremiumContent.module.scss'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
+import SubHeading from '@/components/ui/sub-heading/SubHeading'
 import UserService from '@/services/user.service'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
@@ -18,7 +19,7 @@ const PremiumContent: FC = () => {
 			{isLoading ? (
 				<CirclesLoader />
 			) : (
-				<p>{data?.data.text || 'Not found!'}</p>
+				<SubHeading text={`${data?.data.text || 'Not found!'}`} />
 			)}
 		</div>
 	)
