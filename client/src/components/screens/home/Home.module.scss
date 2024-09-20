@@ -1,23 +1,22 @@
 .wrapper {
 	@apply w-full flex flex-col;
 
-	.login-button {
-		@apply transition-transform w-8 h-8;
-
-		&:hover {
-			transform: translateY(-5px);
-		}
+	.static-block {
+		@apply mb-2;
 	}
 
-	.auth-button {
-		@apply flex items-center font-bold;
+	.static-block,
+	.dynamic-block {
+		.link-button {
+			@apply pl-[.3rem] flex items-center font-bold transition-transform;
 
-		> svg {
-			@apply mr-[.2rem];
+			> svg {
+				@apply mr-[.2rem];
+			}
+
+			&:hover {
+				@apply translate-y-[-1px];
+			}
 		}
-	}
-
-	.link {
-		@apply text-[#037bfc];
 	}
 }
