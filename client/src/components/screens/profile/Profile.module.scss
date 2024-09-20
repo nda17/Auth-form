@@ -1,5 +1,5 @@
 .wrapper {
-	@apply w-full;
+	@apply w-full flex flex-col;
 
 	.user-info {
 		@apply flex items-center;
