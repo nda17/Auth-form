@@ -1,4 +1,5 @@
 'use client'
+import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import { saveTokenStorage } from '@/services/auth/auth.helper'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { FC, useEffect } from 'react'
@@ -14,7 +15,7 @@ const SocialAuthPage: FC = () => {
 		router.replace('/')
 	}, [])
 
-	return <div>Loading...</div>
+	return <CirclesLoader />
 }
 
 export default SocialAuthPage
