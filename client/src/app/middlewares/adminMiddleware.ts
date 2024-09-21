@@ -6,9 +6,9 @@ export const adminMiddleware = async (request: NextRequest) => {
 	const user = await getServerAuth()
 
 	if (
-		user.isLoggedIn &&
-		user.isAdmin &&
-		user.rights?.includes(UserRole.ADMIN)
+		user?.isLoggedIn &&
+		user?.isAdmin &&
+		user?.rights?.includes(UserRole.ADMIN)
 	) {
 		NextResponse.redirect(new URL('/admin', request.url))
 	} else {

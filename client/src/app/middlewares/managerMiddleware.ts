@@ -6,9 +6,9 @@ export const managerMiddleware = async (request: NextRequest) => {
 	const user = await getServerAuth()
 
 	if (
-		user.isLoggedIn &&
-		user.isManager &&
-		user.rights?.includes(UserRole.MANAGER)
+		user?.isLoggedIn &&
+		user?.isManager &&
+		user?.rights?.includes(UserRole.MANAGER)
 	) {
 		NextResponse.redirect(new URL('/manager', request.url))
 	} else {
