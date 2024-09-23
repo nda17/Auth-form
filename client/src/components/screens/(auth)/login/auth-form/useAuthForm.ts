@@ -8,7 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-export function useAuthForm(isLogin: boolean) {
+export const useAuthForm = (isLogin: boolean) => {
 	const { register, handleSubmit, reset } = useForm<IFormData>()
 
 	const router = useRouter()
@@ -30,6 +30,7 @@ export function useAuthForm(isLogin: boolean) {
 		onError(error) {
 			if (axios.isAxiosError(error)) {
 				toast.error(error.response?.data?.message || 'Error')
+				recaptchaRef.current.reset()
 			}
 		}
 	})
