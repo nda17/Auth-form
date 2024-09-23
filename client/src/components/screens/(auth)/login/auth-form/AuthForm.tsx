@@ -4,13 +4,20 @@ import styles from '@/components/screens/(auth)/login/auth-form/AuthForm.module.
 import { IAuthFormProps } from '@/components/screens/(auth)/login/auth-form/auth-form.interface'
 import AuthToggle from '@/components/screens/(auth)/login/auth-form/auth-toggle/AuthToggle'
 import SocialMediaButtons from '@/components/screens/(auth)/login/auth-form/social-media-buttons/SocialMediaButtons'
+import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
 import clsx from 'clsx'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const AuthForm: FC<IAuthFormProps> = ({ isLogin }) => {
+	const [typeInputPassword, setTypeInputPassword] = useState(true)
+
 	const { handleSubmit, isLoading, onSubmit, recaptchaRef, register } =
 		useAuthForm(isLogin)
+
+	const toggleVisiblePassword = () => {
+		setTypeInputPassword(!typeInputPassword)
+	}
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -30,11 +37,21 @@ const AuthForm: FC<IAuthFormProps> = ({ isLogin }) => {
 				<label className={clsx(styles['label-input'])}>
 					Password
 					<input
-						type="password"
+						type={typeInputPassword ? 'password' : 'text'}
 						placeholder="Enter password: "
 						{...register('password', { required: true })}
-						className={clsx(styles['input-field'])}
+						className={clsx(styles['input-field-password'])}
 					/>
+					<span
+						className={clsx(styles['toggle-visible-password'])}
+						onClick={toggleVisiblePassword}
+					>
+						{typeInputPassword ? (
+							<FontAwesomeIcon name="FaRegEye" fill="white" />
+						) : (
+							<FontAwesomeIcon name="FaRegEyeSlash" fill="white" />
+						)}
+					</span>
 				</label>
 			</div>
 
