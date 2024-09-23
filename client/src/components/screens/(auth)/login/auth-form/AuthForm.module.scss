@@ -5,10 +5,26 @@
 		@apply mb-4;
 
 		.label-input {
-			@apply text-gray-600;
+			@apply text-gray-600 relative;
 
 			.input-field {
 				@apply w-full outline-none p-2 border border-solid rounded border-white focus:border-red-400 bg-transparent text-white transition-colors mt-1;
+			}
+
+			.input-field-password {
+				@apply w-full outline-none py-2 pl-2 px-[.75rem]  border border-solid rounded border-white focus:border-red-400 bg-transparent text-white transition-colors mt-1;
+			}
+
+			.toggle-visible-password {
+				@apply cursor-pointer absolute top-[2.25rem] right-2 transition duration-300 ease-in-out;
+
+				> svg {
+					@apply block w-[1.35rem] h-[1.35rem];
+				}
+
+				&:hover {
+					@apply transform scale-[1.04];
+				}
 			}
 		}
 	}
