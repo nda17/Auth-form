@@ -1,5 +1,5 @@
 .wrapper {
-	@apply w-full flex;
+	@apply w-full flex whitespace-nowrap;
 
 	.link-button {
 		@apply flex items-center  transition-transform text-white mr-3;

@@ -1,8 +1,8 @@
 .wrapper {
-	@apply w-full flex;
+	@apply w-full flex whitespace-nowrap pl-3;
 
 	.link-button {
-		@apply flex items-center  transition-transform text-white mr-3;
+		@apply flex items-center transition-transform text-white mr-3;
 
 		> svg {
 			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem];
