@@ -1,5 +1,6 @@
 import authService from '@/services/auth/auth.service'
 import { IFormData } from '@/shared/types/form.types'
+import { setAuthStatus } from '@/store/auth-status/auth-status.slice'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
@@ -7,14 +8,22 @@ import { useRef, useTransition } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useDispatch } from 'react-redux'
 
-export const useAuthForm = (isLogin: boolean) => {
+const useAuthForm = (isLogin: boolean) => {
 	const { register, handleSubmit, reset } = useForm<IFormData>()
 
 	const router = useRouter()
+
 	const [isPending, startTransition] = useTransition()
 
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
+
+	const dispatch = useDispatch()
+
+	const changeStateAuth = () => {
+		dispatch(setAuthStatus(true))
+	}
 
 	const { mutate: mutateLogin, isPending: isLoginPending } = useMutation({
 		mutationKey: ['login'],
@@ -22,6 +31,7 @@ export const useAuthForm = (isLogin: boolean) => {
 			authService.main('login', data, recaptchaRef?.current?.getValue()),
 		onSuccess() {
 			startTransition(() => {
+				changeStateAuth()
 				toast.success('Successful login')
 				reset()
 				router.push('/')
@@ -29,7 +39,7 @@ export const useAuthForm = (isLogin: boolean) => {
 		},
 		onError(error) {
 			if (axios.isAxiosError(error)) {
-				toast.error(error.response?.data?.message || 'Error')
+				toast.error(error.response?.data?.message)
 				recaptchaRef.current.reset()
 			}
 		}
@@ -47,12 +57,14 @@ export const useAuthForm = (isLogin: boolean) => {
 			onSuccess() {
 				startTransition(() => {
 					reset()
+					toast.success('Successful register')
 					router.push('/')
 				})
 			},
 			onError(error) {
 				if (axios.isAxiosError(error)) {
 					toast.error(error.response?.data?.message)
+					recaptchaRef.current.reset()
 				}
 			}
 		})
@@ -78,3 +90,5 @@ export const useAuthForm = (isLogin: boolean) => {
 		isLoading
 	}
 }
+
+export default useAuthForm
