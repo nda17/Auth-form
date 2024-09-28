@@ -1,9 +1,11 @@
 'use client'
-import { IMainProvider } from '@/providers/Main-provider/main-provider.interface'
+import { IMainProvider } from '@/providers/main-provider/main-provider.interface'
+import { store } from '@/store/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { FC } from 'react'
+import { NextPage } from 'next'
 import { Toaster } from 'react-hot-toast'
+import { Provider } from 'react-redux'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -13,13 +15,15 @@ const queryClient = new QueryClient({
 	}
 })
 
-const MainProvider: FC<IMainProvider> = ({ children }) => {
+const MainProvider: NextPage<IMainProvider> = ({ children }) => {
 	return (
-		<QueryClientProvider client={queryClient}>
-			{children}
-			<Toaster />
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
+		<Provider store={store}>
+			<QueryClientProvider client={queryClient}>
+				{children}
+				<Toaster />
+				<ReactQueryDevtools initialIsOpen={false} />
+			</QueryClientProvider>
+		</Provider>
 	)
 }
 
