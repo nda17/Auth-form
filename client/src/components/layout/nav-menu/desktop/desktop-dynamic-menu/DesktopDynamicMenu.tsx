@@ -1,18 +1,20 @@
 import styles from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu.module.scss'
-import { IDesktopDynamicMenu } from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/desktop-dynamic-menu.interface'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
+import useProfile from '@/hooks/useProfile'
+import { UserRole } from '@/services/auth/auth.types'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
-const DesktopDynamicMenu: NextPage<IDesktopDynamicMenu> = ({
-	isLoggedIn,
-	isManager,
-	isAdmin
-}) => {
+const DesktopDynamicMenu: NextPage = () => {
+	const { user } = useProfile()
+	const isLoggedIn = user?.isLoggedIn
+	const isManager = user?.isManager && user?.rights?.includes(UserRole.MANAGER)
+	const isAdmin = user?.isAdmin && user?.rights?.includes(UserRole.ADMIN)
+
 	return (
 		<div className={styles.wrapper}>
-			{isLoggedIn && isLoggedIn && (
+			{isLoggedIn && (
 				<Link href="/profile" className={clsx(styles['link-button'])}>
 					<MaterialIcon name="MdSettings" fill="blue" />
 					Profile
