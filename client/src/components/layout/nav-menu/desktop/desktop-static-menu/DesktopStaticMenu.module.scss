@@ -1,0 +1,19 @@
+.wrapper {
+	@apply w-full flex;
+
+	.link-button {
+		@apply flex items-center  transition-transform text-white mr-3;
+
+		> svg {
+			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem];
+		}
+
+		&:hover {
+			@apply translate-y-[-1px];
+		}
+
+		&:last-child {
+			@apply mr-0;
+		}
+	}
+}

@@ -1,0 +1,15 @@
+.wrapper {
+	@apply flex;
+
+	.link-auth-button {
+		@apply flex items-center transition-transform text-white pl-3;
+
+		> svg {
+			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem];
+		}
+
+		&:hover {
+			@apply translate-y-[-1px];
+		}
+	}
+}
