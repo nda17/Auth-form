@@ -1,8 +1,8 @@
 import { IFontAwesomeIcon } from '@/components/ui/icons/font-awesome-icon.interface'
-import { FC } from 'react'
+import { NextPage } from 'next'
 import * as FontAwesomeIcons from 'react-icons/fa'
 
-const FontAwesomeIcon: FC<IFontAwesomeIcon> = ({
+const FontAwesomeIcon: NextPage<IFontAwesomeIcon> = ({
 	name,
 	fill = 'gray'
 }) => {

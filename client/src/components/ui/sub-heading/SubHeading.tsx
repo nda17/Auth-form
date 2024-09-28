@@ -1,8 +1,8 @@
 import styles from '@/components/ui/sub-heading/SubHeading.module.scss'
 import { ISubHeading } from '@/components/ui/sub-heading/sub-heading.interface'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-const SubHeading: FC<ISubHeading> = ({ text }) => {
+const SubHeading: NextPage<ISubHeading> = ({ text }) => {
 	return <h2 className={styles.subHeading}>{text}</h2>
 }
 

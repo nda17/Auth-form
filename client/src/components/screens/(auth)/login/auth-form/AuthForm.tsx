@@ -6,10 +6,11 @@ import AuthToggle from '@/components/screens/(auth)/login/auth-form/auth-toggle/
 import SocialMediaButtons from '@/components/screens/(auth)/login/auth-form/social-media-buttons/SocialMediaButtons'
 import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
 import clsx from 'clsx'
-import { FC, useState } from 'react'
+import { NextPage } from 'next'
+import { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-const AuthForm: FC<IAuthFormProps> = ({ isLogin }) => {
+const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
 	const [typeInputPassword, setTypeInputPassword] = useState(true)
 
 	const { handleSubmit, isLoading, onSubmit, recaptchaRef, register } =
