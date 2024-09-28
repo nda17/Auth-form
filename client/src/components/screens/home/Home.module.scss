@@ -1,3 +1,22 @@
 .wrapper {
-	@apply w-full flex flex-col px-4;
+	@apply w-full flex flex-col;
+
+	.static-block {
+		@apply mb-2;
+	}
+
+	.static-block,
+	.dynamic-block {
+		.link-button {
+			@apply pl-[.3rem] flex items-center font-bold transition-transform;
+
+			> svg {
+				@apply mr-[.2rem];
+			}
+
+			&:hover {
+				@apply translate-y-[-1px];
+			}
+		}
+	}
 }
