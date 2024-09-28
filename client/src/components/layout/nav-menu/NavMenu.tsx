@@ -1,4 +1,5 @@
 import styles from '@/components/layout/nav-menu/NavMenu.module.scss'
+import DesktopDynamicMenu from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu'
 import DesktopStaticMenu from '@/components/layout/nav-menu/desktop/desktop-static-menu/DesktopStaticMenu'
 import LogoutButton from '@/components/layout/nav-menu/logout-button/LogoutButton'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
@@ -26,7 +27,7 @@ const NavMenu: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<DesktopStaticMenu />
-
+			{isLoggedIn && <DesktopDynamicMenu />}
 			<div className={styles.wrapper}>
 				{!isLoggedIn ? (
 					<Link href="/login" className={clsx(styles['link-auth-button'])}>
