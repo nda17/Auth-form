@@ -1,5 +1,5 @@
 'use client'
-import { useAuthForm } from '@/components/screens/(auth)/login/auth-form//useAuthForm'
+import useAuthForm from '@/components/screens/(auth)/login/auth-form//useAuthForm'
 import styles from '@/components/screens/(auth)/login/auth-form/AuthForm.module.scss'
 import { IAuthFormProps } from '@/components/screens/(auth)/login/auth-form/auth-form.interface'
 import AuthToggle from '@/components/screens/(auth)/login/auth-form/auth-toggle/AuthToggle'
