@@ -5,9 +5,9 @@ import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
 import UserService from '@/services/user.service'
 import { useQuery } from '@tanstack/react-query'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-const Manager: FC = () => {
+const Manager: NextPage = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ['manager-content'],
 		queryFn: () => UserService.fetchManager()

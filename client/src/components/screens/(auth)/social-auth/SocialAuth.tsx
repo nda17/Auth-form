@@ -1,10 +1,11 @@
 'use client'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import { saveTokenStorage } from '@/services/auth/auth.helper'
+import { NextPage } from 'next'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { FC, useEffect } from 'react'
+import { useEffect } from 'react'
 
-const SocialAuthPage: FC = () => {
+const SocialAuthPage: NextPage = () => {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 

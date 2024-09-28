@@ -1,9 +1,9 @@
 import styles from '@/components/screens/free-content/FreeContent.module.scss'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-const FreeContent: FC = () => {
+const FreeContent: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Free content page for all users" />
