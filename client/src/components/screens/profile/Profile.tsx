@@ -1,17 +1,18 @@
 'use client'
-import { useProfile } from '@/app/hooks/useProfile'
 import styles from '@/components/screens/profile/Profile.module.scss'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
+import useProfile from '@/hooks/useProfile'
 import authService from '@/services/auth/auth.service'
 import { useMutation } from '@tanstack/react-query'
 import { clsx } from 'clsx'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { FC, useTransition } from 'react'
+import { useTransition } from 'react'
 
-const Profile: FC = () => {
+const Profile: NextPage = () => {
 	const { push } = useRouter()
 
 	const { user, isLoading } = useProfile()
