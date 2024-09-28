@@ -1,12 +1,14 @@
+'use client'
 import logoImage from '@/assets/images/logo.png'
 import styles from '@/components/layout/header/Header.module.scss'
+import NavMenu from '@/components/layout/nav-menu/NavMenu'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
 
-const Header: FC = () => {
+const Header: NextPage = () => {
 	return (
-		<div className={styles.header}>
+		<div className={styles.wrapper}>
 			<Link href="/" className={styles.logo}>
 				<Image
 					src={logoImage}
@@ -15,6 +17,7 @@ const Header: FC = () => {
 					priority={true}
 				/>
 			</Link>
+			<NavMenu />
 		</div>
 	)
 }
