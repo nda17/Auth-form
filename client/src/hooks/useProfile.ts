@@ -13,7 +13,7 @@ const useProfile = () => {
 	})
 
 	const { isSuccess, data: dataTokens } = useQuery({
-		queryKey: ['new-tokens'],
+		queryKey: ['get-new-tokens'],
 		queryFn: () => authService.getNewTokens(),
 		enabled: !data?.data
 	})
