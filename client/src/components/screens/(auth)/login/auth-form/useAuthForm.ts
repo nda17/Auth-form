@@ -1,3 +1,4 @@
+import { useNavigationContext } from '@/providers/navigation-provider/NavigationProvider'
 import authService from '@/services/auth/auth.service'
 import { IFormData } from '@/shared/types/form.types'
 import { setAuthStatus } from '@/store/auth-status/auth-status.slice'
@@ -11,6 +12,8 @@ import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
 const useAuthForm = (isLogin: boolean) => {
+	const { previousRoute } = useNavigationContext()
+
 	const { register, handleSubmit, reset } = useForm<IFormData>()
 
 	const router = useRouter()
@@ -34,7 +37,8 @@ const useAuthForm = (isLogin: boolean) => {
 				changeStateAuth()
 				toast.success('Successful login')
 				reset()
-				router.replace('/')
+
+				router.replace(previousRoute)
 			})
 		},
 		onError(error) {
