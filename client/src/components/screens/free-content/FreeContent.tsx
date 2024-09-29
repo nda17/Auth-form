@@ -7,7 +7,7 @@ const FreeContent: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Free content page for all users" />
-			<SubHeading text="Free content" />
+			<SubHeading text="This Free content page" />
 		</div>
 	)
 }
