@@ -1,3 +1,11 @@
 .wrapper {
-	@apply w-full flex flex-col px-4;
+	@apply w-full flex flex-col;
+
+	.text {
+		@apply flex flex-col font-semibold mb-1 text-[1.05rem];
+
+		.link {
+			@apply text-[#280be4];
+		}
+	}
 }
