@@ -1,10 +1,14 @@
+import { EnumTokens } from '@/services/auth/auth.service'
 import Cookies from 'js-cookie'
-
-import { EnumTokens } from './auth.service'
 
 export const getAccessToken = () => {
 	const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
 	return accessToken || null
+}
+
+export const getRefreshToken = () => {
+	const refreshToken = Cookies.get(EnumTokens.REFRESH_TOKEN)
+	return refreshToken || null
 }
 
 export const saveTokenStorage = (accessToken: string) => {
