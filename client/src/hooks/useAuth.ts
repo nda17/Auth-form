@@ -14,7 +14,9 @@ const useAuth = () => {
 
 	const profile = data?.data
 
-	const statusAuth = profile ? transformUserToState(profile) : null
+	const statusAuth = profile
+		? transformUserToState(profile).isLoggedIn
+		: null
 
 	return { statusAuth }
 }
