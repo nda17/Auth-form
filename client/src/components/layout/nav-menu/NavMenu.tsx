@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const NavMenu: NextPage = () => {
-	const statusAuth = useAuth()
+	const { statusAuth } = useAuth()
 
 	const isLoggedIn = useSelector(
 		(state: any) => state.authStatus.isLoggedIn
