@@ -2,7 +2,7 @@ import { getAccessToken } from '@/services/auth/auth.helper'
 import UserService from '@/services/user.service'
 import { useQuery } from '@tanstack/react-query'
 
-const usePremium = () => {
+const usePremium = (isPremium: boolean) => {
 	const accessToken = getAccessToken()
 
 	const { data, isLoading } = useQuery({
@@ -10,7 +10,7 @@ const usePremium = () => {
 		queryFn: () => UserService.fetchPremium(),
 		retry: false,
 		select: ({ data }) => data.access,
-		enabled: accessToken !== null
+		enabled: accessToken !== null && isPremium === true
 	})
 
 	return { data, isLoading }
