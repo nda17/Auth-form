@@ -13,20 +13,20 @@ const PremiumContentItem: NextPage = () => {
 	const searchParams = useSearchParams()
 	const id = searchParams.get('id') || undefined
 
-	const { userState } = useAuth()
+	const { statusAuth } = useAuth()
 	const { data, isLoading } = usePremium()
 
 	return (
 		<div className={styles.wrapper}>
 			<Heading text={`Premium content item # ${id}`} />
 
-			{!userState && (
+			{!statusAuth && (
 				<Link href="/login" className={styles.link}>
 					Please login
 				</Link>
 			)}
 
-			{userState &&
+			{statusAuth &&
 				(isLoading ? (
 					<CirclesLoader />
 				) : data ? (
