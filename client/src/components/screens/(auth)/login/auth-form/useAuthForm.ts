@@ -34,7 +34,7 @@ const useAuthForm = (isLogin: boolean) => {
 				changeStateAuth()
 				toast.success('Successful login')
 				reset()
-				router.push('/')
+				router.replace('/')
 			})
 		},
 		onError(error) {
