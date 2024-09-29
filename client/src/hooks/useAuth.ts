@@ -14,11 +14,9 @@ const useAuth = () => {
 
 	const profile = data?.data
 
-	const userState = profile
-		? transformUserToState(profile).isLoggedIn
-		: null
+	const statusAuth = profile ? transformUserToState(profile) : null
 
-	return userState
+	return { statusAuth }
 }
 
 export default useAuth
