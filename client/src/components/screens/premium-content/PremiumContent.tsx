@@ -1,26 +1,31 @@
 'use client'
 import styles from '@/components/screens/premium-content/PremiumContent.module.scss'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import UserService from '@/services/user.service'
-import { useQuery } from '@tanstack/react-query'
-import { FC } from 'react'
+import { NextPage } from 'next'
+import Link from 'next/link'
 
-const PremiumContent: FC = () => {
-	const { data, isLoading } = useQuery({
-		queryKey: ['premium-content'],
-		queryFn: () => UserService.fetchPremium()
-	})
-
+const PremiumContent: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Page for users with a purchased Premium subscription" />
-			{isLoading ? (
-				<CirclesLoader />
-			) : (
-				<SubHeading text={`${data?.data.text || 'Not found!'}`} />
-			)}
+
+			<div className={styles.text}>
+				<Link href="/premium-content/content?id=1" className={styles.link}>
+					Premium content # 1
+				</Link>
+				<Link href="/premium-content/content?id=2" className={styles.link}>
+					Premium content # 2
+				</Link>
+				<Link href="/premium-content/content?id=3" className={styles.link}>
+					Premium content # 3
+				</Link>
+				<Link href="/premium-content/content?id=4" className={styles.link}>
+					Premium content # 4
+				</Link>
+				<Link href="/premium-content/content?id=5" className={styles.link}>
+					Premium content # 5
+				</Link>
+			</div>
 		</div>
 	)
 }
