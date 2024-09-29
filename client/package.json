@@ -1,5 +1,5 @@
 {
-	"name": "auth-form",
+	"name": "auth-form-client",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
