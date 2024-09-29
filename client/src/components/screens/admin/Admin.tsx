@@ -3,15 +3,11 @@ import styles from '@/components/screens/admin/Admin.module.scss'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import UserService from '@/services/user.service'
-import { useQuery } from '@tanstack/react-query'
+import useAdmin from '@/hooks/useAdmin'
 import { NextPage } from 'next'
 
 const Admin: NextPage = () => {
-	const { data, isLoading } = useQuery({
-		queryKey: ['users'],
-		queryFn: () => UserService.fetchList()
-	})
+	const { data, isLoading } = useAdmin()
 
 	return (
 		<div className={styles.wrapper}>
@@ -19,8 +15,8 @@ const Admin: NextPage = () => {
 			<SubHeading text="List users:" />
 			{isLoading ? (
 				<CirclesLoader />
-			) : data?.data?.length ? (
-				data.data.map((user) => (
+			) : data ? (
+				data.map((user) => (
 					<div key={user.id} className={styles.user}>
 						{user.email}
 					</div>
