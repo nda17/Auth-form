@@ -9,19 +9,21 @@ class UserService {
 	}
 
 	async fetchPremium() {
-		return axiosInterceptorsRequest.get<{ text: string }>(
+		return axiosInterceptorsRequest.get<{ access: true }>(
 			`${this._BASE_URL}/premium`
 		)
 	}
 
 	async fetchManager() {
-		return axiosInterceptorsRequest.get<{ text: string }>(
+		return axiosInterceptorsRequest.get<{ access: true }>(
 			`${this._BASE_URL}/manager`
 		)
 	}
 
-	async fetchList() {
-		return axiosInterceptorsRequest.get<IUser[]>(`${this._BASE_URL}/list`)
+	async fetchUsersList() {
+		return axiosInterceptorsRequest.get<IUser[]>(
+			`${this._BASE_URL}/users-list`
+		)
 	}
 }
 
