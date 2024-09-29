@@ -3,32 +3,43 @@ import styles from '@/components/screens/premium-content/premium-content-item/Pr
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
+import useAuth from '@/hooks/useAuth'
 import usePremium from '@/hooks/usePremium'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 const PremiumContentItem: NextPage = () => {
 	const searchParams = useSearchParams()
 	const id = searchParams.get('id') || undefined
 
+	const { userState } = useAuth()
 	const { data, isLoading } = usePremium()
 
 	return (
 		<div className={styles.wrapper}>
 			<Heading text={`Premium content item # ${id}`} />
-			{isLoading ? (
-				<CirclesLoader />
-			) : data ? (
-				<SubHeading
-					text={`This is PREMIUM CONTENT # ${id}, you have access to this content.`}
-				/>
-			) : (
-				<SubHeading
-					text={
-						'Sorry. To access PREMIUM CONTENT, please purchase a subscription.'
-					}
-				/>
+
+			{!userState && (
+				<Link href="/login" className={styles.link}>
+					Please login
+				</Link>
 			)}
+
+			{userState &&
+				(isLoading ? (
+					<CirclesLoader />
+				) : data ? (
+					<SubHeading
+						text={`This is PREMIUM CONTENT # ${id}, you have access to this content.`}
+					/>
+				) : (
+					<SubHeading
+						text={
+							'Sorry. To access PREMIUM CONTENT, please purchase a subscription.'
+						}
+					/>
+				))}
 		</div>
 	)
 }
