@@ -3,7 +3,7 @@ import { RequestMethod } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import * as cookieParser from 'cookie-parser'
 
-async function bootstrap() {
+export const bootstrap = async () => {
 	const app = await NestFactory.create(AppModule)
 
 	app.setGlobalPrefix('api', {
@@ -25,4 +25,5 @@ async function bootstrap() {
 
 	await app.listen(4200)
 }
+
 bootstrap()
