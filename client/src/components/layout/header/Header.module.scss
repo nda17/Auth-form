@@ -1,7 +1,11 @@
 .wrapper {
-	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4 flex justify-between;
+	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4;
 
-	.logo {
-		@apply flex w-16 h-16;
+	.layout-container {
+		@apply container flex justify-between;
+
+		.logo {
+			@apply w-16 h-16;
+		}
 	}
 }
