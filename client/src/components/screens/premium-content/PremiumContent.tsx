@@ -5,6 +5,8 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 
 const PremiumContent: NextPage = () => {
+	// In a real project, we make a request to the server and receive an entity object from the server and generate a component
+
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Page for users with a purchased Premium subscription" />
