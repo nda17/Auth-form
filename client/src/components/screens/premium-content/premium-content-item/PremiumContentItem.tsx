@@ -1,35 +1,42 @@
 'use client'
 import styles from '@/components/screens/premium-content/premium-content-item/PremiumContentItem.module.scss'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import useAuth from '@/hooks/useAuth'
 import usePremium from '@/hooks/usePremium'
+import useProfile from '@/hooks/useProfile'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const PremiumContentItem: NextPage = () => {
 	const searchParams = useSearchParams()
 	const id = searchParams.get('id') || undefined
 
-	const { statusAuth } = useAuth()
-	const { data, isLoading } = usePremium()
+	const { user } = useProfile()
+	const isPremium = user?.isPremium
+
+	const { data } = usePremium(isPremium)
+
+	const isLoggedIn = useSelector(
+		(state: any) => state.authStatus.isLoggedIn
+	)
+
+	useEffect(() => {}, [isLoggedIn, user])
 
 	return (
 		<div className={styles.wrapper}>
 			<Heading text={`Premium content item # ${id}`} />
 
-			{!statusAuth && (
+			{!isLoggedIn && !user && (
 				<Link href="/login" className={styles.link}>
 					Please login
 				</Link>
 			)}
 
-			{statusAuth &&
-				(isLoading ? (
-					<CirclesLoader />
-				) : data ? (
+			{isLoggedIn &&
+				(data ? (
 					<SubHeading
 						text={`This is PREMIUM CONTENT # ${id}, you have access to this content.`}
 					/>
