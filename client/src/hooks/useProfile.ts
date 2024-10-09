@@ -14,8 +14,7 @@ const useProfile = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-profile'],
 		queryFn: () => userService.fetchProfile(),
-		refetchInterval: 1800000, // 30 minutes in milliseconds
-		enabled: refreshToken !== null
+		refetchInterval: 1800000 // 30 minutes in milliseconds
 	})
 
 	const { isSuccess, data: dataTokens } = useQuery({
