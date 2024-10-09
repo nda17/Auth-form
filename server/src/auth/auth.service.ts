@@ -61,7 +61,9 @@ export class AuthService {
 			}
 		})
 
-		if (!user) throw new NotFoundException('Token not exists!')
+		if (!user) {
+			throw new NotFoundException('Token not exists!')
+		}
 
 		await this.userService.update(user.id, {
 			verificationToken: null
