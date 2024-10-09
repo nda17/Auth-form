@@ -24,6 +24,16 @@ const VerificationEmail = ({ url }: { url: string }) => {
 			>
 				{url}
 			</a>
+
+			<p
+				style={{
+					color: '#FC0303'
+				}}
+			>
+				This letter was generated and sent by a robot. You do not need to
+				respond to it. If you have a question, please contact
+				info@winwidget.ru
+			</p>
 		</div>
 	)
 }
