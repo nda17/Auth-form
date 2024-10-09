@@ -7,7 +7,7 @@ export const getMailerConfig = async (
 ): Promise<MailerOptions> => ({
 	transport: {
 		host: configService.get('SMTP_SERVER'),
-		port: isDev(configService) ? 587 : 465,
+		port: isDev(configService) ? 2525 : 465,
 		secure: !isDev(configService),
 		auth: {
 			user: configService.get('SMTP_LOGIN'),
@@ -15,6 +15,6 @@ export const getMailerConfig = async (
 		}
 	},
 	defaults: {
-		from: '"auth-form" <no-reply@auth-form.ru>'
+		from: '"winwidget.ru" <no-reply@winwidget.ru>'
 	}
 })
