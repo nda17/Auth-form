@@ -6,7 +6,6 @@ import {
 import { Injectable } from '@nestjs/common'
 import type { User } from '@prisma/client'
 import { hash } from 'argon2'
-
 import { PrismaService } from 'src/prisma.service'
 
 @Injectable()
