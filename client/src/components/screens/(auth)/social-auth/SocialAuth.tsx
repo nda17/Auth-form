@@ -11,7 +11,9 @@ const SocialAuthPage: NextPage = () => {
 
 	useEffect(() => {
 		const accessToken = searchParams.get('accessToken')
-		if (accessToken) saveTokenStorage(accessToken)
+		if (accessToken) {
+			saveTokenStorage(accessToken)
+		}
 
 		router.replace('/')
 	}, [])

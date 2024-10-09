@@ -29,8 +29,9 @@ class AuthService {
 			}
 		)
 
-		if (response.data.accessToken)
+		if (response.data.accessToken) {
 			saveTokenStorage(response.data.accessToken)
+		}
 
 		return response
 	}
@@ -40,8 +41,9 @@ class AuthService {
 			'/auth/access-token'
 		)
 
-		if (response.data.accessToken)
+		if (response.data.accessToken) {
 			saveTokenStorage(response.data.accessToken)
+		}
 
 		return response
 	}
@@ -65,7 +67,9 @@ class AuthService {
 			'/auth/logout'
 		)
 
-		if (response.data) removeFromStorage()
+		if (response.data) {
+			removeFromStorage()
+		}
 
 		return response
 	}

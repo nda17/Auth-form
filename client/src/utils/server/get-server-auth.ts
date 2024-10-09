@@ -32,7 +32,9 @@ export const getServerAuth = async (): Promise<TUserDataState | null> => {
 			new TextEncoder().encode(`${JWT_SECRET}`)
 		)
 
-		if (!payload) return null
+		if (!payload) {
+			return null
+		}
 
 		return transformUserToState(payload)
 	} catch (error) {

@@ -22,8 +22,9 @@ export const axiosInterceptorsRequest = axios.create(axiosOptions)
 axiosInterceptorsRequest.interceptors.request.use((config) => {
 	const accessToken = getAccessToken()
 
-	if (config?.headers && accessToken)
+	if (config?.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`
+	}
 
 	return config
 })
@@ -48,8 +49,9 @@ axiosInterceptorsRequest.interceptors.response.use(
 				if (
 					errorCatch(error) === 'jwt expired' ||
 					errorCatch(error) === 'Refresh token not passed'
-				)
+				) {
 					removeFromStorage()
+				}
 			}
 		}
 
