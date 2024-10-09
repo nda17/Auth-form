@@ -9,7 +9,8 @@ import Link from 'next/link'
 const DesktopDynamicMenu: NextPage = () => {
 	const { user } = useProfile()
 	const isLoggedIn = user?.isLoggedIn
-	const isManager = user?.isManager && user?.rights?.includes(UserRole.MANAGER)
+	const isManager =
+		user?.isManager && user?.rights?.includes(UserRole.MANAGER)
 	const isAdmin = user?.isAdmin && user?.rights?.includes(UserRole.ADMIN)
 
 	return (
