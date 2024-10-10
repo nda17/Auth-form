@@ -11,8 +11,11 @@ import {
 import { JwtService } from '@nestjs/jwt'
 import { Role, type User } from '@prisma/client'
 import { verify } from 'argon2'
+import * as dotenv from 'dotenv'
 import { omit } from 'lodash'
+import { ConfirmationEmailDto } from './dto/confirmation-email.dto'
 
+dotenv.config()
 @Injectable()
 export class AuthService {
 	constructor(
@@ -39,7 +42,7 @@ export class AuthService {
 
 		await this.emailService.sendVerification(
 			user.email,
-			`http://localhost:4200/verify-email?token=${user.verificationToken}`
+			`${process.env.MODE === 'production' ? process.env.PRODUCTION_HOST : process.env.DEVELOPMENT_HOST}/confirmation-email?token=${user.verificationToken}`
 		)
 
 		return this.buildResponseObject(user)
@@ -54,10 +57,12 @@ export class AuthService {
 		return this.buildResponseObject(user)
 	}
 
-	async verifyEmail(token: string) {
+	async confirmationEmail(dto: ConfirmationEmailDto) {
+		const { verificationToken } = dto
+
 		const user = await this.prisma.user.findFirst({
 			where: {
-				verificationToken: token
+				verificationToken: verificationToken
 			}
 		})
 
@@ -68,8 +73,6 @@ export class AuthService {
 		await this.userService.update(user.id, {
 			verificationToken: null
 		})
-
-		return 'Email verified!'
 	}
 
 	async buildResponseObject(user: User) {
