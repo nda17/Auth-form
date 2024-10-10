@@ -14,8 +14,7 @@ export class SocialMediaAuthController {
 		private readonly refreshTokenService: RefreshTokenService
 	) {}
 
-	private _CLIENT_BASE_URL =
-		'http://localhost:3000/social-auth?accessToken='
+	private _CLIENT_BASE_URL = `${process.env.RECAPTCHA_CLIENT_URL}/social-auth?accessToken=`
 
 	@Get('google')
 	@UseGuards(AuthGuard('google'))
