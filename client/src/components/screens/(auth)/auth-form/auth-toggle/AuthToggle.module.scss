@@ -11,5 +11,9 @@
 		.sign-up-button {
 			@apply text-yellow-700 text-base;
 		}
+
+		.restore-password-button {
+			@apply text-red-500 text-base;
+		}
 	}
 }
