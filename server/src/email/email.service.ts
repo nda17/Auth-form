@@ -1,4 +1,5 @@
 import VerificationEmail from '@email/confirmation.email'
+import NewPasswordEmail from '@email/restore-password.email'
 import { MailerService } from '@nestjs-modules/mailer'
 import { Injectable } from '@nestjs/common'
 import { render } from '@react-email/render'
@@ -18,5 +19,10 @@ export class EmailService {
 	sendVerification(to: string, verificationLink: string) {
 		const html = render(VerificationEmail({ url: verificationLink }))
 		return this.sendEmail(to, 'Confirmation Email', html)
+	}
+
+	sendNewPassword(to: string, password: string) {
+		const html = render(NewPasswordEmail({ password: password }))
+		return this.sendEmail(to, 'New password', html)
 	}
 }
