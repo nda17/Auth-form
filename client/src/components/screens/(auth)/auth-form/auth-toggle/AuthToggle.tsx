@@ -33,6 +33,15 @@ const AuthToggle: NextPage<IAuthToggle> = ({ isLogin }) => {
 					</button>
 				</p>
 			)}
+			<p className={clsx(styles['toggle-link-block'])}>
+				<button
+					type="button"
+					className={clsx(styles['restore-password-button'])}
+					onClick={() => router.push(PUBLIC_PAGES.RESTORE_PASSWORD)}
+				>
+					Forgot password?
+				</button>
+			</p>
 		</div>
 	)
 }
