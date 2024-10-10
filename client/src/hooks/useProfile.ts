@@ -3,7 +3,7 @@ import {
 	saveTokenStorage
 } from '@/services/auth/auth.helper'
 import authService from '@/services/auth/auth.service'
-import userService from '@/services/user.service'
+import userService from '@/services/user/user.service'
 import { transformUserToState } from '@/utils/transform-user-to-state'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'

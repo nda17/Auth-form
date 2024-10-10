@@ -1,5 +1,5 @@
 import { getAccessToken } from '@/services/auth/auth.helper'
-import userService from '@/services/user.service'
+import userService from '@/services/user/user.service'
 import { transformUserToState } from '@/utils/transform-user-to-state'
 import { useQuery } from '@tanstack/react-query'
 

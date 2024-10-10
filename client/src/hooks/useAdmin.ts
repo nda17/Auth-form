@@ -1,4 +1,4 @@
-import UserService from '@/services/user.service'
+import UserService from '@/services/user/user.service'
 import { useQuery } from '@tanstack/react-query'
 
 const useAdmin = () => {

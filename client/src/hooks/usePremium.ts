@@ -1,5 +1,5 @@
 import { getAccessToken } from '@/services/auth/auth.helper'
-import UserService from '@/services/user.service'
+import UserService from '@/services/user/user.service'
 import { useQuery } from '@tanstack/react-query'
 
 const usePremium = (isPremium: boolean) => {
