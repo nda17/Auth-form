@@ -1,12 +1,12 @@
 import SignIn from '@/components/screens/(auth)/login/SignIn'
-import type { Metadata, NextPage } from 'next'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	title: 'Sign in',
 	description: 'Sign in page'
 }
 
-const LoginPage: NextPage = () => {
+const LoginPage = async () => {
 	return <SignIn />
 }
 
