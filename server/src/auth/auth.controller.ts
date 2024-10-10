@@ -1,13 +1,13 @@
 import { AuthService } from '@/auth/auth.service'
 import { AuthDto } from '@/auth/dto/auth.dto'
+import { ConfirmationEmailDto } from '@/auth/dto/confirmation-email.dto'
 import { RefreshTokenService } from '@/auth/refresh-token.service'
 import {
 	Body,
 	Controller,
-	Get,
 	HttpCode,
+	Patch,
 	Post,
-	Query,
 	Req,
 	Res,
 	UnauthorizedException,
@@ -54,13 +54,13 @@ export class AuthController {
 	}
 
 	@HttpCode(200)
-	@Get('verify-email')
-	async verifyEmail(@Query('token') token?: string) {
-		if (!token) {
+	@Patch('auth/confirmation-email')
+	async verifyEmail(@Body() dto: ConfirmationEmailDto) {
+		if (!dto) {
 			throw new UnauthorizedException('Token not passed')
 		}
 
-		return this.authService.verifyEmail(token)
+		return this.authService.confirmationEmail(dto)
 	}
 
 	@HttpCode(200)
