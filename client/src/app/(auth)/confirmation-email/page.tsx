@@ -1,3 +1,5 @@
+import Error404 from '@/app/not-found'
+import ConfirmationEmail from '@/components/screens/(auth)/confirmation-email/ConfirmationEmail'
 import authService from '@/services/auth/auth.service'
 import type { Metadata } from 'next'
 
@@ -11,18 +13,13 @@ const ConfirmationEmailPage = async ({
 }: {
 	searchParams: { token: string }
 }) => {
-	const confirmationToken = searchParams.token
+	const verificationToken = searchParams.token
 
 	try {
-		await authService.getConfirmationEmail(confirmationToken)
-		return <p>Email confirmed.</p>
+		await authService.getConfirmationEmail(verificationToken)
+		return <ConfirmationEmail />
 	} catch (error) {
-		return (
-			<p>
-				An error occurred while confirming your email, please try again
-				later.
-			</p>
-		)
+		return <Error404 />
 	}
 }
 
