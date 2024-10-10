@@ -12,6 +12,10 @@ interface IConfirmationToken {
 	verificationToken: string
 }
 
+interface IEmail {
+	email: string
+}
+
 export enum EnumTokens {
 	'ACCESS_TOKEN' = 'accessToken',
 	'REFRESH_TOKEN' = 'refreshToken'
@@ -70,6 +74,20 @@ class AuthService {
 		const response = await axiosClassicRequest.patch<IConfirmationToken>(
 			'/auth/confirmation-email',
 			{ verificationToken: verificationToken }
+		)
+
+		return response
+	}
+
+	async getRestorePassword(data: IEmail, token?: string | null) {
+		const response = await axiosClassicRequest.patch<IEmail>(
+			'/auth/restore-password',
+			{ email: data.email },
+			{
+				headers: {
+					recaptcha: token
+				}
+			}
 		)
 
 		return response
