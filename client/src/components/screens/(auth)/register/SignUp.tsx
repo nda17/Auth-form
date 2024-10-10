@@ -1,4 +1,4 @@
-import AuthForm from '@/components/screens/(auth)/login/auth-form/AuthForm'
+import AuthForm from '@/components/screens/(auth)/auth-form/AuthForm'
 import styles from '@/components/screens/(auth)/register/SignUp.module.scss'
 import { NextPage } from 'next'
 
