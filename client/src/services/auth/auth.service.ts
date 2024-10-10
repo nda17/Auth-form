@@ -8,6 +8,10 @@ interface IAuthResponse {
 	user: IUser
 }
 
+interface IConfirmationToken {
+	verificationToken: string
+}
+
 export enum EnumTokens {
 	'ACCESS_TOKEN' = 'accessToken',
 	'REFRESH_TOKEN' = 'refreshToken'
@@ -60,6 +64,15 @@ class AuthService {
 		)
 
 		return response.data
+	}
+
+	async getConfirmationEmail(verificationToken: string) {
+		const response = await axiosClassicRequest.patch<IConfirmationToken>(
+			'/auth/confirmation-email',
+			{ verificationToken: verificationToken }
+		)
+
+		return response
 	}
 
 	async logout() {
