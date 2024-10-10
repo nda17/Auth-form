@@ -1,4 +1,6 @@
 import { AuthDto } from '@/auth/dto/auth.dto'
+import { ConfirmationEmailDto } from '@/auth/dto/confirmation-email.dto'
+import { RestorePasswordDto } from '@/auth/dto/restore-password.dto'
 import { EmailService } from '@/email/email.service'
 import { PrismaService } from '@/prisma.service'
 import { UserService } from '@/user/user.service'
@@ -10,10 +12,10 @@ import {
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { Role, type User } from '@prisma/client'
-import { verify } from 'argon2'
+import { hash, verify } from 'argon2'
 import * as dotenv from 'dotenv'
+import generator from 'generate-password-ts'
 import { omit } from 'lodash'
-import { ConfirmationEmailDto } from './dto/confirmation-email.dto'
 
 dotenv.config()
 @Injectable()
@@ -73,6 +75,38 @@ export class AuthService {
 		await this.userService.update(user.id, {
 			verificationToken: null
 		})
+	}
+
+	async restorePassword(dto: RestorePasswordDto) {
+		const { email } = dto
+
+		const user = await this.prisma.user.findUnique({
+			where: {
+				email: email
+			}
+		})
+
+		if (!user) {
+			throw new NotFoundException('User not found')
+		}
+
+		if (user) {
+			const newPassword = generator.generate({
+				length: 6,
+				uppercase: true,
+				lowercase: true,
+				numbers: true,
+				strict: true
+			})
+
+			await this.userService.update(user.id, {
+				password: await hash(newPassword)
+			})
+
+			await this.emailService.sendNewPassword(user.email, newPassword)
+		}
+
+		return
 	}
 
 	async buildResponseObject(user: User) {
