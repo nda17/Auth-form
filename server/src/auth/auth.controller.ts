@@ -1,11 +1,13 @@
 import { AuthService } from '@/auth/auth.service'
 import { AuthDto } from '@/auth/dto/auth.dto'
 import { ConfirmationEmailDto } from '@/auth/dto/confirmation-email.dto'
+import { RestorePasswordDto } from '@/auth/dto/restore-password.dto'
 import { RefreshTokenService } from '@/auth/refresh-token.service'
 import {
 	Body,
 	Controller,
 	HttpCode,
+	NotFoundException,
 	Patch,
 	Post,
 	Req,
@@ -57,10 +59,21 @@ export class AuthController {
 	@Patch('auth/confirmation-email')
 	async verifyEmail(@Body() dto: ConfirmationEmailDto) {
 		if (!dto) {
-			throw new UnauthorizedException('Token not passed')
+			throw new NotFoundException('Token not passed')
 		}
 
 		return this.authService.confirmationEmail(dto)
+	}
+
+	@HttpCode(200)
+	@Recaptcha()
+	@Patch('/auth/restore-password')
+	async restorePassword(@Body() dto: RestorePasswordDto) {
+		if (!dto) {
+			throw new NotFoundException('Email not passed')
+		}
+
+		return this.authService.restorePassword(dto)
 	}
 
 	@HttpCode(200)
