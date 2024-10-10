@@ -1,12 +1,12 @@
 import Manager from '@/components/screens/manager/Manager'
-import type { Metadata, NextPage } from 'next'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	title: 'Manager content',
 	description: 'Manager content page'
 }
 
-const ManagerPage: NextPage = () => {
+const ManagerPage = async () => {
 	return <Manager />
 }
 

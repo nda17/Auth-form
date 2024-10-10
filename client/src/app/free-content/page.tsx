@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description: 'Free content page for all users'
 }
 
-const FreeContentPage = () => {
+const FreeContentPage = async () => {
 	return <FreeContent />
 }
 

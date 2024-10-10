@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description: 'Admin page'
 }
 
-const AdminPage = () => {
+const AdminPage = async () => {
 	return <Admin />
 }
 

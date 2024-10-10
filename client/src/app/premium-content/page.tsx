@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description: 'Premium content page'
 }
 
-const PremiumPage = () => {
+const PremiumPage = async () => {
 	return <PremiumContent />
 }
 
