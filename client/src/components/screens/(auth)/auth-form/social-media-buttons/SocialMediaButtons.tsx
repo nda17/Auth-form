@@ -1,4 +1,4 @@
-import styles from '@/components/screens/(auth)/login/auth-form/social-media-buttons/SocialMediaButtons.module.scss'
+import styles from '@/components/screens/(auth)/auth-form/social-media-buttons/SocialMediaButtons.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
