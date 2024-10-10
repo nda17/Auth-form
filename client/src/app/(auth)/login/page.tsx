@@ -3,7 +3,7 @@ import type { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {
 	title: 'Sign in',
-	description: 'Sign ine page'
+	description: 'Sign in page'
 }
 
 const LoginPage: NextPage = () => {
