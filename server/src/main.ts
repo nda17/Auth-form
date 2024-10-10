@@ -1,6 +1,7 @@
 import { AppModule } from '@/app.module'
 import { RequestMethod } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
+import 'colors'
 import * as cookieParser from 'cookie-parser'
 
 export const bootstrap = async () => {
@@ -16,14 +17,25 @@ export const bootstrap = async () => {
 		]
 	})
 
+	if (process.env.MODE === 'development') {
+		app.use(require('morgan')('dev'))
+	}
+
 	app.use(cookieParser())
 	app.enableCors({
-		origin: ['http://localhost:3000'],
+		origin: [process.env.PRODUCTION_HOST, process.env.DEVELOPMENT_HOST],
 		credentials: true,
 		exposedHeaders: 'set-cookie'
 	})
 
-	await app.listen(4200)
+	const port = process.env.PORT || 5000
+
+	await app.listen(port, () =>
+		console.log(
+			`🚀🚀🚀 Server running in ${process.env.MODE} mode at http://localhost:${port} 🚀🚀🚀`
+				.bgRed.bold
+		)
+	)
 }
 
 bootstrap()
