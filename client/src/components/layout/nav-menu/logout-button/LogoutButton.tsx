@@ -5,6 +5,7 @@ import { setAuthStatus } from '@/store/auth-status/auth-status.slice'
 import { useMutation } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { NextPage } from 'next'
+import { usePathname, useRouter } from 'next/navigation'
 import { MouseEvent } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
@@ -18,6 +19,9 @@ const LogoutButton: NextPage = () => {
 		}
 	})
 
+	const router = useRouter()
+	const pathname = usePathname()
+
 	const isLogoutLoading = isPending
 
 	const dispatch = useDispatch()
@@ -30,6 +34,9 @@ const LogoutButton: NextPage = () => {
 		e.preventDefault()
 		changeStateAuth()
 		mutateLogout()
+		pathname === '/profile' || '/admin' || '/manager'
+			? router.replace('/')
+			: null
 	}
 
 	return (
