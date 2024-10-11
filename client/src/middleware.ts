@@ -8,7 +8,7 @@ export const middleware = (request: NextRequest) => {
 	const { pathname } = request.nextUrl
 
 	switch (true) {
-		case /^\/(register|login)$/.test(pathname):
+		case /^\/(register|login|restore-password)$/.test(pathname):
 			return authMiddleware(request)
 
 		case /^\/profile/.test(pathname):
