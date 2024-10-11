@@ -59,9 +59,12 @@ const useAuthForm = (isLogin: boolean) => {
 				),
 			onSuccess() {
 				startTransition(() => {
+					changeStateAuth()
+					toast.success(
+						'Successful register. A link to confirm your Email has been sent to your email.'
+					)
 					reset()
-					toast.success('Successful register')
-					router.push('/')
+					router.push('/profile')
 				})
 			},
 			onError(error) {
