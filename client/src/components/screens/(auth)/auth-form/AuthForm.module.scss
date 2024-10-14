@@ -1,40 +1,8 @@
 .form {
-	@apply max-w-sm mx-auto;
-
-	.wrapper-input {
-		@apply mb-4 relative;
-
-		.label-input {
-			@apply text-gray-600;
-
-			.input-field {
-				@apply w-full outline-none p-2 border border-solid rounded border-white focus:border-red-400 bg-transparent text-white transition-colors mt-1;
-			}
-
-			.input-field-password {
-				@apply w-full outline-none py-2 pl-2 px-[.75rem]  border border-solid rounded border-white focus:border-red-400 bg-transparent text-white transition-colors mt-1;
-			}
-
-			.toggle-visible-password {
-				@apply cursor-pointer absolute top-[2.44rem] right-2 transition duration-300 ease-in-out;
-
-				> svg {
-					@apply block w-[1.35rem] h-[1.35rem];
-				}
-
-				&:hover {
-					@apply transform scale-[1.04];
-				}
-			}
-		}
-	}
+	@apply w-[19.85rem] mx-auto overflow-hidden;
 
 	.recaptcha {
-		@apply mb-3 transform scale-[1.025] min-h-[78px];
-
-		> div > div {
-			@apply mx-auto;
-		}
+		@apply mb-3 scale-x-[1.05] origin-[0] min-h-[78px];
 	}
 
 	.wrapper-button {
