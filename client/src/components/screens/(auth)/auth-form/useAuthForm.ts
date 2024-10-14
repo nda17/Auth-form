@@ -14,7 +14,9 @@ import { useDispatch } from 'react-redux'
 const useAuthForm = (isLogin: boolean) => {
 	const { previousRoute } = useNavigationContext()
 
-	const { register, handleSubmit, reset } = useForm<IFormData>()
+	const { register, handleSubmit, reset, formState } = useForm<IFormData>({
+		mode: 'onChange'
+	})
 
 	const router = useRouter()
 
@@ -93,7 +95,8 @@ const useAuthForm = (isLogin: boolean) => {
 		handleSubmit,
 		onSubmit,
 		recaptchaRef,
-		isLoading
+		isLoading,
+		formState
 	}
 }
 
