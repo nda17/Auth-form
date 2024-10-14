@@ -1,60 +1,53 @@
 'use client'
-import useAuthForm from '@/components/screens/(auth)/auth-form/useAuthForm'
 import styles from '@/components/screens/(auth)/auth-form/AuthForm.module.scss'
 import { IAuthFormProps } from '@/components/screens/(auth)/auth-form/auth-form.interface'
 import AuthToggle from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle'
 import SocialMediaButtons from '@/components/screens/(auth)/auth-form/social-media-buttons/SocialMediaButtons'
-import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
+import useAuthForm from '@/components/screens/(auth)/auth-form/useAuthForm'
+import FieldEmail from '@/components/ui/form-elements/field-email/FieldEmail'
+import FieldPassword from '@/components/ui/form-elements/field-password/FieldPassword'
+import { validEmail, validPassword } from '@/shared/regex'
 import clsx from 'clsx'
 import { NextPage } from 'next'
-import { useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
-	const [typeInputPassword, setTypeInputPassword] = useState(true)
-
-	const { handleSubmit, isLoading, onSubmit, recaptchaRef, register } =
-		useAuthForm(isLogin)
-
-	const toggleVisiblePassword = () => {
-		setTypeInputPassword(!typeInputPassword)
-	}
+	const {
+		handleSubmit,
+		isLoading,
+		onSubmit,
+		recaptchaRef,
+		register,
+		formState: { errors }
+	} = useAuthForm(isLogin)
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-			<div className={clsx(styles['wrapper-input'])}>
-				<label className={clsx(styles['label-input'])}>
-					Email
-					<input
-						type="email"
-						placeholder="Enter email: "
-						{...register('email', { required: true })}
-						className={clsx(styles['input-field'])}
-					/>
-				</label>
-			</div>
+			<FieldEmail
+				{...register('email', {
+					required: 'Email is required!',
+					pattern: {
+						value: validEmail,
+						message: 'Please enter a valid email'
+					}
+				})}
+				placeholder="Enter email:"
+				type="email"
+				error={errors.email}
+			/>
 
-			<div className={clsx(styles['wrapper-input'])}>
-				<label className={clsx(styles['label-input'])}>
-					Password
-					<input
-						type={typeInputPassword ? 'password' : 'text'}
-						placeholder="Enter password: "
-						{...register('password', { required: true })}
-						className={clsx(styles['input-field-password'])}
-					/>
-					<span
-						className={clsx(styles['toggle-visible-password'])}
-						onClick={toggleVisiblePassword}
-					>
-						{typeInputPassword ? (
-							<FontAwesomeIcon name="FaRegEye" fill="white" />
-						) : (
-							<FontAwesomeIcon name="FaRegEyeSlash" fill="white" />
-						)}
-					</span>
-				</label>
-			</div>
+			<FieldPassword
+				{...register('password', {
+					pattern: {
+						value: validPassword,
+						message:
+							'Min length should more 6 symbols. Contains 1 number 0-9, 1 Latin letter a-z, 1 Latin letter A-Z'
+					}
+				})}
+				placeholder="Enter password:"
+				type="password"
+				error={errors.password}
+			/>
 
 			<ReCAPTCHA
 				hl="en"
