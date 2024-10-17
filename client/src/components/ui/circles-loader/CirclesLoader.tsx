@@ -3,12 +3,7 @@ import clsx from 'clsx'
 import { NextPage } from 'next'
 
 const CirclesLoader: NextPage = () => {
-	return (
-		<div className={clsx(styles['circles-loader'])}>
-			<div className={clsx(styles['circle-green'])}></div>
-			<div className={clsx(styles['circle-red'])}></div>
-		</div>
-	)
+	return <div className={clsx(styles['circles-loader'])}></div>
 }
 
 export default CirclesLoader
