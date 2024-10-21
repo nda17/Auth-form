@@ -1,48 +1,41 @@
 import styles from '@/components/layout/nav-menu/logout-button/LogoutButton.module.scss'
+import { ILogoutButton } from '@/components/layout/nav-menu/logout-button/logout-button.interface'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
+import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import authService from '@/services/auth/auth.service'
-import { setAuthStatus } from '@/store/auth-status/auth-status.slice'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { NextPage } from 'next'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { MouseEvent } from 'react'
 import toast from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
 
-const LogoutButton: NextPage = () => {
-	const { mutate: mutateLogout, isPending } = useMutation({
-		mutationKey: ['logout'],
-		mutationFn: () => authService.logout(),
-		onSuccess() {
-			toast.success('Logout')
+const LogoutButton: NextPage<ILogoutButton> = ({ setNavState }) => {
+	const { replace } = useRouter()
+	const queryClient = useQueryClient()
+
+	const { mutate: mutateLogout, isPending: isLogoutPending } = useMutation(
+		{
+			mutationKey: ['logout'],
+			mutationFn: () => authService.logout(),
+			onSuccess() {
+				toast.success('Logout')
+				queryClient.clear()
+				setNavState(false)
+			}
 		}
-	})
+	)
 
-	const router = useRouter()
-	const pathname = usePathname()
-
-	const isLogoutLoading = isPending
-
-	const dispatch = useDispatch()
-
-	const changeStateAuth = () => {
-		dispatch(setAuthStatus(false))
-	}
-
-	const logoutHandler = (e: MouseEvent<HTMLAnchorElement>) => {
+	const logoutHandler = (e: MouseEvent) => {
 		e.preventDefault()
-		changeStateAuth()
 		mutateLogout()
-		pathname === '/profile' || '/admin' || '/manager'
-			? router.replace('/')
-			: null
+		replace(PUBLIC_PAGES.LOGIN)
 	}
 
 	return (
 		<button
-			onClick={(e: any) => logoutHandler(e)}
-			disabled={isLogoutLoading}
+			onClick={logoutHandler}
+			disabled={isLogoutPending}
 			className={clsx(styles['link-auth-button'])}
 		>
 			<MaterialIcon name="MdLogout" fill="red" />
