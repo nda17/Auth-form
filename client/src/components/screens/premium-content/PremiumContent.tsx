@@ -1,4 +1,3 @@
-'use client'
 import styles from '@/components/screens/premium-content/PremiumContent.module.scss'
 import Heading from '@/components/ui/heading/Heading'
 import { NextPage } from 'next'
