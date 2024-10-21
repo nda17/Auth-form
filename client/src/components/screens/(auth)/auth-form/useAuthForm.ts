@@ -1,34 +1,23 @@
 import { useNavigationContext } from '@/providers/navigation-provider/NavigationProvider'
 import authService from '@/services/auth/auth.service'
 import { IFormData } from '@/shared/types/form.types'
-import { setAuthStatus } from '@/store/auth-status/auth-status.slice'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useRef, useTransition } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
 
 const useAuthForm = (isLogin: boolean) => {
 	const { previousRoute } = useNavigationContext()
-
 	const { register, handleSubmit, reset, formState } = useForm<IFormData>({
 		mode: 'onChange'
 	})
-
 	const router = useRouter()
-
 	const [isPending, startTransition] = useTransition()
-
+	const queryClient = useQueryClient()
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
-
-	const dispatch = useDispatch()
-
-	const changeStateAuth = () => {
-		dispatch(setAuthStatus(true))
-	}
 
 	const { mutate: mutateLogin, isPending: isLoginPending } = useMutation({
 		mutationKey: ['login'],
@@ -36,10 +25,10 @@ const useAuthForm = (isLogin: boolean) => {
 			authService.main('login', data, recaptchaRef?.current?.getValue()),
 		onSuccess() {
 			startTransition(() => {
-				changeStateAuth()
 				toast.success('Successful login')
 				reset()
 				router.replace(previousRoute ? previousRoute : '/')
+				queryClient.invalidateQueries({ queryKey: ['get-profile'] })
 			})
 		},
 		onError(error) {
@@ -61,12 +50,12 @@ const useAuthForm = (isLogin: boolean) => {
 				),
 			onSuccess() {
 				startTransition(() => {
-					changeStateAuth()
 					toast.success(
 						'Successful register. A link to confirm your Email has been sent to your email.'
 					)
 					reset()
-					router.push('/profile')
+					router.replace('/profile')
+					// queryClient.invalidateQueries({ queryKey: ['get-profile'] })
 				})
 			},
 			onError(error) {
