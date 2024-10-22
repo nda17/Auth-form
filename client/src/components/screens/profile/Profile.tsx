@@ -3,7 +3,7 @@ import styles from '@/components/screens/profile/Profile.module.scss'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import useProfile from '@/hooks/useProfile'
+import useUser from '@/hooks/useUser'
 import authService from '@/services/auth/auth.service'
 import { useMutation } from '@tanstack/react-query'
 import { clsx } from 'clsx'
@@ -15,7 +15,7 @@ import { useTransition } from 'react'
 const Profile: NextPage = () => {
 	const { push } = useRouter()
 
-	const { user, isLoading } = useProfile()
+	const { user, isLoading } = useUser()
 
 	const [isPending, startTransition] = useTransition()
 
