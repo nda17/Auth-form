@@ -4,7 +4,7 @@ import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
 import usePremium from '@/hooks/usePremium'
-import useProfile from '@/hooks/useProfile'
+import useUser from '@/hooks/useUser'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -12,7 +12,7 @@ import { useSearchParams } from 'next/navigation'
 const PremiumContentItem: NextPage = () => {
 	const searchParams = useSearchParams()
 	const id = searchParams.get('id') || undefined
-	const { user, isLoading: isLoadingProfile } = useProfile()
+	const { user, isLoading: isLoadingProfile } = useUser()
 	const { data, isLoading: isLoadingPremium } = usePremium()
 
 	return (
