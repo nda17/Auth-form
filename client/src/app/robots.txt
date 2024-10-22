@@ -1,0 +1,5 @@
+user-agent: *
+disallow: /auth/*
+disallow: /profile/*
+disallow: /manager/*
+disallow: /admin/*
