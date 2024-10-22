@@ -47,6 +47,9 @@ importers:
       react-loading-skeleton:
         specifier: ^3.5.0
         version: 3.5.0(react@18.3.1)
+      zustand:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/react@18.3.10)(react@18.3.1)
     devDependencies:
       '@tanstack/react-query-devtools':
         specifier: ^5.28.6
@@ -834,6 +837,24 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  zustand@5.0.0:
+    resolution: {integrity: sha512-LE+VcmbartOPM+auOjCCLQOsQ05zUTp8RkgwRzefUk+2jISdMMFnxvyTjA4YNWr5ZGXYbVsEMZosttuxUBkojQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -1522,3 +1543,8 @@ snapshots:
       strip-ansi: 7.1.0
 
   yaml@2.5.1: {}
+
+  zustand@5.0.0(@types/react@18.3.10)(react@18.3.1):
+    optionalDependencies:
+      '@types/react': 18.3.10
+      react: 18.3.1
