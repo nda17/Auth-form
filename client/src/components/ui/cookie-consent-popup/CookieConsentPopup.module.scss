@@ -1,0 +1,43 @@
+.wrapper-cookie {
+	@apply fixed left-0 right-0 bottom-32 m-auto z-50 w-[90%] rounded-xl bg-[#131b22] opacity-[0.94] p-4 shadow-black flex justify-evenly items-center;
+
+	.wrapper-content {
+		@apply mr-4;
+
+		.heading {
+			@apply flex items-center mb-1;
+
+			.image-cookie {
+				@apply mr-1;
+
+				> svg {
+					@apply w-[1.9rem] h-[1.9rem];
+				}
+			}
+
+			.text-heading {
+				@apply text-[1.05rem] font-700 select-none text-white;
+			}
+		}
+
+		.text-wrapper {
+			@apply flex justify-between;
+
+			.text-consent {
+				@apply select-none text-gray-300;
+
+				.more-link {
+					@apply text-extraRed transition-colors;
+
+					&:hover {
+						@apply text-green-600;
+					}
+				}
+			}
+		}
+	}
+
+	.button-accept {
+		@apply bg-green-600 w-20 h-10 py-2 px-3 font-bold rounded-xl;
+	}
+}
