@@ -3,4 +3,8 @@
 	> svg {
 		@apply w-[1.7rem] h-[1.7rem];
 	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
