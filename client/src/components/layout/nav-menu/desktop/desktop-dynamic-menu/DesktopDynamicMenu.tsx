@@ -6,13 +6,11 @@ import useProfile from '@/hooks/useProfile'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const DesktopDynamicMenu: NextPage = () => {
-	const { user } = useProfile()
 	const [navState, setNavState] = useState(true)
-
-	useEffect(() => {}, [user, navState])
+	const { user } = useProfile(navState)
 
 	return (
 		<div className={styles.wrapper}>
