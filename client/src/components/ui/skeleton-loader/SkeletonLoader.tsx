@@ -13,7 +13,7 @@ const SkeletonLoader: NextPage<SkeletonProps> = ({
 			{...rest}
 			baseColor="#1F2125"
 			highlightColor="#292A2E"
-			className={clsx(['rounded-lg'], className)}
+			className={clsx(['rounded-lg', 'select-none'], className)}
 		/>
 	)
 }
