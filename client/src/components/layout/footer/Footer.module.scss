@@ -2,21 +2,33 @@
 	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4;
 
 	.layout-container {
-		@apply container flex justify-between;
+		@apply container flex items-center relative;
 
 		.logo {
-			@apply w-16 h-16;
+			@apply w-16 h-16 mr-2 transition-all;
+
+			&:hover {
+				@apply scale-[.9];
+			}
+		}
+
+		.legal-wrapper {
+			@apply flex flex-col;
+
+			.link-legal {
+				@apply text-gray-300 text-[.7rem] leading-[.7rem] transition-all;
+
+				&:hover {
+					@apply text-white;
+				}
+			}
 		}
 
 		.inform-wrapper {
-			@apply flex flex-col items-center m-auto;
+			@apply max-w-[10.5rem] flex flex-col items-center absolute right-0 left-0 m-auto select-none;
 			.text-inform,
 			.date-inform {
-				@apply text-[#ffffff] text-[.8rem];
-			}
-
-			.text-inform {
-				@apply leading-[.4rem];
+				@apply text-[#ffffff] text-[.8rem] leading-[.9rem];
 			}
 		}
 	}

@@ -5,7 +5,11 @@
 		@apply container flex justify-between;
 
 		.logo {
-			@apply w-16 h-16;
+			@apply w-16 h-16 transition-all;
+
+			&:hover {
+				@apply scale-[.9];
+			}
 		}
 	}
 }
