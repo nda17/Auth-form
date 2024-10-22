@@ -13,7 +13,7 @@ const Footer: NextPage = () => {
 	return (
 		<div className={styles.footer}>
 			<div className={clsx(styles['layout-container'])}>
-				<Link href="/" className={styles.logo}>
+				<Link href={PUBLIC_PAGES.HOME} className={styles.logo}>
 					<Image
 						src={logoImage}
 						alt="Auth-form"

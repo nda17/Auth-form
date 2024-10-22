@@ -1,11 +1,12 @@
-'use client'
 import styles from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu.module.scss'
+import LogoutButton from '@/components/layout/nav-menu/logout-button/LogoutButton'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
+import { ADMIN_PAGES } from '@/config/pages/admin.config'
+import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import useUser from '@/hooks/useUser'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import LogoutButton from '../../logout-button/LogoutButton'
 
 const DesktopDynamicMenu: NextPage = () => {
 	const { user } = useUser()
@@ -13,26 +14,38 @@ const DesktopDynamicMenu: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			{user?.isLoggedIn && (
-				<Link href="/profile" className={clsx(styles['link-button'])}>
+				<Link
+					href={PUBLIC_PAGES.USER_PROFILE}
+					className={clsx(styles['link-button'])}
+				>
 					<MaterialIcon name="MdSettings" fill="blue" />
 					Profile
 				</Link>
 			)}
 			{user?.isManager && (
-				<Link href="/manager" className={clsx(styles['link-button'])}>
+				<Link
+					href={PUBLIC_PAGES.MANAGER}
+					className={clsx(styles['link-button'])}
+				>
 					<MaterialIcon name="MdGroup" fill="green" />
 					Manager
 				</Link>
 			)}
 			{user?.isAdmin && (
-				<Link href="/admin" className={clsx(styles['link-button'])}>
+				<Link
+					href={ADMIN_PAGES.HOME}
+					className={clsx(styles['link-button'])}
+				>
 					<MaterialIcon name="MdOutlineLock" fill="green" />
 					Admin
 				</Link>
 			)}
 
 			{!user?.isLoggedIn && (
-				<Link href="/login" className={clsx(styles['link-auth-button'])}>
+				<Link
+					href={PUBLIC_PAGES.LOGIN}
+					className={clsx(styles['link-auth-button'])}
+				>
 					<MaterialIcon name="MdLogout" fill="green" />
 					Login
 				</Link>
