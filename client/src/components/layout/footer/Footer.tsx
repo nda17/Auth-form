@@ -1,5 +1,6 @@
 import logoImage from '@/assets/images/logo.png'
 import styles from '@/components/layout/footer/Footer.module.scss'
+import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Image from 'next/image'
@@ -20,6 +21,20 @@ const Footer: NextPage = () => {
 						priority={true}
 					/>
 				</Link>
+				<div className={clsx(styles['legal-wrapper'])}>
+					<Link
+						href={PUBLIC_PAGES.PRIVACY_POLICY}
+						className={clsx(styles['link-legal'])}
+					>
+						Privacy policy
+					</Link>
+					<Link
+						href={PUBLIC_PAGES.COOKIE_NOTICE}
+						className={clsx(styles['link-legal'])}
+					>
+						Cookie notice
+					</Link>
+				</div>
 
 				<div className={clsx(styles['inform-wrapper'])}>
 					<p className={clsx(styles['text-inform'])}>
