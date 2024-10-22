@@ -3,6 +3,8 @@ import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import authService from '@/services/auth/auth.service'
 import { useAuthStore } from '@/store/auth-store/auth-store'
+import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
+import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { NextPage } from 'next'
@@ -27,9 +29,22 @@ const LogoutButton: NextPage = () => {
 		}
 	)
 
+	const changeVisibleHamburger = useHamburgerStore(
+		(state) => state.setVisible
+	)
+	const changeVisibleVeilBackground = useVeilBackgroundStore(
+		(state) => state.setVisible
+	)
+
+	const closeMenu = () => {
+		changeVisibleHamburger()
+		changeVisibleVeilBackground()
+	}
+
 	const logoutHandler = (e: MouseEvent) => {
 		e.preventDefault()
 		mutateLogout()
+		closeMenu()
 		replace(PUBLIC_PAGES.LOGIN)
 	}
 

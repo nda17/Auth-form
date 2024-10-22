@@ -1,14 +1,29 @@
 import styles from '@/components/layout/nav-menu/mobile/menu/mobile-static-menu/MobileStaticMenu.module.scss'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
+import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
+import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
 const MobileStaticMenu: NextPage = () => {
+	const changeVisibleHamburger = useHamburgerStore(
+		(state) => state.setVisible
+	)
+	const changeVisibleVeilBackground = useVeilBackgroundStore(
+		(state) => state.setVisible
+	)
+
+	const closeMenu = () => {
+		changeVisibleHamburger()
+		changeVisibleVeilBackground()
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<Link
+				onClick={closeMenu}
 				href={PUBLIC_PAGES.HOME}
 				className={clsx(styles['link-button'])}
 			>
@@ -16,6 +31,7 @@ const MobileStaticMenu: NextPage = () => {
 				Home
 			</Link>
 			<Link
+				onClick={closeMenu}
 				href={PUBLIC_PAGES.FREE_CONTENT}
 				className={clsx(styles['link-button'])}
 			>
@@ -23,6 +39,7 @@ const MobileStaticMenu: NextPage = () => {
 				Free content
 			</Link>
 			<Link
+				onClick={closeMenu}
 				href={PUBLIC_PAGES.PREMIUM_CONTENT}
 				className={clsx(styles['link-button'])}
 			>

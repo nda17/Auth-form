@@ -4,17 +4,31 @@ import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { ADMIN_PAGES } from '@/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import useUser from '@/hooks/useUser'
+import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
+import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
 const MobileDynamicMenu: NextPage = () => {
 	const { user } = useUser()
+	const changeVisibleHamburger = useHamburgerStore(
+		(state) => state.setVisible
+	)
+	const changeVisibleVeilBackground = useVeilBackgroundStore(
+		(state) => state.setVisible
+	)
+
+	const closeMenu = () => {
+		changeVisibleHamburger()
+		changeVisibleVeilBackground()
+	}
 
 	return (
 		<div className={styles.wrapper}>
 			{user?.isLoggedIn && (
 				<Link
+					onClick={closeMenu}
 					href={PUBLIC_PAGES.USER_PROFILE}
 					className={clsx(styles['link-button'])}
 				>
@@ -24,6 +38,7 @@ const MobileDynamicMenu: NextPage = () => {
 			)}
 			{user?.isManager && (
 				<Link
+					onClick={closeMenu}
 					href={PUBLIC_PAGES.MANAGER}
 					className={clsx(styles['link-button'])}
 				>
@@ -33,6 +48,7 @@ const MobileDynamicMenu: NextPage = () => {
 			)}
 			{user?.isAdmin && (
 				<Link
+					onClick={closeMenu}
 					href={ADMIN_PAGES.HOME}
 					className={clsx(styles['link-button'])}
 				>
@@ -43,6 +59,7 @@ const MobileDynamicMenu: NextPage = () => {
 
 			{!user?.isLoggedIn && (
 				<Link
+					onClick={closeMenu}
 					href={PUBLIC_PAGES.LOGIN}
 					className={clsx(styles['link-auth-button'])}
 				>
