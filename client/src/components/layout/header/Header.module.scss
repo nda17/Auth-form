@@ -1,8 +1,8 @@
 .wrapper {
-	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4;
+	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4 relative;
 
 	.layout-container {
-		@apply container flex justify-between;
+		@apply lg:container flex justify-between items-center;
 
 		.logo {
 			@apply w-16 h-16 transition-all;
