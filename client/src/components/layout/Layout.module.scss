@@ -1,6 +1,6 @@
 .layout {
 	@apply flex flex-col min-h-full;
 	.main {
-		@apply py-4 container flex justify-center flex-auto;
+		@apply py-4 container flex justify-center flex-auto relative;
 	}
 }
