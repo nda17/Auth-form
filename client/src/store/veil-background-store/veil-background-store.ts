@@ -1,4 +1,4 @@
-import { IVeilBackgroundStore } from '@/store/hamburger-store/hamburger-store.interface'
+import { IVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store.interface'
 import { create } from 'zustand'
 
 export const useVeilBackgroundStore = create<IVeilBackgroundStore>(
