@@ -1,3 +1,7 @@
 .heading {
-	@apply text-2xl font-bold mb-4 flex justify-center;
+	@apply text-2xl font-bold mb-4 flex justify-center select-none transition-all;
+
+	&:hover {
+		@apply text-gray-700;
+	}
 }
