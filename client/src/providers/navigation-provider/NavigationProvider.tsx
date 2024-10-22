@@ -1,15 +1,15 @@
 'use client'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { usePreviousRoute } from '@/hooks/usePreviousRoute'
+import { INavigationProvider } from '@/providers/navigation-provider/navigation-provider.interface'
+import { NextPage } from 'next'
+import { createContext, useContext } from 'react'
 
 export const useNavigationContext = () => useContext(NavigationContext)
 
-export const NavigationProvider = ({
+export const NavigationProvider: NextPage<INavigationProvider> = ({
 	children
-}: {
-	children: React.ReactNode
 }) => {
-	const navigation = useNavigation()
+	const navigation = usePreviousRoute()
 
 	return (
 		<NavigationContext.Provider value={navigation}>
@@ -18,22 +18,8 @@ export const NavigationProvider = ({
 	)
 }
 
-const useNavigation = () => {
-	const pathname = usePathname()
-	const searchParams = useSearchParams()
-
-	const [currentRoute, setCurrentRoute] = useState<string | null>(null)
-	const [previousRoute, setPreviousRoute] = useState<string | null>(null)
-
-	useEffect(() => {
-		const url = `${pathname}?${searchParams}`
-		setPreviousRoute(currentRoute)
-		setCurrentRoute(url)
-	}, [pathname, searchParams])
-
-	return { previousRoute }
-}
-
-const NavigationContext = createContext<ReturnType<typeof useNavigation>>({
+const NavigationContext = createContext<
+	ReturnType<typeof usePreviousRoute>
+>({
 	previousRoute: null
 })
