@@ -2,7 +2,7 @@
 import styles from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu.module.scss'
 import LogoutButton from '@/components/layout/nav-menu/logout-button/LogoutButton'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
-import useProfile from '@/hooks/useProfile'
+import useUser from '@/hooks/useUser'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 const DesktopDynamicMenu: NextPage = () => {
 	const [navState, setNavState] = useState(true)
-	const { user } = useProfile(navState)
+	const { user } = useUser(navState)
 
 	return (
 		<div className={styles.wrapper}>
