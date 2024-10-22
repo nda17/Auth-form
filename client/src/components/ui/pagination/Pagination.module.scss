@@ -1,0 +1,35 @@
+.pagination {
+	@apply max-w-[85%] flex justify-center absolute left-0 bottom-[50%] right-0 m-auto;
+
+	> button > svg {
+		@apply w-8 h-8 transition-all;
+
+		&:hover {
+			@apply fill-black;
+		}
+	}
+
+	> ul {
+		@apply flex items-center overflow-scroll;
+
+		> li {
+			@apply text-[1.1rem] mr-2 cursor-pointer transition-all;
+
+			&:hover {
+				@apply text-gray-900;
+			}
+
+			&:last-child {
+				@apply mr-0;
+			}
+		}
+	}
+
+	.active {
+		@apply text-red-600 transition-all;
+
+		&:hover {
+			@apply text-red-800;
+		}
+	}
+}
