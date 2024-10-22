@@ -2,14 +2,18 @@
 	@apply w-full flex whitespace-nowrap;
 
 	.link-button {
-		@apply flex items-center  transition-transform text-white mr-3;
+		@apply flex items-center transition-all text-white mr-3;
 
 		> svg {
-			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem];
+			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem] transition-all;
 		}
 
 		&:hover {
-			@apply translate-y-[-1px];
+			@apply scale-[.98] text-gray-300;
+
+			> svg {
+				@apply scale-[1.07];
+			}
 		}
 
 		&:last-child {
