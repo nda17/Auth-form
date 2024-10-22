@@ -7,5 +7,17 @@
 		.logo {
 			@apply w-16 h-16;
 		}
+
+		.inform-wrapper {
+			@apply flex flex-col items-center m-auto;
+			.text-inform,
+			.date-inform {
+				@apply text-[#ffffff] text-[.8rem];
+			}
+
+			.text-inform {
+				@apply leading-[.4rem];
+			}
+		}
 	}
 }
