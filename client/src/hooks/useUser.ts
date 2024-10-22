@@ -1,31 +1,29 @@
-import {
-	getRefreshToken,
-	saveTokenStorage
-} from '@/services/auth/auth.helper'
+import { saveTokenStorage } from '@/services/auth/auth.helper'
 import authService from '@/services/auth/auth.service'
 import userService from '@/services/user/user.service'
+import { useAuthStore } from '@/store/auth-store/auth-store'
 import { transformUserToState } from '@/utils/transform-user-to-state'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
-const useUser = (navState?: boolean) => {
-	const refreshToken = getRefreshToken()
+const useUser = () => {
+	// const refreshToken = getRefreshToken()
+	const auth = useAuthStore((state) => state.auth)
 
 	const { data, isLoading } = useQuery({
-		queryKey: ['get-profile', navState],
+		queryKey: ['get-profile', auth],
 		queryFn: () => userService.fetchProfile(),
 		refetchInterval: 1800000 // 30 minutes in milliseconds
 
 		// enabled: refreshToken !== null
-
-		// enabled: isEnabled
+		// enabled: auth !== false
 	})
 
 	const { isSuccess, data: dataTokens } = useQuery({
 		queryKey: ['get-new-tokens'],
-		queryFn: () => authService.getNewTokens(),
+		queryFn: () => authService.getNewTokens()
 		// enabled: !data?.data
-		enabled: !!refreshToken
+		// enabled: !!refreshToken
 	})
 
 	useEffect(() => {
