@@ -1,5 +1,5 @@
 import styles from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu.module.scss'
-import LogoutButton from '@/components/layout/nav-menu/logout-button/LogoutButton'
+import LogoutButton from '@/components/layout/nav-menu/desktop/logout-button/LogoutButton'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { ADMIN_PAGES } from '@/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
