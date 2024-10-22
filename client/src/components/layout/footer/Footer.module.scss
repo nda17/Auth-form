@@ -2,7 +2,7 @@
 	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4;
 
 	.layout-container {
-		@apply container flex items-center relative;
+		@apply container flex items-center justify-between relative;
 
 		.logo {
 			@apply w-16 h-16 mr-2 transition-all;
@@ -12,14 +12,72 @@
 			}
 		}
 
-		.legal-wrapper {
-			@apply flex flex-col;
+		.information-wrapper {
+			@apply flex;
 
-			.link-legal {
-				@apply text-gray-300 text-[.7rem] leading-[.7rem] transition-all;
+			.socials-wrapper {
+				@apply flex flex-col mr-2 w-[5.938rem];
 
-				&:hover {
-					@apply text-white;
+				.title-block {
+					@apply text-white font-500 text-[.8rem] select-none;
+				}
+
+				.link-icon-wrapper {
+					@apply flex flex-wrap;
+
+					.link-icon {
+						@apply mr-1 mb-1;
+
+						> svg {
+							@apply transition-all;
+						}
+
+						&:hover {
+							> svg {
+								@apply fill-white;
+							}
+						}
+
+						&:last-child {
+							@apply mr-0;
+						}
+					}
+				}
+			}
+
+			.contacts-wrapper {
+				@apply flex flex-col mr-2 w-[5.938rem];
+
+				.title-block {
+					@apply text-white font-500 text-[.8rem] select-none;
+				}
+
+				.info-llc {
+					@apply text-white text-[.7rem] leading-[.8rem] select-none;
+				}
+
+				.link-contact {
+					@apply text-gray-300 text-[.7rem] leading-[.8rem] transition-all;
+
+					&:hover {
+						@apply text-white;
+					}
+				}
+			}
+
+			.legal-wrapper {
+				@apply flex flex-col w-[5.938rem];
+
+				.title-block {
+					@apply text-white font-500 text-[.8rem] select-none;
+				}
+
+				.link-legal {
+					@apply text-gray-300 text-[.7rem] leading-[.7rem] transition-all;
+
+					&:hover {
+						@apply text-white;
+					}
 				}
 			}
 		}

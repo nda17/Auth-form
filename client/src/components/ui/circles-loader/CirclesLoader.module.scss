@@ -1,5 +1,5 @@
 .circles-loader {
-	@apply flex justify-center items-center absolute top-[50%] left-[50%] w-12 h-12 rounded-[50%];
+	@apply flex justify-center items-center absolute top-[50%] left-[50%] w-12 h-12 rounded-[50%] select-none;
 	animation: spin 2s infinite linear;
 	background: conic-gradient(
 		from 180deg at 50% 50%,
