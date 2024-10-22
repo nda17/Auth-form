@@ -2,10 +2,14 @@
 	@apply flex items-center transition-transform text-white;
 
 	> svg {
-		@apply w-[1.5rem] h-[1.5rem] mr-[.2rem];
+		@apply w-[1.5rem] h-[1.5rem] mr-[.2rem] transition-all;
 	}
 
 	&:hover {
-		@apply translate-y-[-1px];
+		@apply scale-[.98] text-gray-300;
+
+		> svg {
+			@apply scale-[1.07];
+		}
 	}
 }
