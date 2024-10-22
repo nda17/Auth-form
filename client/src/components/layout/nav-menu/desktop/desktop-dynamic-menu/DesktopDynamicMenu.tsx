@@ -1,16 +1,14 @@
 'use client'
 import styles from '@/components/layout/nav-menu/desktop/desktop-dynamic-menu/DesktopDynamicMenu.module.scss'
-import LogoutButton from '@/components/layout/nav-menu/logout-button/LogoutButton'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import useUser from '@/hooks/useUser'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
+import LogoutButton from '../../logout-button/LogoutButton'
 
 const DesktopDynamicMenu: NextPage = () => {
-	const [navState, setNavState] = useState(true)
-	const { user } = useUser(navState)
+	const { user } = useUser()
 
 	return (
 		<div className={styles.wrapper}>
@@ -40,7 +38,7 @@ const DesktopDynamicMenu: NextPage = () => {
 				</Link>
 			)}
 
-			{user?.isLoggedIn && <LogoutButton setNavState={setNavState} />}
+			{user?.isLoggedIn && <LogoutButton />}
 		</div>
 	)
 }
