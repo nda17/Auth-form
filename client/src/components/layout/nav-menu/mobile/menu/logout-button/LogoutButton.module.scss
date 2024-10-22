@@ -1,0 +1,7 @@
+.link-auth-button {
+	@apply flex items-center text-[1.1rem] text-white;
+
+	> svg {
+		@apply w-[1rem] h-[1rem] mr-[.5rem];
+	}
+}

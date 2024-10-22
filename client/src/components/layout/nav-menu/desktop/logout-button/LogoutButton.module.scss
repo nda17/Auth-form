@@ -1,0 +1,15 @@
+.link-auth-button {
+	@apply flex items-center transition-transform text-white;
+
+	> svg {
+		@apply w-[1.5rem] h-[1.5rem] mr-[.2rem] transition-all;
+	}
+
+	&:hover {
+		@apply scale-[.98] text-gray-300;
+
+		> svg {
+			@apply scale-[1.07];
+		}
+	}
+}
