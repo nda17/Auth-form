@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
-const NavStaticMenu: NextPage = () => {
+const MobileStaticMenu: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Link
@@ -33,4 +33,4 @@ const NavStaticMenu: NextPage = () => {
 	)
 }
 
-export default NavStaticMenu
+export default MobileStaticMenu
