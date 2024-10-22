@@ -8,19 +8,24 @@ import { transformUserToState } from '@/utils/transform-user-to-state'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
-const useProfile = () => {
+const useUser = (navState?: boolean) => {
 	const refreshToken = getRefreshToken()
 
 	const { data, isLoading } = useQuery({
-		queryKey: ['get-profile'],
+		queryKey: ['get-profile', navState],
 		queryFn: () => userService.fetchProfile(),
 		refetchInterval: 1800000 // 30 minutes in milliseconds
+
+		// enabled: refreshToken !== null
+
+		// enabled: isEnabled
 	})
 
 	const { isSuccess, data: dataTokens } = useQuery({
 		queryKey: ['get-new-tokens'],
 		queryFn: () => authService.getNewTokens(),
-		enabled: !data?.data && refreshToken !== null
+		// enabled: !data?.data
+		enabled: !!refreshToken
 	})
 
 	useEffect(() => {
@@ -39,7 +44,6 @@ const useProfile = () => {
 
 	return {
 		isLoading,
-		isSuccess,
 		user: {
 			...profile,
 			...userState
@@ -47,4 +51,4 @@ const useProfile = () => {
 	}
 }
 
-export default useProfile
+export default useUser
