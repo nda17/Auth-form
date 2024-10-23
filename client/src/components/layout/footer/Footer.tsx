@@ -1,10 +1,9 @@
-import logoImage from '@/assets/images/logo.png'
 import styles from '@/components/layout/footer/Footer.module.scss'
 import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
+import LogoImage from '@/components/ui/logo-image/LogoImage'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import clsx from 'clsx'
 import { NextPage } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const Footer: NextPage = () => {
@@ -14,15 +13,7 @@ const Footer: NextPage = () => {
 	return (
 		<div className={styles.footer}>
 			<div className={clsx(styles['layout-container'])}>
-				<Link href={PUBLIC_PAGES.HOME} className={styles.logo}>
-					<Image
-						src={logoImage}
-						alt="Auth-form"
-						draggable={false}
-						priority={true}
-					/>
-				</Link>
-
+				<LogoImage />
 				<div className={clsx(styles['information-wrapper'])}>
 					<div className={clsx(styles['socials-wrapper'])}>
 						<h4 className={clsx(styles['title-block'])}>Socials:</h4>
