@@ -1,0 +1,7 @@
+.logo {
+	@apply w-16 h-16 transition-all;
+
+	&:hover {
+		@apply scale-[.9];
+	}
+}

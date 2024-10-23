@@ -2,14 +2,6 @@
 	@apply w-full bg-[#131b22] p-4 relative z-50;
 
 	.layout-container {
-		@apply lg:container flex justify-between items-center;
-
-		.logo {
-			@apply w-16 h-16 transition-all;
-
-			&:hover {
-				@apply scale-[.9];
-			}
-		}
+		@apply flex justify-between items-center;
 	}
 }

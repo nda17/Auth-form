@@ -1,16 +1,8 @@
 .footer {
-	@apply w-full bg-[#131b22] border-solid border border-gray-800 p-4;
+	@apply w-full bg-[#131b22] p-4;
 
 	.layout-container {
-		@apply container flex items-center justify-between relative;
-
-		.logo {
-			@apply w-16 h-16 mr-2 transition-all;
-
-			&:hover {
-				@apply scale-[.9];
-			}
-		}
+		@apply flex items-center justify-between relative;
 
 		.information-wrapper {
 			@apply flex;
