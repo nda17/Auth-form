@@ -21,12 +21,12 @@ const MobileNavbar: NextPage = () => {
 	useClickOutside(menuRef, closeMenu)
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper} ref={menuRef}>
 			<Navigation />
 			{visibleHamburger && (
 				<>
 					<VeilBackground />
-					<div ref={menuRef}>
+					<div>
 						<Menu />
 					</div>
 				</>
