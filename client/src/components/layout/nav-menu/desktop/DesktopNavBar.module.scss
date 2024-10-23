@@ -1,3 +1,7 @@
 .wrapper {
-	@apply hidden lg:flex;
+	@apply bg-[#131b22] p-4 hidden lg:flex;
+
+	.layout-container {
+		@apply container w-full flex justify-between items-center;
+	}
 }
