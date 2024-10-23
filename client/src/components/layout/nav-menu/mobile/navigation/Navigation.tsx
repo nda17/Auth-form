@@ -6,12 +6,12 @@ import { NextPage } from 'next'
 
 const Navigation: NextPage = () => {
 	return (
-		<header className={styles.wrapper}>
+		<div className={styles.wrapper}>
 			<div className={clsx(styles['layout-container'])}>
 				<LogoImage />
 				<Hamburger />
 			</div>
-		</header>
+		</div>
 	)
 }
 
