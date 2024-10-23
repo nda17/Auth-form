@@ -2,7 +2,6 @@ import styles from '@/components/layout/nav-menu/mobile/menu/mobile-static-menu/
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
-import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
@@ -11,13 +10,9 @@ const MobileStaticMenu: NextPage = () => {
 	const changeVisibleHamburger = useHamburgerStore(
 		(state) => state.setVisible
 	)
-	const changeVisibleVeilBackground = useVeilBackgroundStore(
-		(state) => state.setVisible
-	)
 
 	const closeMenu = () => {
 		changeVisibleHamburger()
-		changeVisibleVeilBackground()
 	}
 
 	return (

@@ -5,23 +5,19 @@ import { ADMIN_PAGES } from '@/config/pages/admin.config'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import useUser from '@/hooks/useUser'
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
-import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
 const MobileDynamicMenu: NextPage = () => {
 	const { user } = useUser()
+
 	const changeVisibleHamburger = useHamburgerStore(
-		(state) => state.setVisible
-	)
-	const changeVisibleVeilBackground = useVeilBackgroundStore(
 		(state) => state.setVisible
 	)
 
 	const closeMenu = () => {
 		changeVisibleHamburger()
-		changeVisibleVeilBackground()
 	}
 
 	return (
