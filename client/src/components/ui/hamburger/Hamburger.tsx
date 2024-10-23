@@ -1,7 +1,6 @@
 import styles from '@/components/ui/hamburger/Hamburger.module.scss'
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
-import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import { NextPage } from 'next'
 
 const Hamburger: NextPage = () => {
@@ -9,13 +8,9 @@ const Hamburger: NextPage = () => {
 	const changeVisibleHamburger = useHamburgerStore(
 		(state) => state.setVisible
 	)
-	const changeVisibleVeilBackground = useVeilBackgroundStore(
-		(state) => state.setVisible
-	)
 
 	const closeMenu = () => {
 		changeVisibleHamburger()
-		changeVisibleVeilBackground()
 	}
 
 	return (
