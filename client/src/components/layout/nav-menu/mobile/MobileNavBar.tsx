@@ -1,9 +1,9 @@
 import styles from '@/components/layout/nav-menu/mobile/MobileNavbar.module.scss'
 import Menu from '@/components/layout/nav-menu/mobile/menu/Menu'
-import Hamburger from '@/components/ui/hamburger/Hamburger'
+import Navigation from '@/components/layout/nav-menu/mobile/navigation/Navigation'
+import VeilBackground from '@/components/ui/veil-background/VeilBackground'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
-import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
 import { NextPage } from 'next'
 import { useRef } from 'react'
 
@@ -12,13 +12,9 @@ const MobileNavbar: NextPage = () => {
 	const changeVisibleHamburger = useHamburgerStore(
 		(state) => state.setVisible
 	)
-	const changeVisibleVeilBackground = useVeilBackgroundStore(
-		(state) => state.setVisible
-	)
 
 	const closeMenu = () => {
 		changeVisibleHamburger()
-		changeVisibleVeilBackground()
 	}
 
 	const menuRef = useRef(null)
@@ -26,11 +22,14 @@ const MobileNavbar: NextPage = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<Hamburger />
+			<Navigation />
 			{visibleHamburger && (
-				<div ref={menuRef}>
-					<Menu />
-				</div>
+				<>
+					<VeilBackground />
+					<div ref={menuRef}>
+						<Menu />
+					</div>
+				</>
 			)}
 		</div>
 	)
