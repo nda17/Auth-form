@@ -1,3 +1,4 @@
+import { errorCatch, getContentType } from '@/api/api.helper'
 import { API_URL } from '@/config/api.config'
 import {
 	getAccessToken,
@@ -5,7 +6,6 @@ import {
 } from '@/services/auth/auth.helper'
 import authService from '@/services/auth/auth.service'
 import axios, { CreateAxiosDefaults } from 'axios'
-import { errorCatch, getContentType } from './api.helper'
 
 const axiosOptions: CreateAxiosDefaults = {
 	baseURL: API_URL,
