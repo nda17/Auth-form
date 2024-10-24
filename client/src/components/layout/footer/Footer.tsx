@@ -11,7 +11,7 @@ const Footer: NextPage = () => {
 	const currentYear = new Date().getFullYear()
 
 	return (
-		<div className={styles.footer}>
+		<footer className={styles.footer}>
 			<div className={clsx(styles['layout-container'])}>
 				<LogoImage />
 				<div className={clsx(styles['information-wrapper'])}>
@@ -81,7 +81,7 @@ const Footer: NextPage = () => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</footer>
 	)
 }
 
