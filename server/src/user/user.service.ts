@@ -85,4 +85,8 @@ export class UserService {
 			data
 		})
 	}
+
+	async getCount() {
+		return this.prisma.user.count()
+	}
 }

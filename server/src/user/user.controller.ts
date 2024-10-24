@@ -31,4 +31,10 @@ export class UserController {
 	async getList() {
 		return this.userService.getUsers()
 	}
+
+	@Auth(Role.ADMIN)
+	@Get('count')
+	async getCountUsers() {
+		return this.userService.getCount()
+	}
 }
