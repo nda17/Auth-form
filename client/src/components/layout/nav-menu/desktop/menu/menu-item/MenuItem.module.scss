@@ -1,0 +1,27 @@
+.wrapper {
+	@apply mr-3;
+
+	.link-button {
+		@apply flex items-center transition-all text-white;
+
+		> svg {
+			@apply w-[1.5rem] h-[1.5rem] mr-[.2rem] transition-all fill-yellow-700;
+		}
+
+		&:hover {
+			@apply scale-[.98] text-gray-300;
+
+			> svg {
+				@apply scale-[1.07];
+			}
+		}
+	}
+
+	&:last-child {
+		@apply mr-0;
+	}
+}
+
+.active {
+	@apply italic;
+}
