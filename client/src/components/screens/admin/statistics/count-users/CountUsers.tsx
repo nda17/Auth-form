@@ -1,4 +1,4 @@
-import styles from '@/components/screens/admin/statistics/count-user/CountUsers.module.scss'
+import styles from '@/components/screens/admin/statistics/count-users/CountUsers.module.scss'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 import useCountUsers from '@/hooks/useCountUsers'
 import { NextPage } from 'next'
@@ -8,7 +8,7 @@ const CountUsers: NextPage = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<p className={styles.text}>Registered users:</p>
+			<p className={styles.title}>Registered users:</p>
 			{isLoading ? (
 				<div className="w-[19px] h-full flex flex-col justify-center mr-1">
 					<SkeletonLoader count={1} className="w-full h-4" />
