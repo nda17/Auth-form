@@ -1,0 +1,19 @@
+.wrapper {
+	@apply mb-2;
+
+	.link-button {
+		@apply flex items-center text-white;
+
+		> svg {
+			@apply w-[1.5rem] h-[1.5rem] mr-[.5rem] fill-yellow-700;
+		}
+	}
+
+	&:last-child {
+		@apply mb-2;
+	}
+}
+
+.active {
+	@apply italic;
+}
