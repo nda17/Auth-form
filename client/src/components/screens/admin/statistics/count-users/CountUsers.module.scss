@@ -1,0 +1,11 @@
+.wrapper {
+	@apply flex;
+
+	.title {
+		@apply font-700 text-red-700 mr-1;
+	}
+
+	.text {
+		@apply mr-1;
+	}
+}

@@ -1,0 +1,11 @@
+.nav-list {
+	@apply w-full flex justify-center mb-8;
+
+	> li {
+		@apply mr-6 font-700;
+	}
+}
+
+.active {
+	@apply italic text-green-600 font-700 border-b border-green-600;
+}
