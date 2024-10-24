@@ -1,7 +1,10 @@
 import { axiosClassicRequest } from '@/api/interceptors'
+import {
+	removeFromStorage,
+	saveTokenStorage
+} from '@/services/auth/auth.helper'
 import { IFormData } from '@/shared/types/form.types'
 import { IUser } from '@/shared/types/user.types'
-import { removeFromStorage, saveTokenStorage } from './auth.helper'
 
 interface IAuthResponse {
 	accessToken: string
