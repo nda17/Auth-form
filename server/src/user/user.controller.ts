@@ -27,7 +27,7 @@ export class UserController {
 	}
 
 	@Auth(Role.ADMIN)
-	@Get('users-list')
+	@Get('user-list')
 	async getList() {
 		return this.userService.getUsers()
 	}

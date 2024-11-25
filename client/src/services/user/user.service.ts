@@ -22,7 +22,7 @@ class UserService {
 
 	async fetchUsersList() {
 		return axiosInterceptorsRequest.get<IUser[]>(
-			`${this._BASE_URL}/users-list`
+			`${this._BASE_URL}/user-list`
 		)
 	}
 }
