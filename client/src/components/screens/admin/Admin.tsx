@@ -1,7 +1,7 @@
 'use client'
 import styles from '@/components/screens/admin/Admin.module.scss'
-import AdminNavigation from '@/components/screens/admin/admin-navigation/AdminNavigation'
 import Statistics from '@/components/screens/admin/statistics/Statistics'
+import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
 import { NextPage } from 'next'
