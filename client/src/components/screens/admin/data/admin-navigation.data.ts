@@ -7,7 +7,7 @@ export const navItems: INavItem[] = [
 		link: ADMIN_PAGES.HOME
 	},
 	{
-		title: 'Users',
+		title: 'User-list',
 		link: ADMIN_PAGES.USERS,
 		option: ADMIN_PAGES.USER
 	}
