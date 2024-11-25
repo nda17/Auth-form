@@ -1,0 +1,32 @@
+.wrapper {
+	@apply w-full flex flex-col relative;
+
+	.wrapper-table {
+		@apply grid;
+		grid-template-columns: 20% 15% 25% 20% 20%;
+
+		.table-item-title {
+			@apply font-700 text-red-700;
+		}
+
+		.table-item {
+			@apply overflow-y-scroll p-2 text-nowrap;
+
+			&::-webkit-scrollbar {
+				@apply block w-full h-[.22rem] md:h-[.30rem];
+			}
+
+			&::-webkit-scrollbar-track {
+				@apply bg-gray-500;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				@apply bg-gray-700;
+			}
+
+			&::-webkit-scrollbar-thumb:hover {
+				@apply bg-gray-600 cursor-pointer;
+			}
+		}
+	}
+}
