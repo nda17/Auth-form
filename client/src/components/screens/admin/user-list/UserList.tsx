@@ -58,12 +58,12 @@ const UserList: NextPage = () => {
 			{isLoading ? (
 				<CirclesLoader />
 			) : data?.length ? (
-				<>
-					<div className={clsx(styles['wrapper-table'])}>
+				<div className={clsx(styles['wrapper-table'])}>
+					<div className={clsx(styles['row-table'])}>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-l',
 								'border-b'
@@ -73,8 +73,8 @@ const UserList: NextPage = () => {
 						</p>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-l',
 								'border-b'
@@ -84,8 +84,8 @@ const UserList: NextPage = () => {
 						</p>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-l',
 								'border-b'
@@ -95,8 +95,8 @@ const UserList: NextPage = () => {
 						</p>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-l',
 								'border-b'
@@ -106,8 +106,8 @@ const UserList: NextPage = () => {
 						</p>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-l',
 								'border-b'
@@ -117,8 +117,8 @@ const UserList: NextPage = () => {
 						</p>
 						<p
 							className={clsx(
-								styles['table-item'],
-								styles['table-item-title'],
+								styles['column-item'],
+								styles['column-item-title'],
 								'border-t',
 								'border-r',
 								'border-l',
@@ -130,10 +130,10 @@ const UserList: NextPage = () => {
 					</div>
 
 					{activePage.map((user) => (
-						<div key={user.id} className={clsx(styles['wrapper-table'])}>
+						<div key={user.id} className={clsx(styles['row-table'])}>
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-b'
 								)}
@@ -142,7 +142,7 @@ const UserList: NextPage = () => {
 							</p>
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-b'
 								)}
@@ -151,7 +151,7 @@ const UserList: NextPage = () => {
 							</p>
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-b'
 								)}
@@ -160,7 +160,7 @@ const UserList: NextPage = () => {
 							</p>
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-b'
 								)}
@@ -170,7 +170,7 @@ const UserList: NextPage = () => {
 
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-b'
 								)}
@@ -181,7 +181,7 @@ const UserList: NextPage = () => {
 							</p>
 							<p
 								className={clsx(
-									styles['table-item'],
+									styles['column-item'],
 									'border-l',
 									'border-r',
 									'border-b'
@@ -201,7 +201,7 @@ const UserList: NextPage = () => {
 							changeActivePage={changeActivePage}
 						/>
 					)}
-				</>
+				</div>
 			) : (
 				<p>Not found!</p>
 			)}
