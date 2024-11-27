@@ -2,14 +2,18 @@
 	@apply w-full flex flex-col relative;
 
 	.wrapper-table {
-		@apply grid;
-		grid-template-columns: 20% 15% 25% 20% 20%;
+		@apply pt-[1.25rem];
 
-		.table-item-title {
+		.row-table {
+			@apply grid;
+			grid-template-columns: 19% 15% 27% 10% 15% 14%;
+		}
+
+		.column-item-title {
 			@apply font-700 text-red-700;
 		}
 
-		.table-item {
+		.column-item {
 			@apply overflow-y-scroll p-2 text-nowrap;
 
 			&::-webkit-scrollbar {
