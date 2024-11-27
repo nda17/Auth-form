@@ -1,4 +1,4 @@
-import styles from '@/components/screens/admin/admin-navigation/AdminNavigation.module.scss'
+import styles from '@/components/ui/admin/admin-navigation/AdminNavigation.module.scss'
 import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface'
 import clsx from 'clsx'
 import { NextPage } from 'next'
