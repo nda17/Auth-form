@@ -1,0 +1,31 @@
+.searchField {
+	@apply relative rounded-full h-8 md:h-8 lg:h-12 xl:h-[3.125rem] xxl:h-[3.625rem] border-solid border border-gray-700 px-3 py-2 flex items-center transition-colors;
+
+	> svg {
+		@apply absolute left-[.4rem] sm:left-[1rem] md:left-[.7rem] fill-gray-600 w-4 lg:w-6 h-4 lg:h-6 text-3xl transition-colors;
+	}
+
+	> input {
+		@apply relative left-[13%] sm:left-[14%] md:left-[17.5%] text-[.9rem] sm:text-[1.1rem] text-black placeholder:text-gray-600 w-[75%] sm:w-[72%] md:w-[63%] bg-transparent outline-none px-0;
+	}
+
+	> input::placeholder {
+		@apply translate-x-[5%] md:translate-x-[0%];
+	}
+
+	> span {
+		@apply absolute right-[.4rem] sm:right-[1rem];
+	}
+
+	> span > svg {
+		@apply fill-primary w-4 lg:w-6 h-4 lg:h-6 cursor-pointer animate-fadeIn;
+	}
+
+	&:focus-within {
+		@apply border-gray-600;
+
+		> svg {
+			@apply fill-gray-500;
+		}
+	}
+}
