@@ -12,12 +12,20 @@ import { PrismaService } from 'src/prisma.service'
 export class UserService {
 	constructor(private prisma: PrismaService) {}
 
-	async getUsers() {
+	async getUsers(searchTerm: string) {
 		return this.prisma.user.findMany({
+			where: {
+				email: {
+					contains: searchTerm
+				}
+			},
 			select: {
+				id: true,
 				name: true,
 				email: true,
-				id: true,
+				verificationToken: true,
+				rights: true,
+				createdAt: true,
 				password: false
 			}
 		})
