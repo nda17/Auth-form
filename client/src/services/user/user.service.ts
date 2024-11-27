@@ -20,9 +20,16 @@ class UserService {
 		)
 	}
 
-	async fetchUsersList() {
+	async fetchUserList(searchTerm?: string) {
 		return axiosInterceptorsRequest.get<IUser[]>(
-			`${this._BASE_URL}/user-list`
+			`${this._BASE_URL}/user-list`,
+			{
+				params: searchTerm
+					? {
+							searchTerm
+					  }
+					: {}
+			}
 		)
 	}
 }
