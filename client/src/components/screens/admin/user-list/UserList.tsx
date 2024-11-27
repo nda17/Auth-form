@@ -1,17 +1,19 @@
 'use client'
-import AdminNavigation from '@/components/screens/admin/admin-navigation/AdminNavigation'
 import styles from '@/components/screens/admin/user-list/UserList.module.scss'
+import AdminHeader from '@/components/ui/admin/admin-header/AdminHeader'
+import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import Pagination from '@/components/ui/pagination/Pagination'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import useUsersList from '@/hooks/useUsersList'
+import useUserList from '@/hooks/useUserList'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import { useState } from 'react'
 
 const UserList: NextPage = () => {
-	const { data, isLoading } = useUsersList()
+	const { data, isLoading, handleSearch, handleClear, searchTerm } =
+		useUserList()
 
 	//Pagination settings
 	const [currentPage, setCurrentPage] = useState(1)
@@ -47,6 +49,11 @@ const UserList: NextPage = () => {
 		<div className={styles.wrapper}>
 			<Heading text="Admin page" />
 			<AdminNavigation />
+			<AdminHeader
+				handleSearch={handleSearch}
+				searchTerm={searchTerm}
+				handleClear={handleClear}
+			/>
 			<SubHeading text="A list of users" />
 			{isLoading ? (
 				<CirclesLoader />
@@ -95,6 +102,17 @@ const UserList: NextPage = () => {
 								'border-b'
 							)}
 						>
+							Verified:
+						</p>
+						<p
+							className={clsx(
+								styles['table-item'],
+								styles['table-item-title'],
+								'border-t',
+								'border-l',
+								'border-b'
+							)}
+						>
 							Role:
 						</p>
 						<p
@@ -107,7 +125,7 @@ const UserList: NextPage = () => {
 								'border-b'
 							)}
 						>
-							Date registered:
+							Registration date:
 						</p>
 					</div>
 
@@ -120,7 +138,7 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{user.id || 'No data'}
+								{user.id || 'No data available'}
 							</p>
 							<p
 								className={clsx(
@@ -129,7 +147,7 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{user.name || 'No data'}
+								{user.name || 'No data available'}
 							</p>
 							<p
 								className={clsx(
@@ -138,7 +156,7 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{user.email || 'No data'}
+								{user.email || 'No data available'}
 							</p>
 							<p
 								className={clsx(
@@ -147,7 +165,19 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{user.rights || 'No data'}
+								{!user.verificationToken ? 'verified' : 'not verified'}
+							</p>
+
+							<p
+								className={clsx(
+									styles['table-item'],
+									'border-l',
+									'border-b'
+								)}
+							>
+								{user.rights.map((el) =>
+									user.rights.length > 1 ? el + ', ' : el
+								) || 'No data available'}
 							</p>
 							<p
 								className={clsx(
@@ -157,18 +187,20 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{'Date register'}
+								{user.createdAt.replace(/\T.*/, '') || 'No data available'}
 							</p>
 						</div>
 					))}
 
-					<Pagination
-						listPage={listPage}
-						currentPage={currentPage}
-						prevPage={prevPage}
-						nextPage={nextPage}
-						changeActivePage={changeActivePage}
-					/>
+					{data.length > 8 && (
+						<Pagination
+							listPage={listPage}
+							currentPage={currentPage}
+							prevPage={prevPage}
+							nextPage={nextPage}
+							changeActivePage={changeActivePage}
+						/>
+					)}
 				</>
 			) : (
 				<p>Not found!</p>
