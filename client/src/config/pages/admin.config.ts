@@ -1,6 +1,6 @@
 class AdminPages {
 	HOME = '/admin'
-	USERS = '/admin/users'
+	USERS = '/admin/user-list'
 	USER = '/admin/user'
 }
 
