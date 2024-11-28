@@ -1,0 +1,19 @@
+.wrapper {
+	@apply w-[26rem] h-[13rem] border border-solid p-3 flex flex-col justify-center items-center absolute inset-0 m-auto bg-white z-10;
+
+	.text {
+		@apply text-center;
+	}
+
+	.buttons-wrapper {
+		@apply p-3 flex gap-4;
+
+		.button {
+			@apply py-1 px-2 rounded-[.7rem] bg-red-700;
+
+			&:hover {
+				@apply bg-red-500;
+			}
+		}
+	}
+}

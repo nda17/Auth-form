@@ -1,4 +1,6 @@
 .hamburger {
+	@apply z-10;
+
 	> svg {
 		@apply w-[1.7rem] h-[1.7rem];
 	}
