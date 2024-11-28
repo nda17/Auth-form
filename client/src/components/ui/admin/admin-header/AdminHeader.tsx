@@ -1,9 +1,9 @@
 import styles from '@/components/ui/admin/admin-header/AdminHeader.module.scss'
 import { IAdminHeader } from '@/components/ui/admin/admin-header/admin-header.interface'
 import { SearchField } from '@/components/ui/search-field/SearchField'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-const AdminHeader: FC<IAdminHeader> = ({
+const AdminHeader: NextPage<IAdminHeader> = ({
 	handleSearch,
 	searchTerm,
 	handleClear
