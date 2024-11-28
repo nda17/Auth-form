@@ -1,9 +1,9 @@
 import MaterialIcon from '@/components/ui/icons/MaterialIcon'
 import styles from '@/components/ui/search-field/SearchField.module.scss'
 import { ISearchField } from '@/components/ui/search-field/search-field.interface'
-import { FC } from 'react'
+import { NextPage } from 'next'
 
-export const SearchField: FC<ISearchField> = ({
+export const SearchField: NextPage<ISearchField> = ({
 	searchTerm,
 	handleSearch,
 	handleClear
