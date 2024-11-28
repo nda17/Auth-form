@@ -1,0 +1,10 @@
+.wrapper {
+	@apply flex justify-center items-center gap-2;
+
+	.item {
+		@apply transition-all;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
