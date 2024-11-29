@@ -1,5 +1,5 @@
 .pagination {
-	@apply max-w-[85%] flex justify-center m-auto;
+	@apply max-w-[85%] flex justify-center m-auto pt-4;
 
 	> button > svg {
 		@apply w-8 h-8 transition-all;
