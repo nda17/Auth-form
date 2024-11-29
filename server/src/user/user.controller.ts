@@ -1,7 +1,7 @@
 import { Auth } from '@/auth/decorators/auth.decorator'
 import { CurrentUser } from '@/auth/decorators/user.decorator'
 import { UserService } from '@/user/user.service'
-import { Controller, Get, Query } from '@nestjs/common'
+import { Controller, Delete, Get, Param, Query } from '@nestjs/common'
 import { Role } from '@prisma/client'
 
 @Controller('users')
@@ -36,5 +36,11 @@ export class UserController {
 	@Get('count')
 	async getCountUsers() {
 		return this.userService.getCount()
+	}
+
+	@Auth(Role.ADMIN)
+	@Delete('user/:id')
+	async deleteUser(@Param('id') id: string) {
+		return this.userService.delete(id)
 	}
 }
