@@ -32,6 +32,12 @@ class UserService {
 			}
 		)
 	}
+
+	async deleteUser(id: string) {
+		return axiosInterceptorsRequest.delete<string>(
+			`${this._BASE_URL}/user/${id}`
+		)
+	}
 }
 
 export default new UserService()
