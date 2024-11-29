@@ -94,6 +94,14 @@ export class UserService {
 		})
 	}
 
+	async delete(id: string) {
+		return this.prisma.user.delete({
+			where: {
+				id
+			}
+		})
+	}
+
 	async getCount() {
 		return this.prisma.user.count()
 	}
