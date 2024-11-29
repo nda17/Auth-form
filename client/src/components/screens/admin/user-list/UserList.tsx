@@ -1,19 +1,31 @@
 'use client'
 import styles from '@/components/screens/admin/user-list/UserList.module.scss'
+import AdminActions from '@/components/ui/admin/admin-actions/AdminActions'
 import AdminHeader from '@/components/ui/admin/admin-header/AdminHeader'
 import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation'
+import AlertPopup from '@/components/ui/alert-popup/AlertPopup'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
 import Pagination from '@/components/ui/pagination/Pagination'
 import SubHeading from '@/components/ui/sub-heading/SubHeading'
+import { ADMIN_PAGES } from '@/config/pages/admin.config'
 import useUserList from '@/hooks/useUserList'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import { useState } from 'react'
 
 const UserList: NextPage = () => {
-	const { data, isLoading, handleSearch, handleClear, searchTerm } =
-		useUserList()
+	const {
+		data,
+		isLoading,
+		handleSearch,
+		handleClear,
+		searchTerm,
+		deleteAsync
+	} = useUserList()
+
+	const textPopup =
+		'The data will be deleted without the possibility of recovery.'
 
 	//Pagination settings
 	const [currentPage, setCurrentPage] = useState(1)
@@ -48,6 +60,7 @@ const UserList: NextPage = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Admin page" />
+			<AlertPopup removeHandler={deleteAsync} text={textPopup} />
 			<AdminNavigation />
 			<AdminHeader
 				handleSearch={handleSearch}
@@ -120,12 +133,23 @@ const UserList: NextPage = () => {
 								styles['column-item'],
 								styles['column-item-title'],
 								'border-t',
-								'border-r',
 								'border-l',
 								'border-b'
 							)}
 						>
 							Registration date:
+						</p>
+						<p
+							className={clsx(
+								styles['column-item'],
+								styles['column-item-title'],
+								'border-t',
+								'border-r',
+								'border-l',
+								'border-b'
+							)}
+						>
+							Actions:
 						</p>
 					</div>
 
@@ -183,16 +207,32 @@ const UserList: NextPage = () => {
 								className={clsx(
 									styles['column-item'],
 									'border-l',
-									'border-r',
 									'border-b'
 								)}
 							>
 								{user.createdAt.replace(/\T.*/, '') || 'No data available'}
 							</p>
+							<div
+								className={clsx(
+									styles['column-item'],
+									styles['column-item-title'],
+									'border-l',
+									'border-r',
+									'border-b',
+									'flex',
+									'justify-center',
+									'items-center'
+								)}
+							>
+								<AdminActions
+									editUrl={`${ADMIN_PAGES.USER}/edit/${user.id}`}
+									userId={user.id}
+								/>
+							</div>
 						</div>
 					))}
 
-					{data.length > 8 && (
+					{data.length > 10 && (
 						<Pagination
 							listPage={listPage}
 							currentPage={currentPage}
