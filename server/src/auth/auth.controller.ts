@@ -67,7 +67,7 @@ export class AuthController {
 
 	@HttpCode(200)
 	@Recaptcha()
-	@Patch('/auth/restore-password')
+	@Patch('auth/restore-password')
 	async restorePassword(@Body() dto: RestorePasswordDto) {
 		if (!dto) {
 			throw new NotFoundException('Email not passed')
