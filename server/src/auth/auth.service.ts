@@ -36,11 +36,11 @@ export class AuthService {
 	}
 
 	async register(dto: AuthDto) {
-		const userExists = await this.userService.getByEmail(dto.email)
+		const userExists = await this.userService.getUserByEmail(dto.email)
 		if (userExists) {
 			throw new BadRequestException('User already exists')
 		}
-		const user = await this.userService.create(dto)
+		const user = await this.userService.createUser(dto)
 
 		await this.emailService.sendVerification(
 			user.email,
@@ -55,7 +55,7 @@ export class AuthService {
 		if (!result) {
 			throw new UnauthorizedException('Invalid refresh token')
 		}
-		const user = await this.userService.getById(result.id)
+		const user = await this.userService.getUserById(result.id)
 		return this.buildResponseObject(user)
 	}
 
@@ -72,8 +72,13 @@ export class AuthService {
 			throw new NotFoundException('Token not exists!')
 		}
 
-		await this.userService.update(user.id, {
-			verificationToken: null
+		await this.prisma.user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				verificationToken: null
+			}
 		})
 	}
 
@@ -99,8 +104,13 @@ export class AuthService {
 				strict: true
 			})
 
-			await this.userService.update(user.id, {
-				password: await hash(newPassword)
+			await this.prisma.user.update({
+				where: {
+					id: user.id
+				},
+				data: {
+					password: await hash(newPassword)
+				}
 			})
 
 			await this.emailService.sendNewPassword(user.email, newPassword)
@@ -126,7 +136,7 @@ export class AuthService {
 	}
 
 	private async validateUser(dto: AuthDto) {
-		const user = await this.userService.getByEmail(dto.email)
+		const user = await this.userService.getUserByEmail(dto.email)
 		if (!user) {
 			throw new UnauthorizedException('Email or password invalid')
 		}
