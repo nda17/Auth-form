@@ -3,16 +3,17 @@ import {
 	IGithubProfile,
 	IGoogleProfile
 } from '@/auth/social-media/social-media-auth.types'
-import { Injectable } from '@nestjs/common'
+import { PrismaService } from '@/prisma.service'
+import { UpdateUserDto } from '@/user/dto/update-user.dto'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import type { User } from '@prisma/client'
 import { hash } from 'argon2'
-import { PrismaService } from 'src/prisma.service'
 
 @Injectable()
 export class UserService {
 	constructor(private prisma: PrismaService) {}
 
-	async getUsers(searchTerm: string) {
+	async getUserList(searchTerm: string) {
 		return this.prisma.user.findMany({
 			where: {
 				email: {
@@ -31,7 +32,7 @@ export class UserService {
 		})
 	}
 
-	async getById(id: string) {
+	async getUserById(id: string) {
 		return this.prisma.user.findUnique({
 			where: {
 				id
@@ -39,7 +40,7 @@ export class UserService {
 		})
 	}
 
-	async getByEmail(email: string) {
+	async getUserByEmail(email: string) {
 		return this.prisma.user.findUnique({
 			where: {
 				email
@@ -48,7 +49,7 @@ export class UserService {
 	}
 
 	async findOrCreateSocialUser(profile: IGoogleProfile | IGithubProfile) {
-		let user = await this.getByEmail(profile.email)
+		let user = await this.getUserByEmail(profile.email)
 		if (!user) {
 			user = await this._createSocialUser(profile)
 		}
@@ -76,25 +77,50 @@ export class UserService {
 		})
 	}
 
-	async create(dto: AuthDto) {
+	async createUser(dto: AuthDto) {
 		return this.prisma.user.create({
 			data: {
 				...dto,
+				email: dto.email.toLowerCase(),
 				password: await hash(dto.password)
 			}
 		})
 	}
 
-	async update(id: string, data: Partial<User>) {
+	async updateUser(id: string, dto?: UpdateUserDto) {
+		const user = await this.prisma.user.findUnique({
+			where: {
+				id
+			}
+		})
+
+		if (!user) {
+			throw new NotFoundException('User not found')
+		}
+
+		const isSameUser = await this.prisma.user.findFirst({
+			where: {
+				email: dto.email
+			}
+		})
+
+		if (isSameUser && id !== isSameUser.id) {
+			throw new NotFoundException('Email busy')
+		}
+
 		return this.prisma.user.update({
 			where: {
 				id
 			},
-			data
+			data: {
+				...dto,
+				email: dto.email.toLowerCase(),
+				password: await hash(dto.password)
+			}
 		})
 	}
 
-	async delete(id: string) {
+	async deleteUser(id: string) {
 		return this.prisma.user.delete({
 			where: {
 				id
@@ -102,7 +128,7 @@ export class UserService {
 		})
 	}
 
-	async getCount() {
+	async getCountUsers() {
 		return this.prisma.user.count()
 	}
 }
