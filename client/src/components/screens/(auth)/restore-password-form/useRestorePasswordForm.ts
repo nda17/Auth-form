@@ -34,7 +34,7 @@ const useRestorePasswordForm = () => {
 			},
 			onError(error) {
 				if (axios.isAxiosError(error)) {
-					toast.error(error.response?.data?.message)
+					toast.error(`Restore password: ${error.response?.data?.message}`)
 					recaptchaRef.current.reset()
 				}
 			}
