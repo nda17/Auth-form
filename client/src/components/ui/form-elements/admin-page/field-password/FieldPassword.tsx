@@ -4,12 +4,12 @@ import clsx from 'clsx'
 import { forwardRef } from 'react'
 
 const FieldPassword = forwardRef<HTMLInputElement, IField>(
-	({ error, type = 'text', style, ...rest }, ref) => {
+	({ error, placeholder, type = 'text', style, ...rest }, ref) => {
 		return (
 			<div className={clsx(styles['wrapper-input'])} style={style}>
 				<label className={clsx(styles['label-input'])}>
 					<input
-						placeholder="New password"
+						placeholder={placeholder}
 						className={clsx(styles['input-field'])}
 						ref={ref}
 						type={type}

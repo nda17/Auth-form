@@ -1,4 +1,4 @@
-import styles from '@/components/ui/form-elements/field-password/FieldPassword.module.scss'
+import styles from '@/components/ui/form-elements/auth-page/field-password/FieldPassword.module.scss'
 import { IField } from '@/components/ui/form-elements/form.interface'
 import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
 import clsx from 'clsx'

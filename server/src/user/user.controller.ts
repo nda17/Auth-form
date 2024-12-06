@@ -57,7 +57,7 @@ export class UserController {
 	@Auth(Role.ADMIN)
 	@Get('count')
 	async getCountUsers() {
-		return this.userService.getCount()
+		return this.userService.getCountUsers()
 	}
 
 	@HttpCode(200)
