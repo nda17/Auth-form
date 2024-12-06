@@ -33,7 +33,7 @@ const useAuthForm = (isLogin: boolean) => {
 		},
 		onError(error) {
 			if (axios.isAxiosError(error)) {
-				toast.error(error.response?.data?.message)
+				toast.error(`Unsuccessful login: ${error.response?.data?.message}`)
 				recaptchaRef.current.reset()
 			}
 		}
@@ -55,12 +55,14 @@ const useAuthForm = (isLogin: boolean) => {
 					)
 					reset()
 					router.replace('/profile')
-					// queryClient.invalidateQueries({ queryKey: ['get-profile'] })
 				})
 			},
 			onError(error) {
 				if (axios.isAxiosError(error)) {
-					toast.error(error.response?.data?.message)
+					toast.error(
+						`Unsuccessful register: ${error.response?.data?.message}`
+					)
+
 					recaptchaRef.current.reset()
 				}
 			}
