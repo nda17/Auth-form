@@ -5,3 +5,5 @@ export const validPassword =
 	/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/g
 
 export const validName = /^[a-zA-Z][a-zA-Z0-9-]+$/
+
+export const validId = /^[a-z]{2}[a-z0-9]{23}$/
