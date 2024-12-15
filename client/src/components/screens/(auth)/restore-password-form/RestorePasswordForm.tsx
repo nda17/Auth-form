@@ -1,27 +1,36 @@
 'use client'
 import styles from '@/components/screens/(auth)/auth-form/AuthForm.module.scss'
 import useRestorePasswordForm from '@/components/screens/(auth)/restore-password-form/useRestorePasswordForm'
+import FieldEmail from '@/components/ui/form-elements/auth-page/field-email/FieldEmail'
+import { validEmail } from '@/shared/regex'
 import clsx from 'clsx'
 import { NextPage } from 'next'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 const RestorePasswordForm: NextPage = () => {
-	const { handleSubmit, isLoading, onSubmit, recaptchaRef, register } =
-		useRestorePasswordForm()
+	const {
+		handleSubmit,
+		isLoading,
+		onSubmit,
+		recaptchaRef,
+		register,
+		formState: { errors }
+	} = useRestorePasswordForm()
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-			<div className={clsx(styles['wrapper-input'])}>
-				<label className={clsx(styles['label-input'])}>
-					Email
-					<input
-						type="email"
-						placeholder="Enter email: "
-						{...register('email', { required: true })}
-						className={clsx(styles['input-field'])}
-					/>
-				</label>
-			</div>
+			<FieldEmail
+				{...register('email', {
+					required: 'Email is required!',
+					pattern: {
+						value: validEmail,
+						message: 'Please enter a valid email'
+					}
+				})}
+				placeholder="Enter email:"
+				type="email"
+				error={errors.email}
+			/>
 
 			<ReCAPTCHA
 				hl="en"
