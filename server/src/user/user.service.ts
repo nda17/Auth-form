@@ -115,7 +115,7 @@ export class UserService {
 			data: {
 				...dto,
 				email: dto.email.toLowerCase(),
-				password: await hash(dto.password)
+				password: dto.password ? await hash(dto.password) : user.password
 			}
 		})
 	}
