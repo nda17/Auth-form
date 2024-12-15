@@ -199,9 +199,9 @@ const UserList: NextPage = () => {
 									'border-b'
 								)}
 							>
-								{user.rights.map((el) =>
-									user.rights.length > 1 ? el + ', ' : el
-								) || 'No data available'}
+								{user.rights.length > 1
+									? user.rights?.join(', ')
+									: user.rights || 'No data available'}
 							</p>
 							<p
 								className={clsx(
