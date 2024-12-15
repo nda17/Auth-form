@@ -1,3 +1,4 @@
+import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import { useNavigationContext } from '@/providers/navigation-provider/NavigationProvider'
 import authService from '@/services/auth/auth.service'
 import { IFormData } from '@/shared/types/form.types'
@@ -11,6 +12,9 @@ import toast from 'react-hot-toast'
 
 const useAuthForm = (isLogin: boolean) => {
 	const { previousRoute } = useNavigationContext()
+
+	const whiteListRedirect = ['/?', '/free-content?', '/premium-content?']
+
 	const { register, handleSubmit, reset, formState } = useForm<IFormData>({
 		mode: 'onChange'
 	})
@@ -27,7 +31,11 @@ const useAuthForm = (isLogin: boolean) => {
 			startTransition(() => {
 				toast.success('Successful login')
 				reset()
-				router.replace(previousRoute ? previousRoute : '/')
+				router.replace(
+					previousRoute && whiteListRedirect.includes(previousRoute)
+						? previousRoute
+						: PUBLIC_PAGES.HOME
+				)
 				queryClient.invalidateQueries({ queryKey: ['get-profile'] })
 			})
 		},
