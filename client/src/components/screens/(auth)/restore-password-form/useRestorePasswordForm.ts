@@ -9,7 +9,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 const useRestorePasswordForm = () => {
-	const { register, handleSubmit, reset } = useForm<IEmail>()
+	const { register, handleSubmit, reset, formState } = useForm<IEmail>()
 
 	const router = useRouter()
 
@@ -58,7 +58,8 @@ const useRestorePasswordForm = () => {
 		handleSubmit,
 		onSubmit,
 		recaptchaRef,
-		isLoading
+		isLoading,
+		formState
 	}
 }
 
