@@ -1,8 +1,8 @@
 .form {
-	@apply w-[19.85rem] mx-auto overflow-hidden;
+	@apply w-[19.85rem] mx-auto overflow-hidden min-h-[22.699rem];
 
 	.recaptcha {
-		@apply mb-3 scale-x-[1.05] origin-[0] min-h-[78px];
+		@apply mb-3 scale-x-[1.05] origin-[0] min-h-[4.875rem];
 	}
 
 	.wrapper-button {
