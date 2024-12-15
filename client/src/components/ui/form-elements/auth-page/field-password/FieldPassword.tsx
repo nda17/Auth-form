@@ -35,7 +35,7 @@ const FieldPassword = forwardRef<HTMLInputElement, IField>(
 				</label>
 				{error?.message ===
 					'Min length should more 6 symbols. Contains 1 number 0-9, 1 Latin letter a-z, 1 Latin letter A-Z' && (
-					<p className={styles.error}>{error.message.toString()}</p>
+					<p className={clsx(styles['error-message'])}>{error.message}</p>
 				)}
 			</div>
 		)
