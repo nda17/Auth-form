@@ -18,7 +18,7 @@ const FieldPassword = forwardRef<HTMLInputElement, IField>(
 					<input
 						className={clsx(styles['input-field'])}
 						ref={ref}
-						type={typeInputPassword ? type : 'radio'}
+						type={typeInputPassword ? type : 'text'}
 						{...rest}
 						autoComplete="on"
 					/>
