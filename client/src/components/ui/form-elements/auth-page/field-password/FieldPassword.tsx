@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { forwardRef, useState } from 'react'
 
 const FieldPassword = forwardRef<HTMLInputElement, IField>(
-	({ error, type = 'text', style, ...rest }, ref) => {
+	({ error, type = 'password', style, ...rest }, ref) => {
 		const [typeInputPassword, setTypeInputPassword] = useState(true)
 
 		const toggleVisiblePassword = () => {
@@ -18,7 +18,7 @@ const FieldPassword = forwardRef<HTMLInputElement, IField>(
 					<input
 						className={clsx(styles['input-field'])}
 						ref={ref}
-						type={typeInputPassword ? type : 'text'}
+						type={typeInputPassword ? type : 'radio'}
 						{...rest}
 						autoComplete="on"
 					/>
@@ -27,9 +27,9 @@ const FieldPassword = forwardRef<HTMLInputElement, IField>(
 						onClick={toggleVisiblePassword}
 					>
 						{typeInputPassword ? (
-							<FontAwesomeIcon name="FaRegEye" fill="white" />
+							<FontAwesomeIcon name="FaRegEye" />
 						) : (
-							<FontAwesomeIcon name="FaRegEyeSlash" fill="white" />
+							<FontAwesomeIcon name="FaRegEyeSlash" />
 						)}
 					</span>
 				</label>
