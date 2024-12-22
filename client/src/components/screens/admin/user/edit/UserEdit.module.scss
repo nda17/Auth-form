@@ -1,3 +1,19 @@
 .wrapper {
 	@apply w-full flex flex-col relative;
+
+	.status-confirmation-field {
+		@apply flex gap-2 w-full p-1 border-b border-b-black border-solid focus:border-red-300 transition-colors pt-1 mb-[1.1rem];
+
+		.title {
+			@apply min-w-[12rem] text-gray-600;
+		}
+
+		.not-confirm {
+			@apply text-red-600;
+		}
+
+		.confirm {
+			@apply text-green-600;
+		}
+	}
 }
