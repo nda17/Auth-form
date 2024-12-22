@@ -1,7 +1,7 @@
 .wrapper {
-	@apply flex items-center gap-4 mb-[1.1rem] w-full;
+	@apply flex items-center gap-4 mb-[1.1rem];
 
 	.image {
-		@apply rounded-full;
+		@apply w-20 h-20 rounded-full;
 	}
 }
