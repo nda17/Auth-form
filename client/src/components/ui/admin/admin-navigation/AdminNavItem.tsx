@@ -9,14 +9,13 @@ const AdminNavItem: NextPage<{ item: INavItem }> = ({
 	item: { link, title, option }
 }) => {
 	const pathname = usePathname()
-
+	
 	return (
 		<li>
 			<Link href={link}>
 				<span
 					className={clsx({
-						[styles.active]:
-							pathname === link || pathname.includes(String(option))
+						[styles.active]: pathname === link || pathname.includes(option)
 					})}
 				>
 					{title}
