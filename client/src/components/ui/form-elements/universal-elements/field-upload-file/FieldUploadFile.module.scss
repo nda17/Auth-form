@@ -1,0 +1,31 @@
+.wrapper-input {
+	@apply flex gap-2 items-end border-b border-b-black p-1 border-solid mb-[2rem];
+
+	.field-path {
+		@apply w-full whitespace-nowrap overflow-scroll text-gray-600;
+	}
+
+	.label-input {
+		@apply gap-2 flex justify-end items-center;
+
+		.custom-input {
+			@apply flex items-end justify-between;
+
+			.button {
+				@apply bg-red-500 text-white px-4 py-2 rounded-md whitespace-nowrap;
+
+				&:hover {
+					@apply cursor-pointer;
+				}
+			}
+		}
+
+		.input-field {
+			@apply hidden;
+		}
+
+		.file-preview {
+			@apply flex relative overflow-hidden rounded-full w-12 h-12;
+		}
+	}
+}
