@@ -12,7 +12,7 @@ const UserInfo: NextPage<IUserInfo> = ({
 	<div className={styles.wrapper}>
 		{isLoading ? (
 			<div className="w-[4.375rem] h-[4.375rem] rounded-full">
-				<SkeletonLoader count={1} className="w-full h-full" />
+				<SkeletonLoader count={1} circle className="w-full h-full" />
 			</div>
 		) : avatarPath ? (
 			<Image
@@ -25,7 +25,7 @@ const UserInfo: NextPage<IUserInfo> = ({
 		) : (
 			<Image
 				className={styles.image}
-				src={'/avatar-default.png'}
+				src={'/uploads/user-avatar/avatar-default.png'}
 				alt="Avatar"
 				width={70}
 				height={70}
