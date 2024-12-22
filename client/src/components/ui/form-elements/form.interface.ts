@@ -15,13 +15,13 @@ type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> &
 export interface IField extends TypeInputPropsField {}
 
 export interface IUploadField {
+	currentFile?: string
 	folder?: string
-	image?: string
+	value?: string
 	onChange: (...event: any[]) => void
 	placeholder: string
 	error?: FieldError
 	style?: CSSProperties
-	isNoImage?: boolean
 }
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
