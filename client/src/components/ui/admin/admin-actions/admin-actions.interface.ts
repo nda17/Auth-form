@@ -1,4 +1,4 @@
 export interface IAdminActions {
 	editUrl: string
-	userId: string
+	userId: number
 }
