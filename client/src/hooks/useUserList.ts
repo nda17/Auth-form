@@ -25,7 +25,7 @@ const useUserList = () => {
 		mutationFn: (userId: string) => UserService.deleteUser(userId),
 		onSuccess() {
 			toast.success('Delete user was successful')
-			queryClient.invalidateQueries({ queryKey: ['get-user-list'] })
+			queryClient.invalidateQueries({ queryKey: ['get-user-list']})
 		},
 		onError(error) {
 			if (axios.isAxiosError(error)) {
