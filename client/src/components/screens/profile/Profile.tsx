@@ -2,13 +2,13 @@
 import styles from '@/components/screens/profile/Profile.module.scss'
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
 import Heading from '@/components/ui/heading/Heading'
+import UserInfo from '@/components/ui/user-info/UserInfo'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import useUser from '@/hooks/useUser'
 import authService from '@/services/auth/auth.service'
 import { useMutation } from '@tanstack/react-query'
 import { clsx } from 'clsx'
 import { NextPage } from 'next'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 
@@ -41,29 +41,11 @@ const Profile: NextPage = () => {
 				<CirclesLoader />
 			) : (
 				<>
-					<div className={clsx(styles['user-info'])}>
-						{user.avatarPath ? (
-							<Image
-								className={styles.image}
-								src={user.avatarPath}
-								alt="Avatar"
-								width={70}
-								height={70}
-							/>
-						) : (
-							<Image
-								className={styles.image}
-								src={'/avatar-default.png'}
-								alt="Avatar"
-								width={70}
-								height={70}
-							/>
-						)}
-						<h2 className={styles.subtitle}>
-							Hello, {user.name || 'user'}
-						</h2>
-					</div>
-					<div></div>
+					<UserInfo
+						avatarPath={user?.avatarPath}
+						name={user?.name}
+						isLoading={isLoading}
+					/>
 					<p className={clsx(styles['info-field'])}>
 						Email: {user.email}{' '}
 						<i>
