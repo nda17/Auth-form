@@ -9,6 +9,10 @@ const nextConfig = {
 			{
 				source: '/auth/github',
 				destination: 'http://localhost:4200/auth/github'
+			},
+			{
+				source: '/uploads/:path*',
+				destination: `http://localhost:4200/uploads/:path*`
 			}
 		]
 	},
