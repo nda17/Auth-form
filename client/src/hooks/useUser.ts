@@ -1,4 +1,8 @@
-import { saveTokenStorage } from '@/services/auth/auth.helper'
+import {
+	getAccessToken,
+	getRefreshToken,
+	saveTokenStorage
+} from '@/services/auth/auth.helper'
 import authService from '@/services/auth/auth.service'
 import userService from '@/services/user/user.service'
 import { useAuthStore } from '@/store/auth-store/auth-store'
@@ -7,23 +11,20 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
 const useUser = () => {
-	// const refreshToken = getRefreshToken()
 	const auth = useAuthStore((state) => state.auth)
 
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-profile', auth],
 		queryFn: () => userService.fetchProfile(),
-		refetchInterval: 1800000 // 30 minutes in milliseconds
+		refetchInterval: 1800000, // 30 minutes in milliseconds
 
-		// enabled: refreshToken !== null
-		// enabled: auth !== false
+		enabled: () => getAccessToken() !== null
 	})
 
 	const { isSuccess, data: dataTokens } = useQuery({
 		queryKey: ['get-new-tokens'],
-		queryFn: () => authService.getNewTokens()
-		// enabled: !data?.data
-		// enabled: !!refreshToken
+		queryFn: () => authService.getNewTokens(),
+		enabled: () => getRefreshToken() !== null
 	})
 
 	useEffect(() => {
