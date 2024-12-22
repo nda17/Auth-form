@@ -1,14 +1,6 @@
 .wrapper {
 	@apply w-full flex flex-col;
 
-	.user-info {
-		@apply flex items-center;
-
-		.image {
-			@apply rounded-full mr-4 mb-4;
-		}
-	}
-
 	.subtitle {
 		@apply text-2xl font-bold mb-4;
 	}
