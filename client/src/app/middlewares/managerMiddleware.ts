@@ -11,8 +11,14 @@ export const managerMiddleware = async (request: NextRequest) => {
 		user?.rights?.includes(UserRole.MANAGER)
 	) {
 		NextResponse.redirect(new URL('/manager', request.url))
-	} else {
+	} else if (
+		user?.isLoggedIn &&
+		!user?.isManager &&
+		!user?.rights?.includes(UserRole.MANAGER)
+	) {
 		return NextResponse.error()
+	} else {
+		return NextResponse.redirect(new URL('/logout', request.url))
 	}
 
 	return NextResponse.next()
