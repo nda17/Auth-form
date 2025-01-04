@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export const profileMiddleware = async (request: NextRequest) => {
 	const user = await getServerAuth()
 
-	if (!user && !user?.isLoggedIn) {
+	if (!user?.isLoggedIn) {
 		return NextResponse.redirect(new URL('/login', request.url))
 	}
 
