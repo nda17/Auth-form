@@ -21,7 +21,3 @@ export const middleware = (request: NextRequest) => {
 			return managerMiddleware(request)
 	}
 }
-
-export const config = {
-	matcher: '/((?!api|_next|static|public|favicon.ico).*)'
-}
