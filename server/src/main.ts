@@ -31,7 +31,7 @@ export const bootstrap = async () => {
 	const port = process.env.PORT || 5000
 
 	await app.listen(port, () =>
-		console.log(
+		console.info(
 			`🚀🚀🚀 Server running in ${process.env.MODE} mode at http://localhost:${port} 🚀🚀🚀`
 				.bgRed.bold
 		)
