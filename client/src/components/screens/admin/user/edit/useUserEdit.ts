@@ -1,6 +1,10 @@
 import { IUserEditInput } from '@/components/screens/admin/user/edit/user-edit.interface'
 import UserService from '@/services/user/user.service'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import {
+	useMutation,
+	useQuery,
+	useQueryClient
+} from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -10,10 +14,10 @@ export const useUserEdit = (
 	params: { id: string }
 ) => {
 	const router = useRouter()
-
 	const userId = params.id
+	const queryClient = useQueryClient()
 
-	const { data, isLoading, isError, isSuccess } = useQuery({
+	const { data, isLoading, isError } = useQuery({
 		queryKey: ['get-user-by-id', userId],
 		queryFn: () => UserService.fetchUserById(userId),
 		select: ({ data }) => data
@@ -30,6 +34,7 @@ export const useUserEdit = (
 		onSuccess() {
 			toast.success('Update user was successful')
 			router.push('/admin/user-list')
+			queryClient.invalidateQueries({ queryKey: ['get-user-by-id'] })
 		},
 		onError(error) {
 			toast.error(`Update user: ${error.message}`)
