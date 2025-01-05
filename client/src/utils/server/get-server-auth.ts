@@ -27,6 +27,8 @@ export const getServerAuth = async (): Promise<TUserDataState | null> => {
 	}
 
 	try {
+		const data = await authService.getNewTokensByRefresh(refreshToken)
+		accessToken = data.accessToken
 		const { payload }: { payload: ITokenInside } = await jwtVerify(
 			accessToken,
 			new TextEncoder().encode(`${JWT_SECRET}`)
