@@ -6,7 +6,7 @@ import {
 import { PrismaService } from '@/prisma.service'
 import { UpdateUserDto } from '@/user/dto/update-user.dto'
 import { Injectable, NotFoundException } from '@nestjs/common'
-import type { User } from '@prisma/client'
+import { Role, type User } from '@prisma/client'
 import { hash } from 'argon2'
 
 @Injectable()
@@ -113,9 +113,17 @@ export class UserService {
 				id
 			},
 			data: {
-				...dto,
-				email: dto.email.toLowerCase(),
-				password: dto.password ? await hash(dto.password) : user.password
+				id: dto.id ? dto.id : user.id,
+				email: dto.email ? dto.email.toLowerCase() : user.email,
+				password: dto.password ? await hash(dto.password) : user.password,
+				name: dto.name,
+				avatarPath: dto.avatarPath ? dto.avatarPath : user.avatarPath,
+				rights: [
+					dto.isUser ? Role.USER : null,
+					dto.isAdmin ? Role.ADMIN : null,
+					dto.isManager ? Role.MANAGER : null,
+					dto.isPremium ? Role.PREMIUM : null
+				].filter((role) => role !== null)
 			}
 		})
 	}
