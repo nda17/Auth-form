@@ -1,15 +1,10 @@
 import { IsEmail } from 'class-validator'
 
-enum UserRole {
-	USER = 'USER',
-	PREMIUM = 'PREMIUM',
-	MANAGER = 'MANAGER',
-	ADMIN = 'ADMIN'
-}
-
 export class UpdateUserDto {
 	@IsEmail()
-	email: string
+	email?: string
+
+	id?: string
 
 	password?: string
 
@@ -17,5 +12,11 @@ export class UpdateUserDto {
 
 	avatarPath?: string
 
-	rights?: UserRole[]
+	isUser?: boolean
+
+	isAdmin?: boolean
+
+	isManager?: boolean
+
+	isPremium?: boolean
 }
