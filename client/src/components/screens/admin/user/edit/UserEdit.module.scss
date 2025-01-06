@@ -2,18 +2,10 @@
 	@apply w-full flex flex-col;
 
 	.wrapper-checkbox {
-		@apply flex flex-col gap-1 text-gray-600 w-full outline-none p-1 border-b border-b-black border-solid mb-[1.85rem];
+		@apply flex gap-4 text-gray-600 w-full outline-none p-1 border-b border-b-black border-solid mb-[1.85rem];
 
-		.title-row {
-			@apply font-bold text-black text-[.8rem];
-		}
-
-		.checkbox-group {
-			@apply flex gap-4;
-
-			.checkbox {
-				@apply flex gap-2;
-			}
+		.checkbox {
+			@apply flex gap-2;
 		}
 	}
 }

@@ -1,5 +1,5 @@
-.wrapper-input {
-	@apply flex gap-2 items-end border-b border-b-black p-1 border-solid mb-[2rem];
+.wrapper {
+	@apply flex gap-2 items-end border-b border-b-black p-1 border-solid mb-[1.85rem];
 
 	.field-path {
 		@apply w-full whitespace-nowrap overflow-scroll text-gray-600;
