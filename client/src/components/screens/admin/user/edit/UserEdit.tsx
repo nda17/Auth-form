@@ -69,73 +69,66 @@ const UserEdit: NextPage<IParamsUrl> = ({ params }) => {
 							)}
 						/>
 						<div className={clsx(styles['wrapper-checkbox'])}>
-							<p className={clsx(styles['title-row'])}>User role:</p>
-							<div className={clsx(styles['checkbox-group'])}>
-								<div className={styles.checkbox}>
-									<p>USER</p>
-									<Controller
-										control={control}
-										name="isUser"
-										render={({ field }) => (
-											<CheckboxRights
-												required
-												type="checkbox"
-												defaultChecked={data.rights.includes(
-													UserRole.USER
-												)}
-												{...register('isUser', { value: field.value })}
-											/>
-										)}
-									/>
-								</div>
-								<div className={styles.checkbox}>
-									<p>ADMIN</p>
-									<Controller
-										control={control}
-										name="isAdmin"
-										render={({ field }) => (
-											<CheckboxRights
-												type="checkbox"
-												defaultChecked={data.rights.includes(
-													UserRole.ADMIN
-												)}
-												{...register('isAdmin', { value: field.value })}
-											/>
-										)}
-									/>
-								</div>
-								<div className={styles.checkbox}>
-									<p>MANAGER</p>
-									<Controller
-										control={control}
-										name="isManager"
-										render={({ field }) => (
-											<CheckboxRights
-												type="checkbox"
-												defaultChecked={data.rights.includes(
-													UserRole.MANAGER
-												)}
-												{...register('isManager', { value: field.value })}
-											/>
-										)}
-									/>
-								</div>
-								<div className={styles.checkbox}>
-									<p>PREMIUM</p>
-									<Controller
-										control={control}
-										name="isPremium"
-										render={({ field }) => (
-											<CheckboxRights
-												type="checkbox"
-												defaultChecked={data.rights.includes(
-													UserRole.PREMIUM
-												)}
-												{...register('isPremium', { value: field.value })}
-											/>
-										)}
-									/>
-								</div>
+							<div className={styles.checkbox}>
+								<p>USER</p>
+								<Controller
+									control={control}
+									name="isUser"
+									render={({ field }) => (
+										<CheckboxRights
+											required
+											type="checkbox"
+											defaultChecked={data.rights.includes(UserRole.USER)}
+											{...register('isUser', { value: field.value })}
+										/>
+									)}
+								/>
+							</div>
+							<div className={styles.checkbox}>
+								<p>ADMIN</p>
+								<Controller
+									control={control}
+									name="isAdmin"
+									render={({ field }) => (
+										<CheckboxRights
+											type="checkbox"
+											defaultChecked={data.rights.includes(UserRole.ADMIN)}
+											{...register('isAdmin', { value: field.value })}
+										/>
+									)}
+								/>
+							</div>
+							<div className={styles.checkbox}>
+								<p>MANAGER</p>
+								<Controller
+									control={control}
+									name="isManager"
+									render={({ field }) => (
+										<CheckboxRights
+											type="checkbox"
+											defaultChecked={data.rights.includes(
+												UserRole.MANAGER
+											)}
+											{...register('isManager', { value: field.value })}
+										/>
+									)}
+								/>
+							</div>
+							<div className={styles.checkbox}>
+								<p>PREMIUM</p>
+								<Controller
+									control={control}
+									name="isPremium"
+									render={({ field }) => (
+										<CheckboxRights
+											type="checkbox"
+											defaultChecked={data.rights.includes(
+												UserRole.PREMIUM
+											)}
+											{...register('isPremium', { value: field.value })}
+										/>
+									)}
+								/>
 							</div>
 						</div>
 						<FieldId

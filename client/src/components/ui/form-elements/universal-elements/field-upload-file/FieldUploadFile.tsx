@@ -17,7 +17,7 @@ const FieldUploadFile: NextPage<IUploadField> = ({
 	const { uploadFile, isLoading } = useUploadFile(onChange, folder)
 
 	return (
-		<div className={clsx(styles['wrapper-input'])} style={style}>
+		<div className={styles.wrapper} style={style}>
 			<p className={clsx(styles['field-path'])}>
 				{value ? value : currentFile}
 			</p>
