@@ -6,7 +6,7 @@ export enum UserRole {
 }
 
 export interface ITokenInside {
-	id: number
+	id: string
 	rights: UserRole[]
 	iat: number
 	exp: number
