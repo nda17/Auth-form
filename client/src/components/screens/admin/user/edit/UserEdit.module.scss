@@ -1,19 +1,19 @@
 .wrapper {
-	@apply w-full flex flex-col relative;
+	@apply w-full flex flex-col;
 
-	.status-confirmation-field {
-		@apply flex gap-2 w-full p-1 border-b border-b-black border-solid focus:border-red-300 transition-colors pt-1 mb-[1.1rem];
+	.wrapper-checkbox {
+		@apply flex flex-col gap-1 text-gray-600 w-full outline-none p-1 border-b border-b-black border-solid mb-[1.85rem];
 
-		.title {
-			@apply min-w-[12rem] text-gray-600;
+		.title-row {
+			@apply font-bold text-black text-[.8rem];
 		}
 
-		.not-confirm {
-			@apply text-red-600;
-		}
+		.checkbox-group {
+			@apply flex gap-4;
 
-		.confirm {
-			@apply text-green-600;
+			.checkbox {
+				@apply flex gap-2;
+			}
 		}
 	}
 }
