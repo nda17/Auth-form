@@ -15,7 +15,7 @@ const LogoutButton: NextPage = () => {
 	const { replace } = useRouter()
 	const queryClient = useQueryClient()
 
-	const { mutate: mutateLogout, isPending: isLogoutPending } = useMutation(
+	const { mutate: mutateLogout, isPending: isLogoutLoading } = useMutation(
 		{
 			mutationKey: ['logout'],
 			mutationFn: () => authService.logout(),
@@ -23,6 +23,7 @@ const LogoutButton: NextPage = () => {
 				toast.success('Logout')
 				queryClient.clear()
 				setAuth()
+				replace(PUBLIC_PAGES.LOGIN)
 			}
 		}
 	)
@@ -30,17 +31,16 @@ const LogoutButton: NextPage = () => {
 	const logoutHandler = (e: MouseEvent) => {
 		e.preventDefault()
 		mutateLogout()
-		replace(PUBLIC_PAGES.LOGIN)
 	}
 
 	return (
 		<button
 			onClick={logoutHandler}
-			disabled={isLogoutPending}
+			disabled={isLogoutLoading}
 			className={clsx(styles['link-auth-button'])}
 		>
 			<MaterialIcon name="MdLogout" fill="red" />
-			Logout
+			{isLogoutLoading ? 'Wait...' : 'Logout'}
 		</button>
 	)
 }
