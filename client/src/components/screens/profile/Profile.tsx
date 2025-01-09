@@ -6,16 +6,17 @@ import UserInfo from '@/components/ui/user-info/UserInfo'
 import { PUBLIC_PAGES } from '@/config/pages/public.config'
 import useUser from '@/hooks/useUser'
 import authService from '@/services/auth/auth.service'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { clsx } from 'clsx'
 import { NextPage } from 'next'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
+import toast from 'react-hot-toast'
 
 const Profile: NextPage = () => {
-	const { push } = useRouter()
-
 	const { user, isLoading } = useUser()
+	const { replace } = useRouter()
+	const queryClient = useQueryClient()
 
 	const [isPending, startTransition] = useTransition()
 
@@ -25,7 +26,9 @@ const Profile: NextPage = () => {
 			mutationFn: () => authService.logout(),
 			onSuccess() {
 				startTransition(() => {
-					push(PUBLIC_PAGES.LOGIN)
+					toast.success('Logout')
+					queryClient.clear()
+					replace(PUBLIC_PAGES.LOGIN)
 				})
 			}
 		}
@@ -55,9 +58,6 @@ const Profile: NextPage = () => {
 								: 'Confirmed'}
 							)
 						</i>
-					</p>
-					<p className={clsx(styles['info-field'])}>
-						Role: {user.rights?.join(', ')}
 					</p>
 					<button
 						onClick={() => mutateLogout()}
