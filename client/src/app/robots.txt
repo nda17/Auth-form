@@ -1,5 +1,38 @@
-user-agent: *
-disallow: /auth/*
-disallow: /profile/*
-disallow: /manager/*
-disallow: /admin/*
+User-Agent: GoogleBot
+Host: http://localhost:3000
+Disallow: /restore
+Disallow: /register
+Disallow: /login
+Disallow: /restore-password
+Disallow: /profile
+Disallow: /admin
+Disallow: /manager
+Disallow: *utm_
+
+Sitemap: http://localhost:3000/sitemap.xml
+
+User-Agent: Yandex
+Host: http://localhost:3000
+Disallow: /restore
+Disallow: /register
+Disallow: /login
+Disallow: /restore-password
+Disallow: /profile
+Disallow: /admin
+Disallow: /manager
+Disallow: *utm_
+
+Sitemap: http://localhost:3000/sitemap.xml
+
+User-Agent: *
+Host: http://localhost:3000
+Disallow: /restore
+Disallow: /register
+Disallow: /login
+Disallow: /restore-password
+Disallow: /profile
+Disallow: /admin
+Disallow: /manager
+Disallow: *utm_
+
+Sitemap: http://localhost:3000/sitemap.xml
