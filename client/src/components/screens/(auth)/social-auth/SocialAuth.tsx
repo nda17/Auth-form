@@ -1,11 +1,12 @@
 'use client'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
+import styles from '@/components/screens/(auth)/social-auth/SocialAuth.module.scss'
+import SubHeading from '@/components/ui/sub-heading/SubHeading'
 import { saveTokenStorage } from '@/services/auth/auth.helper'
 import { NextPage } from 'next'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-const SocialAuthPage: NextPage = () => {
+const SocialAuth: NextPage = () => {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 
@@ -18,7 +19,7 @@ const SocialAuthPage: NextPage = () => {
 		router.replace('/')
 	}, [])
 
-	return <CirclesLoader />
+	return <div className={styles.wrapper}><SubHeading text="Redirecting..." /></div>
 }
 
-export default SocialAuthPage
+export default SocialAuth
