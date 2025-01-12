@@ -40,6 +40,7 @@ const Footer: NextPage = () => {
 
 						<a
 							href="tel:88008008888"
+							aria-label='Call'
 							className={clsx(styles['link-contact'])}
 						>
 							88008008888
@@ -47,6 +48,7 @@ const Footer: NextPage = () => {
 
 						<a
 							href="mailto:info@info.com"
+							aria-label='Write an email'
 							className={clsx(styles['link-contact'])}
 						>
 							info@info.com
