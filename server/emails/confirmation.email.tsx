@@ -11,12 +11,13 @@ const VerificationEmail = ({ url }: { url: string }) => {
 				address.
 			</p>
 
-			<a href={url}>Confirm email address</a>
+			<a href={url} aria-label='Confirm email address'>Confirm email address</a>
 
 			<p>or copy the link and paste it into your browser</p>
 
 			<a
 				href={url}
+				aria-label='Text to copy and paste into the browser for verification or follow the link'
 				target="_blank"
 				style={{
 					color: '#A981DC'
