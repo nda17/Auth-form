@@ -6,7 +6,7 @@ import useUser from '@/hooks/useUser'
 import { NextPage } from 'next'
 
 const AuthItems: NextPage = () => {
-	const { user } = useUser()
+	const { user, isLoading } = useUser()
 
 	return (
 		<>
@@ -40,7 +40,7 @@ const AuthItems: NextPage = () => {
 				/>
 			)}
 
-			{!user?.isLoggedIn && (
+			{!isLoading && !user?.isLoggedIn ? (
 				<MenuItem
 					item={{
 						icon: 'MdLogout',
@@ -48,9 +48,7 @@ const AuthItems: NextPage = () => {
 						title: 'Login'
 					}}
 				/>
-			)}
-
-			{user?.isLoggedIn && <LogoutButton />}
+			) : <LogoutButton />}
 		</>
 	)
 }
