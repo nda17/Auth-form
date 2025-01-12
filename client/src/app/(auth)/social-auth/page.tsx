@@ -1,23 +1,17 @@
-'use client'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
-import { saveTokenStorage } from '@/services/auth/auth.helper'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import SocialAuth from '@/components/screens/(auth)/social-auth/SocialAuth'
+import { Metadata } from 'next'
 
-const SocialAuthPage = () => {
-	const searchParams = useSearchParams()
-	const router = useRouter()
+export const metadata: Metadata = {
+	title: 'Redirecting',
+}
 
-	useEffect(() => {
-		const accessToken = searchParams.get('accessToken')
-		if (accessToken) {
-			saveTokenStorage(accessToken)
-		}
 
-		router.replace('/')
-	}, [])
-
-	return <CirclesLoader />
+const SocialAuthPage = async () => {
+	return <SocialAuth />
 }
 
 export default SocialAuthPage
+
+
+
+
