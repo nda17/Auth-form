@@ -1,4 +1,4 @@
 export interface IAlertPopup {
-	removeHandler: (userId: string) => void
-	text: string
+	removeHandler: (userId: string) => void;
+	text: string;
 }

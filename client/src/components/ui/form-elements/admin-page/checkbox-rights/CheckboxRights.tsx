@@ -1,5 +1,5 @@
-import { IField } from '@/components/ui/form-elements/form.interface'
-import { forwardRef } from 'react'
+import { IField } from '@/components/ui/form-elements/form.interface';
+import { forwardRef } from 'react';
 
 const CheckboxRights = forwardRef<HTMLInputElement, IField>(
 	({ defaultChecked, type = 'checkbox', ...rest }, ref) => {
@@ -10,8 +10,8 @@ const CheckboxRights = forwardRef<HTMLInputElement, IField>(
 				{...rest}
 				defaultChecked={defaultChecked}
 			/>
-		)
+		);
 	}
-)
+);
 
-export default CheckboxRights
+export default CheckboxRights;

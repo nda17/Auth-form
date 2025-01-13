@@ -1,12 +1,12 @@
-import { IAuthToggle } from '@/components/screens/(auth)/auth-form/auth-toggle/auth-toggle.interface'
-import styles from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle.module.scss'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import { useRouter } from 'next/navigation'
+import { IAuthToggle } from '@/components/screens/(auth)/auth-form/auth-toggle/auth-toggle.interface';
+import styles from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle.module.scss';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import { useRouter } from 'next/navigation';
 
 const AuthToggle: NextPage<IAuthToggle> = ({ isLogin }) => {
-	const router = useRouter()
+	const router = useRouter();
 
 	return (
 		<div className={styles.wrapper}>
@@ -43,7 +43,7 @@ const AuthToggle: NextPage<IAuthToggle> = ({ isLogin }) => {
 				</button>
 			</p>
 		</div>
-	)
-}
+	);
+};
 
-export default AuthToggle
+export default AuthToggle;

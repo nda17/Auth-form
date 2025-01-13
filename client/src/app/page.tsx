@@ -1,13 +1,13 @@
-import Home from '@/components/screens/home/Home'
-import { Metadata } from 'next'
+import Home from '@/components/screens/home/Home';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: 'Home',
 	description: 'Home page'
-}
+};
 
 const HomePage = async () => {
-	return <Home />
-}
+	return <Home />;
+};
 
-export default HomePage
+export default HomePage;

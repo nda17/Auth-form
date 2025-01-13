@@ -1,7 +1,7 @@
-import styles from '@/components/ui/admin/admin-header/AdminHeader.module.scss'
-import { IAdminHeader } from '@/components/ui/admin/admin-header/admin-header.interface'
-import { SearchField } from '@/components/ui/search-field/SearchField'
-import { NextPage } from 'next'
+import styles from '@/components/ui/admin/admin-header/AdminHeader.module.scss';
+import { IAdminHeader } from '@/components/ui/admin/admin-header/admin-header.interface';
+import { SearchField } from '@/components/ui/search-field/SearchField';
+import { NextPage } from 'next';
 
 const AdminHeader: NextPage<IAdminHeader> = ({
 	handleSearch,
@@ -16,7 +16,7 @@ const AdminHeader: NextPage<IAdminHeader> = ({
 				handleClear={handleClear}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default AdminHeader
+export default AdminHeader;

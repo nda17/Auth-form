@@ -1,14 +1,14 @@
-import styles from '@/components/layout/footer/Footer.module.scss'
-import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
-import LogoImage from '@/components/ui/logo-image/LogoImage'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import Link from 'next/link'
+import styles from '@/components/layout/footer/Footer.module.scss';
+import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon';
+import LogoImage from '@/components/ui/logo-image/LogoImage';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import Link from 'next/link';
 
 const Footer: NextPage = () => {
-	const year = 2023
-	const currentYear = new Date().getFullYear()
+	const year = 2023;
+	const currentYear = new Date().getFullYear();
 
 	return (
 		<footer className={styles.footer}>
@@ -40,7 +40,7 @@ const Footer: NextPage = () => {
 
 						<a
 							href="tel:88008008888"
-							aria-label='Call'
+							aria-label="Call"
 							className={clsx(styles['link-contact'])}
 						>
 							88008008888
@@ -48,7 +48,7 @@ const Footer: NextPage = () => {
 
 						<a
 							href="mailto:info@info.com"
-							aria-label='Write an email'
+							aria-label="Write an email"
 							className={clsx(styles['link-contact'])}
 						>
 							info@info.com
@@ -84,7 +84,7 @@ const Footer: NextPage = () => {
 				</div>
 			</div>
 		</footer>
-	)
-}
+	);
+};
 
-export default Footer
+export default Footer;

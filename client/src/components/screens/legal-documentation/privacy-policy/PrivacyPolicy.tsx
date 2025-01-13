@@ -1,7 +1,7 @@
-import styles from '@/components/screens/legal-documentation/privacy-policy/PrivacyPolicy.module.scss'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import { NextPage } from 'next'
+import styles from '@/components/screens/legal-documentation/privacy-policy/PrivacyPolicy.module.scss';
+import Heading from '@/components/ui/heading/Heading';
+import SubHeading from '@/components/ui/sub-heading/SubHeading';
+import { NextPage } from 'next';
 
 const PrivacyPolicy: NextPage = () => {
 	return (
@@ -165,7 +165,7 @@ const PrivacyPolicy: NextPage = () => {
 				5.2. The current version of the Policy is dated __________ 20__.
 			</p>
 		</div>
-	)
-}
+	);
+};
 
-export default PrivacyPolicy
+export default PrivacyPolicy;

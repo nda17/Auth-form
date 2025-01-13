@@ -1,26 +1,26 @@
-'use client'
-import styles from '@/components/ui/cookie-consent-popup/CookieConsentPopup.module.scss'
-import { ICookieConsent } from '@/components/ui/cookie-consent-popup/cookie-consent.interface'
-import MaterialIcon from '@/components/ui/icons/MaterialIcon'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import clsx from 'clsx'
-import Cookies from 'js-cookie'
-import { NextPage } from 'next'
-import Link from 'next/link'
-import { MouseEvent, useEffect, useState } from 'react'
+'use client';
+import styles from '@/components/ui/cookie-consent-popup/CookieConsentPopup.module.scss';
+import { ICookieConsent } from '@/components/ui/cookie-consent-popup/cookie-consent.interface';
+import MaterialIcon from '@/components/ui/icons/MaterialIcon';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import clsx from 'clsx';
+import Cookies from 'js-cookie';
+import { NextPage } from 'next';
+import Link from 'next/link';
+import { MouseEvent, useEffect, useState } from 'react';
 
-const CookieConsentPopup: NextPage<ICookieConsent> = (status) => {
-	const [showPopup, setShowPopup] = useState(`${status}`)
+const CookieConsentPopup: NextPage<ICookieConsent> = status => {
+	const [showPopup, setShowPopup] = useState(`${status}`);
 
 	const accept = (e: MouseEvent<HTMLAnchorElement>) => {
-		e.preventDefault()
-		Cookies.set('cookieConsent', 'status:accept', { expires: 365 })
-		setShowPopup('hide')
-	}
+		e.preventDefault();
+		Cookies.set('cookieConsent', 'status:accept', { expires: 365 });
+		setShowPopup('hide');
+	};
 
 	useEffect(() => {
-		setShowPopup(`${status.status}`)
-	}, [status])
+		setShowPopup(`${status.status}`);
+	}, [status]);
 
 	return showPopup === 'show' ? (
 		<div className={clsx(styles['wrapper-cookie'])}>
@@ -52,7 +52,7 @@ const CookieConsentPopup: NextPage<ICookieConsent> = (status) => {
 				Accept
 			</button>
 		</div>
-	) : null
-}
+	) : null;
+};
 
-export default CookieConsentPopup
+export default CookieConsentPopup;

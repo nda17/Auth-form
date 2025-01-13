@@ -1,3 +1,3 @@
 export interface ICookieConsent {
-	status: string
+	status: string;
 }

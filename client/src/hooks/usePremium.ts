@@ -1,14 +1,14 @@
-import UserService from '@/services/user/user.service'
-import { useQuery } from '@tanstack/react-query'
+import UserService from '@/services/user/user.service';
+import { useQuery } from '@tanstack/react-query';
 
 const usePremium = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-user-premium-rights'],
 		queryFn: () => UserService.fetchPremium(),
 		select: ({ data }) => data.access
-	})
+	});
 
-	return { data, isLoading }
-}
+	return { data, isLoading };
+};
 
-export default usePremium
+export default usePremium;

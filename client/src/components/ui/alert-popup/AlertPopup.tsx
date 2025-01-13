@@ -1,32 +1,30 @@
-import styles from '@/components/ui/alert-popup/AlertPopup.module.scss'
-import { IAlertPopup } from '@/components/ui/alert-popup/alert-popup.interface'
-import Heading from '@/components/ui/heading/Heading'
-import { useClickOutside } from '@/hooks/useClickOutside'
-import { useAlertPopupStore } from '@/store/alert-popup-store/alert-popup-store'
-import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import { useRef } from 'react'
+import styles from '@/components/ui/alert-popup/AlertPopup.module.scss';
+import { IAlertPopup } from '@/components/ui/alert-popup/alert-popup.interface';
+import Heading from '@/components/ui/heading/Heading';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { useAlertPopupStore } from '@/store/alert-popup-store/alert-popup-store';
+import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import { useRef } from 'react';
 
 const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
-	const popupRef = useRef(null)
+	const popupRef = useRef(null);
 
 	const changeVisibleVeilBackground = useVeilBackgroundStore(
-		(state) => state.setVisible
-	)
-	const visiblePopup = useAlertPopupStore((state) => state.visible)
-	const changeVisiblePopup = useAlertPopupStore(
-		(state) => state.setVisible
-	)
-	const id = useAlertPopupStore((state) => state.itemId)
-	const clearStatePopup = useAlertPopupStore((state) => state.clear)
+		state => state.setVisible
+	);
+	const visiblePopup = useAlertPopupStore(state => state.visible);
+	const changeVisiblePopup = useAlertPopupStore(state => state.setVisible);
+	const id = useAlertPopupStore(state => state.itemId);
+	const clearStatePopup = useAlertPopupStore(state => state.clear);
 
 	const closePopup = () => {
-		changeVisibleVeilBackground()
-		changeVisiblePopup()
-	}
+		changeVisibleVeilBackground();
+		changeVisiblePopup();
+	};
 
-	useClickOutside(popupRef, () => closePopup())
+	useClickOutside(popupRef, () => closePopup());
 
 	return (
 		visiblePopup && (
@@ -38,9 +36,9 @@ const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
 						className={styles.button}
 						type="button"
 						onClick={() => {
-							removeHandler(id)
-							closePopup()
-							clearStatePopup()
+							removeHandler(id);
+							closePopup();
+							clearStatePopup();
 						}}
 					>
 						Delete
@@ -49,8 +47,8 @@ const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
 						className={styles.button}
 						type="button"
 						onClick={() => {
-							clearStatePopup()
-							closePopup()
+							clearStatePopup();
+							closePopup();
 						}}
 					>
 						Cancel
@@ -58,7 +56,7 @@ const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
 				</div>
 			</div>
 		)
-	)
-}
+	);
+};
 
-export default AlertPopup
+export default AlertPopup;

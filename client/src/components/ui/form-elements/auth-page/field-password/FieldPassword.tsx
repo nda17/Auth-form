@@ -1,16 +1,16 @@
-import styles from '@/components/ui/form-elements/auth-page/field-password/FieldPassword.module.scss'
-import { IField } from '@/components/ui/form-elements/form.interface'
-import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon'
-import clsx from 'clsx'
-import { forwardRef, useState } from 'react'
+import styles from '@/components/ui/form-elements/auth-page/field-password/FieldPassword.module.scss';
+import { IField } from '@/components/ui/form-elements/form.interface';
+import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon';
+import clsx from 'clsx';
+import { forwardRef, useState } from 'react';
 
 const FieldPassword = forwardRef<HTMLInputElement, IField>(
 	({ error, type = 'password', style, ...rest }, ref) => {
-		const [typeInputPassword, setTypeInputPassword] = useState(true)
+		const [typeInputPassword, setTypeInputPassword] = useState(true);
 
 		const toggleVisiblePassword = () => {
-			setTypeInputPassword(!typeInputPassword)
-		}
+			setTypeInputPassword(!typeInputPassword);
+		};
 
 		return (
 			<div className={clsx(styles['wrapper-input'])} style={style}>
@@ -38,8 +38,8 @@ const FieldPassword = forwardRef<HTMLInputElement, IField>(
 					<p className={clsx(styles['error-message'])}>{error.message}</p>
 				)}
 			</div>
-		)
+		);
 	}
-)
+);
 
-export default FieldPassword
+export default FieldPassword;

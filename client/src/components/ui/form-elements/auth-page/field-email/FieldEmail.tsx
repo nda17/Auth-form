@@ -1,7 +1,7 @@
-import styles from '@/components/ui/form-elements/auth-page/field-email/FieldEmail.module.scss'
-import { IField } from '@/components/ui/form-elements/form.interface'
-import clsx from 'clsx'
-import { forwardRef } from 'react'
+import styles from '@/components/ui/form-elements/auth-page/field-email/FieldEmail.module.scss';
+import { IField } from '@/components/ui/form-elements/form.interface';
+import clsx from 'clsx';
+import { forwardRef } from 'react';
 
 const FieldEmail = forwardRef<HTMLInputElement, IField>(
 	({ error, type = 'text', style, ...rest }, ref) => {
@@ -20,8 +20,8 @@ const FieldEmail = forwardRef<HTMLInputElement, IField>(
 					<p className={styles.error}>{error.message.toString()}</p>
 				)}
 			</div>
-		)
+		);
 	}
-)
+);
 
-export default FieldEmail
+export default FieldEmail;

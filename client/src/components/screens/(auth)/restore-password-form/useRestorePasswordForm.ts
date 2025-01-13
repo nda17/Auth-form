@@ -1,21 +1,21 @@
-import authService from '@/services/auth/auth.service'
-import { IEmail } from '@/shared/types/form.types'
-import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import { useRouter } from 'next/navigation'
-import { useRef, useTransition } from 'react'
-import ReCAPTCHA from 'react-google-recaptcha'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import authService from '@/services/auth/auth.service';
+import { IEmail } from '@/shared/types/form.types';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { useRef, useTransition } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const useRestorePasswordForm = () => {
-	const { register, handleSubmit, reset, formState } = useForm<IEmail>()
+	const { register, handleSubmit, reset, formState } = useForm<IEmail>();
 
-	const router = useRouter()
+	const router = useRouter();
 
-	const [isPending, startTransition] = useTransition()
+	const [isPending, startTransition] = useTransition();
 
-	const recaptchaRef = useRef<ReCAPTCHA>(null)
+	const recaptchaRef = useRef<ReCAPTCHA>(null);
 
 	const { mutate: mutateRestorePassword, isPending: isRestorePending } =
 		useMutation({
@@ -27,31 +27,33 @@ const useRestorePasswordForm = () => {
 				),
 			onSuccess() {
 				startTransition(() => {
-					toast.success('Temporary password sent by email')
-					reset()
-					router.replace('/login')
-				})
+					toast.success('Temporary password sent by email');
+					reset();
+					router.replace('/login');
+				});
 			},
 			onError(error) {
 				if (axios.isAxiosError(error)) {
-					toast.error(`Restore password: ${error.response?.data?.message}`)
-					recaptchaRef.current.reset()
+					toast.error(
+						`Restore password: ${error.response?.data?.message}`
+					);
+					recaptchaRef.current.reset();
 				}
 			}
-		})
+		});
 
-	const onSubmit: SubmitHandler<IEmail> = (data) => {
-		const token = recaptchaRef?.current?.getValue()
+	const onSubmit: SubmitHandler<IEmail> = data => {
+		const token = recaptchaRef?.current?.getValue();
 
 		if (!token) {
-			toast.error('Pass the captcha!')
-			return
+			toast.error('Pass the captcha!');
+			return;
 		}
 
-		mutateRestorePassword(data)
-	}
+		mutateRestorePassword(data);
+	};
 
-	const isLoading = isPending || isRestorePending
+	const isLoading = isPending || isRestorePending;
 
 	return {
 		register,
@@ -60,7 +62,7 @@ const useRestorePasswordForm = () => {
 		recaptchaRef,
 		isLoading,
 		formState
-	}
-}
+	};
+};
 
-export default useRestorePasswordForm
+export default useRestorePasswordForm;

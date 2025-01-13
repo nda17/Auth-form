@@ -1,21 +1,21 @@
-import styles from '@/components/layout/nav-menu/mobile/menu/menu-item/MenuItem.module.scss'
-import { IMenuItem } from '@/components/layout/nav-menu/mobile/menu/menu-item/menu-item.interface'
-import MaterialIcon from '@/components/ui/icons/MaterialIcon'
-import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import styles from '@/components/layout/nav-menu/mobile/menu/menu-item/MenuItem.module.scss';
+import { IMenuItem } from '@/components/layout/nav-menu/mobile/menu/menu-item/menu-item.interface';
+import MaterialIcon from '@/components/ui/icons/MaterialIcon';
+import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const MenuItem: NextPage<{ item: IMenuItem }> = ({ item }) => {
-	const pathname = usePathname()
+	const pathname = usePathname();
 	const changeVisibleHamburger = useHamburgerStore(
-		(state) => state.setVisible
-	)
+		state => state.setVisible
+	);
 
 	const closeMenu = () => {
-		changeVisibleHamburger()
-	}
+		changeVisibleHamburger();
+	};
 
 	return (
 		<li
@@ -29,7 +29,7 @@ const MenuItem: NextPage<{ item: IMenuItem }> = ({ item }) => {
 				{item.title}
 			</Link>
 		</li>
-	)
-}
+	);
+};
 
-export default MenuItem
+export default MenuItem;

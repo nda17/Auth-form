@@ -1,8 +1,8 @@
-import styles from '@/components/layout/nav-menu/desktop/DesktopNavBar.module.scss'
-import Menu from '@/components/layout/nav-menu/desktop/menu/Menu'
-import LogoImage from '@/components/ui/logo-image/LogoImage'
-import clsx from 'clsx'
-import { NextPage } from 'next'
+import styles from '@/components/layout/nav-menu/desktop/DesktopNavBar.module.scss';
+import Menu from '@/components/layout/nav-menu/desktop/menu/Menu';
+import LogoImage from '@/components/ui/logo-image/LogoImage';
+import clsx from 'clsx';
+import { NextPage } from 'next';
 
 const DesktopNavBar: NextPage = () => {
 	return (
@@ -12,7 +12,7 @@ const DesktopNavBar: NextPage = () => {
 				<Menu />
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default DesktopNavBar
+export default DesktopNavBar;

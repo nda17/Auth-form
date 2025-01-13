@@ -1,8 +1,8 @@
-import styles from '@/components/screens/premium-content/PremiumContent.module.scss'
-import Heading from '@/components/ui/heading/Heading'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import { NextPage } from 'next'
-import Link from 'next/link'
+import styles from '@/components/screens/premium-content/PremiumContent.module.scss';
+import Heading from '@/components/ui/heading/Heading';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import { NextPage } from 'next';
+import Link from 'next/link';
 
 const PremiumContent: NextPage = () => {
 	// In a real project, we make a request to the server and receive an entity object from the server and generate a component
@@ -44,7 +44,7 @@ const PremiumContent: NextPage = () => {
 				</Link>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default PremiumContent
+export default PremiumContent;

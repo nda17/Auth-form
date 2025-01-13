@@ -1,15 +1,15 @@
-'use client'
-import styles from '@/components/screens/(auth)/auth-form/AuthForm.module.scss'
-import { IAuthFormProps } from '@/components/screens/(auth)/auth-form/auth-form.interface'
-import AuthToggle from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle'
-import SocialMediaButtons from '@/components/screens/(auth)/auth-form/social-media-buttons/SocialMediaButtons'
-import useAuthForm from '@/components/screens/(auth)/auth-form/useAuthForm'
-import FieldEmail from '@/components/ui/form-elements/auth-page/field-email/FieldEmail'
-import FieldPassword from '@/components/ui/form-elements/auth-page/field-password/FieldPassword'
-import { validEmail, validPassword } from '@/shared/regex'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import ReCAPTCHA from 'react-google-recaptcha'
+'use client';
+import styles from '@/components/screens/(auth)/auth-form/AuthForm.module.scss';
+import { IAuthFormProps } from '@/components/screens/(auth)/auth-form/auth-form.interface';
+import AuthToggle from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle';
+import SocialMediaButtons from '@/components/screens/(auth)/auth-form/social-media-buttons/SocialMediaButtons';
+import useAuthForm from '@/components/screens/(auth)/auth-form/useAuthForm';
+import FieldEmail from '@/components/ui/form-elements/auth-page/field-email/FieldEmail';
+import FieldPassword from '@/components/ui/form-elements/auth-page/field-password/FieldPassword';
+import { validEmail, validPassword } from '@/shared/regex';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
 	const {
@@ -19,7 +19,7 @@ const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
 		recaptchaRef,
 		register,
 		formState: { errors }
-	} = useAuthForm(isLogin)
+	} = useAuthForm(isLogin);
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -76,7 +76,7 @@ const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
 
 			<AuthToggle isLogin={isLogin} />
 		</form>
-	)
-}
+	);
+};
 
-export default AuthForm
+export default AuthForm;

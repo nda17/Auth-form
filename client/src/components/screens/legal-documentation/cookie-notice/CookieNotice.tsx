@@ -1,6 +1,6 @@
-import styles from '@/components/screens/legal-documentation/cookie-notice/CookieNotice.module.scss'
-import Heading from '@/components/ui/heading/Heading'
-import { NextPage } from 'next'
+import styles from '@/components/screens/legal-documentation/cookie-notice/CookieNotice.module.scss';
+import Heading from '@/components/ui/heading/Heading';
+import { NextPage } from 'next';
 
 const CookieNotice: NextPage = () => {
 	return (
@@ -122,7 +122,7 @@ const CookieNotice: NextPage = () => {
 				posted on our website.
 			</p>
 		</div>
-	)
-}
+	);
+};
 
-export default CookieNotice
+export default CookieNotice;

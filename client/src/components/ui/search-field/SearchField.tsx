@@ -1,7 +1,7 @@
-import MaterialIcon from '@/components/ui/icons/MaterialIcon'
-import styles from '@/components/ui/search-field/SearchField.module.scss'
-import { ISearchField } from '@/components/ui/search-field/search-field.interface'
-import { NextPage } from 'next'
+import MaterialIcon from '@/components/ui/icons/MaterialIcon';
+import styles from '@/components/ui/search-field/SearchField.module.scss';
+import { ISearchField } from '@/components/ui/search-field/search-field.interface';
+import { NextPage } from 'next';
 
 export const SearchField: NextPage<ISearchField> = ({
 	searchTerm,
@@ -22,5 +22,5 @@ export const SearchField: NextPage<ISearchField> = ({
 				</span>
 			)}
 		</div>
-	)
-}
+	);
+};

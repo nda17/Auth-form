@@ -1,8 +1,8 @@
-import CountUsers from '@/components/screens/admin/statistics/count-users/CountUsers'
-import { NextPage } from 'next'
+import CountUsers from '@/components/screens/admin/statistics/count-users/CountUsers';
+import { NextPage } from 'next';
 
 const Statistics: NextPage = () => {
-	return <CountUsers />
-}
+	return <CountUsers />;
+};
 
-export default Statistics
+export default Statistics;

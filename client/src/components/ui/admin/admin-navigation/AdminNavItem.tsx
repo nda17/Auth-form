@@ -1,15 +1,15 @@
-import styles from '@/components/ui/admin/admin-navigation/AdminNavigation.module.scss'
-import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import styles from '@/components/ui/admin/admin-navigation/AdminNavigation.module.scss';
+import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const AdminNavItem: NextPage<{ item: INavItem }> = ({
 	item: { link, title, option }
 }) => {
-	const pathname = usePathname()
-	
+	const pathname = usePathname();
+
 	return (
 		<li>
 			<Link href={link}>
@@ -22,7 +22,7 @@ const AdminNavItem: NextPage<{ item: INavItem }> = ({
 				</span>
 			</Link>
 		</li>
-	)
-}
+	);
+};
 
-export default AdminNavItem
+export default AdminNavItem;

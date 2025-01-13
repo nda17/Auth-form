@@ -1,8 +1,8 @@
-import styles from '@/components/layout/nav-menu/desktop/menu/Menu.module.scss'
-import DesktopStaticMenu from '@/components/layout/nav-menu/desktop/menu/desktop-static-menu/DesktopStaticMenu'
-import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
-import { NextPage } from 'next'
-import dynamic from 'next/dynamic'
+import styles from '@/components/layout/nav-menu/desktop/menu/Menu.module.scss';
+import DesktopStaticMenu from '@/components/layout/nav-menu/desktop/menu/desktop-static-menu/DesktopStaticMenu';
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
+import { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 const DesktopDynamicMenu = dynamic(
 	() =>
 		import(
@@ -16,7 +16,7 @@ const DesktopDynamicMenu = dynamic(
 		),
 		ssr: false
 	}
-)
+);
 
 const Menu: NextPage = () => {
 	return (
@@ -24,7 +24,7 @@ const Menu: NextPage = () => {
 			<DesktopStaticMenu />
 			<DesktopDynamicMenu />
 		</div>
-	)
-}
+	);
+};
 
-export default Menu
+export default Menu;

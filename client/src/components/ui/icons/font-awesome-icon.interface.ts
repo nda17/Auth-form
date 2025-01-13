@@ -1,6 +1,6 @@
-import { TypeFontAwesomeName } from '@/shared/types/icon.types'
+import { TypeFontAwesomeName } from '@/shared/types/icon.types';
 
 export interface IFontAwesomeIcon {
-	name: TypeFontAwesomeName
-	fill?: string
+	name: TypeFontAwesomeName;
+	fill?: string;
 }

@@ -1,8 +1,8 @@
-import styles from '@/components/ui/veil-background/VeilBackground.module.scss'
-import { NextPage } from 'next'
+import styles from '@/components/ui/veil-background/VeilBackground.module.scss';
+import { NextPage } from 'next';
 
 const VeilBackground: NextPage = () => {
-	return <div className={styles.background}></div>
-}
+	return <div className={styles.background}></div>;
+};
 
-export default VeilBackground
+export default VeilBackground;

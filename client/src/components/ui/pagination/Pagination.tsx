@@ -1,8 +1,8 @@
-import MaterialIcon from '@/components/ui/icons/MaterialIcon'
-import styles from '@/components/ui/pagination/Pagination.module.scss'
-import { IPagination } from '@/components/ui/pagination/paginate.interface'
-import clsx from 'clsx'
-import { NextPage } from 'next'
+import MaterialIcon from '@/components/ui/icons/MaterialIcon';
+import styles from '@/components/ui/pagination/Pagination.module.scss';
+import { IPagination } from '@/components/ui/pagination/paginate.interface';
+import clsx from 'clsx';
+import { NextPage } from 'next';
 
 const Pagination: NextPage<IPagination> = ({
 	listPage,
@@ -17,7 +17,7 @@ const Pagination: NextPage<IPagination> = ({
 				<MaterialIcon name="MdOutlineNavigateBefore" />
 			</button>
 			<ul>
-				{listPage.map((page) => (
+				{listPage.map(page => (
 					<li key={page}>
 						<span
 							className={clsx({
@@ -35,7 +35,7 @@ const Pagination: NextPage<IPagination> = ({
 				<MaterialIcon name="MdOutlineNavigateNext" />
 			</button>
 		</div>
-	)
-}
+	);
+};
 
-export default Pagination
+export default Pagination;

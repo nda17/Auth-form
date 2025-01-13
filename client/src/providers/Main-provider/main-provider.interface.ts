@@ -1,3 +1,3 @@
 export interface IMainProvider {
-	children: React.ReactNode
+	children: React.ReactNode;
 }

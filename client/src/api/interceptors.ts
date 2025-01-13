@@ -1,38 +1,38 @@
-import { errorCatch, getContentType } from '@/api/api.helper'
-import { API_URL } from '@/config/api.config'
+import { errorCatch, getContentType } from '@/api/api.helper';
+import { API_URL } from '@/config/api.config';
 import {
 	getAccessToken,
 	removeFromStorage
-} from '@/services/auth/auth.helper'
-import authService from '@/services/auth/auth.service'
-import axios, { CreateAxiosDefaults } from 'axios'
+} from '@/services/auth/auth.helper';
+import authService from '@/services/auth/auth.service';
+import axios, { CreateAxiosDefaults } from 'axios';
 
 const axiosOptions: CreateAxiosDefaults = {
 	baseURL: API_URL,
 	headers: getContentType(),
 	withCredentials: true
-}
+};
 
 // Default requests without authorization:
-export const axiosClassicRequest = axios.create(axiosOptions)
+export const axiosClassicRequest = axios.create(axiosOptions);
 
 // Requests using axios interceptors to update accessToken:
-export const axiosInterceptorsRequest = axios.create(axiosOptions)
+export const axiosInterceptorsRequest = axios.create(axiosOptions);
 
-axiosInterceptorsRequest.interceptors.request.use((config) => {
-	const accessToken = getAccessToken()
+axiosInterceptorsRequest.interceptors.request.use(config => {
+	const accessToken = getAccessToken();
 
 	if (config?.headers && accessToken) {
-		config.headers.Authorization = `Bearer ${accessToken}`
+		config.headers.Authorization = `Bearer ${accessToken}`;
 	}
 
-	return config
-})
+	return config;
+});
 
 axiosInterceptorsRequest.interceptors.response.use(
-	(config) => config,
-	async (error) => {
-		const originalRequest = error.config
+	config => config,
+	async error => {
+		const originalRequest = error.config;
 
 		if (
 			(error?.response?.status === 401 ||
@@ -41,20 +41,20 @@ axiosInterceptorsRequest.interceptors.response.use(
 			error.config &&
 			!error.config._isRetry
 		) {
-			originalRequest._isRetry = true
+			originalRequest._isRetry = true;
 			try {
-				await authService.getNewTokens()
-				return axiosInterceptorsRequest.request(originalRequest)
+				await authService.getNewTokens();
+				return axiosInterceptorsRequest.request(originalRequest);
 			} catch (error) {
 				if (
 					errorCatch(error) === 'jwt expired' ||
 					errorCatch(error) === 'Refresh token not passed'
 				) {
-					removeFromStorage()
+					removeFromStorage();
 				}
 			}
 		}
 
-		throw error
+		throw error;
 	}
-)
+);

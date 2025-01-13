@@ -1,7 +1,7 @@
-import styles from '@/components/ui/form-elements/admin-page/field-name/FieldName.module.scss'
-import { IField } from '@/components/ui/form-elements/form.interface'
-import clsx from 'clsx'
-import { forwardRef } from 'react'
+import styles from '@/components/ui/form-elements/admin-page/field-name/FieldName.module.scss';
+import { IField } from '@/components/ui/form-elements/form.interface';
+import clsx from 'clsx';
+import { forwardRef } from 'react';
 
 const FieldName = forwardRef<HTMLInputElement, IField>(
 	({ error, placeholder, type = 'text', style, ...rest }, ref) => {
@@ -22,8 +22,8 @@ const FieldName = forwardRef<HTMLInputElement, IField>(
 					<p className={clsx(styles['error-message'])}>{error.message}</p>
 				)}
 			</div>
-		)
+		);
 	}
-)
+);
 
-export default FieldName
+export default FieldName;

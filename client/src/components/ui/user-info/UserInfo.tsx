@@ -1,8 +1,8 @@
-import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
-import styles from '@/components/ui/user-info/UserInfo.module.scss'
-import { IUserInfo } from '@/components/ui/user-info/user-info.interface'
-import { NextPage } from 'next'
-import Image from 'next/image'
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
+import styles from '@/components/ui/user-info/UserInfo.module.scss';
+import { IUserInfo } from '@/components/ui/user-info/user-info.interface';
+import { NextPage } from 'next';
+import Image from 'next/image';
 
 const UserInfo: NextPage<IUserInfo> = ({
 	avatarPath,
@@ -40,6 +40,6 @@ const UserInfo: NextPage<IUserInfo> = ({
 			<h2 className={styles.subtitle}>{name || 'User'}</h2>
 		)}
 	</div>
-)
+);
 
-export default UserInfo
+export default UserInfo;

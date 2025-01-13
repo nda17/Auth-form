@@ -1,23 +1,23 @@
-import { adminMiddleware } from '@/app/middlewares/adminMiddleware'
-import { authMiddleware } from '@/app/middlewares/authMiddleware'
-import { managerMiddleware } from '@/app/middlewares/managerMiddleware'
-import { profileMiddleware } from '@/app/middlewares/profileMiddleware'
-import { NextRequest } from 'next/server'
+import { adminMiddleware } from '@/app/middlewares/adminMiddleware';
+import { authMiddleware } from '@/app/middlewares/authMiddleware';
+import { managerMiddleware } from '@/app/middlewares/managerMiddleware';
+import { profileMiddleware } from '@/app/middlewares/profileMiddleware';
+import { NextRequest } from 'next/server';
 
 export const middleware = (request: NextRequest) => {
-	const { pathname } = request.nextUrl
+	const { pathname } = request.nextUrl;
 
 	switch (true) {
 		case /^\/(register|login|restore-password)$/.test(pathname):
-			return authMiddleware(request)
+			return authMiddleware(request);
 
 		case /^\/profile/.test(pathname):
-			return profileMiddleware(request)
+			return profileMiddleware(request);
 
 		case /^\/admin(\/.*)?$/.test(pathname):
-			return adminMiddleware(request)
+			return adminMiddleware(request);
 
 		case /^\/manager(\/.*)?$/.test(pathname):
-			return managerMiddleware(request)
+			return managerMiddleware(request);
 	}
-}
+};

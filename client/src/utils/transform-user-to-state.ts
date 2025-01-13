@@ -1,16 +1,16 @@
 import {
 	UserRole,
 	type TProtectUserData
-} from '@/services/auth/auth.types'
+} from '@/services/auth/auth.types';
 
 export type TUserDataState = {
-	id: string
-	rights: UserRole[]
-	isLoggedIn: boolean
-	isAdmin: boolean
-	isManager: boolean
-	isPremium: boolean
-}
+	id: string;
+	rights: UserRole[];
+	isLoggedIn: boolean;
+	isAdmin: boolean;
+	isManager: boolean;
+	isPremium: boolean;
+};
 
 export const transformUserToState = (
 	user: TProtectUserData
@@ -21,5 +21,5 @@ export const transformUserToState = (
 		isAdmin: user.rights.includes(UserRole.ADMIN),
 		isManager: user.rights.includes(UserRole.MANAGER),
 		isPremium: user.rights.includes(UserRole.PREMIUM)
-	}
-}
+	};
+};

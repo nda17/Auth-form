@@ -1,6 +1,6 @@
-import styles from '@/components/screens/(auth)/login/SignIn.module.scss'
-import RestorePasswordForm from '@/components/screens/(auth)/restore-password-form/RestorePasswordForm'
-import { NextPage } from 'next'
+import styles from '@/components/screens/(auth)/login/SignIn.module.scss';
+import RestorePasswordForm from '@/components/screens/(auth)/restore-password-form/RestorePasswordForm';
+import { NextPage } from 'next';
 
 const RestorePassword: NextPage = () => {
 	return (
@@ -10,7 +10,7 @@ const RestorePassword: NextPage = () => {
 				<RestorePasswordForm />
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default RestorePassword
+export default RestorePassword;

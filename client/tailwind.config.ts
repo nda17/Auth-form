@@ -1,8 +1,8 @@
 // @ts-nocheck
-import type { Config } from 'tailwindcss'
-import colors from 'tailwindcss/colors'
+import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
 
-const primary = '#FF9902'
+const primary = '#FF9902';
 
 const config: Config = {
 	content: [
@@ -210,6 +210,6 @@ const config: Config = {
 		}
 	},
 	plugins: []
-}
+};
 
-export default config
+export default config;

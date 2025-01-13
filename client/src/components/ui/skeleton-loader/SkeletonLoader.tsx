@@ -1,7 +1,7 @@
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import Skeleton, { SkeletonProps } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import Skeleton, { SkeletonProps } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const SkeletonLoader: NextPage<SkeletonProps> = ({
 	className,
@@ -14,7 +14,7 @@ const SkeletonLoader: NextPage<SkeletonProps> = ({
 			highlightColor="#94938f"
 			className={clsx(['rounded-lg', 'select-none'], className)}
 		/>
-	)
-}
+	);
+};
 
-export default SkeletonLoader
+export default SkeletonLoader;

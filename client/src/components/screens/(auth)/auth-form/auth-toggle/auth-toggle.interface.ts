@@ -1,3 +1,3 @@
 export interface IAuthToggle {
-	isLogin: boolean
+	isLogin: boolean;
 }

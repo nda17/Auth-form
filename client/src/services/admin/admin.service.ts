@@ -1,11 +1,11 @@
-import { axiosInterceptorsRequest } from '@/api/interceptors'
+import { axiosInterceptorsRequest } from '@/api/interceptors';
 
 class AdminService {
-	private _BASE_URL = '/users'
+	private _BASE_URL = '/users';
 
 	async fetchCountUsers() {
-		return axiosInterceptorsRequest.get<number>(`${this._BASE_URL}/count`)
+		return axiosInterceptorsRequest.get<number>(`${this._BASE_URL}/count`);
 	}
 }
 
-export default new AdminService()
+export default new AdminService();

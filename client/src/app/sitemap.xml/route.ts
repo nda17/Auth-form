@@ -1,8 +1,8 @@
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import { ISitemapField, getServerSideSitemap } from 'next-sitemap'
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import { ISitemapField, getServerSideSitemap } from 'next-sitemap';
 
 export async function GET(request: Request) {
-	const url = 'http://localhost:3000'
+	const url = 'http://localhost:3000';
 
 	const fields: ISitemapField[] = [
 		{
@@ -29,7 +29,7 @@ export async function GET(request: Request) {
 			changefreq: 'daily',
 			priority: 0.9
 		}
-	]
+	];
 
-	return getServerSideSitemap(fields)
+	return getServerSideSitemap(fields);
 }

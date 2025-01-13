@@ -1,17 +1,12 @@
-import SocialAuth from '@/components/screens/(auth)/social-auth/SocialAuth'
-import { Metadata } from 'next'
+import SocialAuth from '@/components/screens/(auth)/social-auth/SocialAuth';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Redirecting',
-}
-
+	title: 'Redirecting'
+};
 
 const SocialAuthPage = async () => {
-	return <SocialAuth />
-}
+	return <SocialAuth />;
+};
 
-export default SocialAuthPage
-
-
-
-
+export default SocialAuthPage;

@@ -1,3 +1,3 @@
 export interface ISubHeading {
-	text: string
+	text: string;
 }

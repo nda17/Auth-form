@@ -1,5 +1,5 @@
-import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface'
-import { ADMIN_PAGES } from '@/config/pages/admin.config'
+import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface';
+import { ADMIN_PAGES } from '@/config/pages/admin.config';
 
 export const navItems: INavItem[] = [
 	{
@@ -10,4 +10,4 @@ export const navItems: INavItem[] = [
 		title: 'User-list',
 		link: ADMIN_PAGES.USER_LIST
 	}
-]
+];

@@ -1,3 +1,3 @@
 export interface IParamsUrl {
-	params: { id: string }
+	params: { id: string };
 }

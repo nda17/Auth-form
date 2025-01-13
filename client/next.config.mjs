@@ -14,7 +14,7 @@ const nextConfig = {
 				source: '/uploads/:path*',
 				destination: `http://localhost:4200/uploads/:path*`
 			}
-		]
+		];
 	},
 	images: {
 		remotePatterns: [
@@ -32,6 +32,6 @@ const nextConfig = {
 			}
 		]
 	}
-}
+};
 
-export default nextConfig
+export default nextConfig;

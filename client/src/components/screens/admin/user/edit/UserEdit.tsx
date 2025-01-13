@@ -1,30 +1,30 @@
-'use client'
-import { IUserEditInput } from '@/components/screens/admin/user/edit/user-edit.interface'
-import styles from '@/components/screens/admin/user/edit/UserEdit.module.scss'
-import { useUserEdit } from '@/components/screens/admin/user/edit/useUserEdit'
-import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation'
-import CheckboxRights from '@/components/ui/form-elements/admin-page/checkbox-rights/CheckboxRights'
-import FieldEmail from '@/components/ui/form-elements/admin-page/field-email/FieldEmail'
-import FieldId from '@/components/ui/form-elements/admin-page/field-id/FieldId'
-import FieldName from '@/components/ui/form-elements/admin-page/field-name/FieldName'
-import FieldPassword from '@/components/ui/form-elements/admin-page/field-password/FieldPassword'
-import Button from '@/components/ui/form-elements/universal-elements/button/Button'
-import FieldUploadFile from '@/components/ui/form-elements/universal-elements/field-upload-file/FieldUploadFile'
-import Heading from '@/components/ui/heading/Heading'
-import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
-import SubHeading from '@/components/ui/sub-heading/SubHeading'
-import UserInfo from '@/components/ui/user-info/UserInfo'
-import { UserRole } from '@/services/auth/auth.types'
+'use client';
+import { IUserEditInput } from '@/components/screens/admin/user/edit/user-edit.interface';
+import styles from '@/components/screens/admin/user/edit/UserEdit.module.scss';
+import { useUserEdit } from '@/components/screens/admin/user/edit/useUserEdit';
+import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation';
+import CheckboxRights from '@/components/ui/form-elements/admin-page/checkbox-rights/CheckboxRights';
+import FieldEmail from '@/components/ui/form-elements/admin-page/field-email/FieldEmail';
+import FieldId from '@/components/ui/form-elements/admin-page/field-id/FieldId';
+import FieldName from '@/components/ui/form-elements/admin-page/field-name/FieldName';
+import FieldPassword from '@/components/ui/form-elements/admin-page/field-password/FieldPassword';
+import Button from '@/components/ui/form-elements/universal-elements/button/Button';
+import FieldUploadFile from '@/components/ui/form-elements/universal-elements/field-upload-file/FieldUploadFile';
+import Heading from '@/components/ui/heading/Heading';
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
+import SubHeading from '@/components/ui/sub-heading/SubHeading';
+import UserInfo from '@/components/ui/user-info/UserInfo';
+import { UserRole } from '@/services/auth/auth.types';
 import {
 	validEmail,
 	validId,
 	validName,
 	validPassword
-} from '@/shared/regex'
-import { IParamsUrl } from '@/shared/types/params-url.types'
-import clsx from 'clsx'
-import { NextPage } from 'next'
-import { Controller, useForm } from 'react-hook-form'
+} from '@/shared/regex';
+import { IParamsUrl } from '@/shared/types/params-url.types';
+import clsx from 'clsx';
+import { NextPage } from 'next';
+import { Controller, useForm } from 'react-hook-form';
 
 const UserEdit: NextPage<IParamsUrl> = ({ params }) => {
 	const {
@@ -33,9 +33,9 @@ const UserEdit: NextPage<IParamsUrl> = ({ params }) => {
 		formState: { errors },
 		setValue,
 		control
-	} = useForm<IUserEditInput>({ mode: 'onChange' })
+	} = useForm<IUserEditInput>({ mode: 'onChange' });
 
-	const { isLoading, data, onSubmit } = useUserEdit(setValue, params)
+	const { isLoading, data, onSubmit } = useUserEdit(setValue, params);
 
 	return (
 		<div className={styles.wrapper}>
@@ -187,7 +187,7 @@ const UserEdit: NextPage<IParamsUrl> = ({ params }) => {
 				</>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default UserEdit
+export default UserEdit;

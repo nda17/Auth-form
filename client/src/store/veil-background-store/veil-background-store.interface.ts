@@ -1,4 +1,4 @@
 export interface IVeilBackgroundStore {
-	visible: boolean
-	setVisible: () => void
+	visible: boolean;
+	setVisible: () => void;
 }

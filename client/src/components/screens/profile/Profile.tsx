@@ -1,24 +1,24 @@
-'use client'
-import styles from '@/components/screens/profile/Profile.module.scss'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
-import Heading from '@/components/ui/heading/Heading'
-import UserInfo from '@/components/ui/user-info/UserInfo'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import useUser from '@/hooks/useUser'
-import authService from '@/services/auth/auth.service'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { clsx } from 'clsx'
-import { NextPage } from 'next'
-import { useRouter } from 'next/navigation'
-import { useTransition } from 'react'
-import toast from 'react-hot-toast'
+'use client';
+import styles from '@/components/screens/profile/Profile.module.scss';
+import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader';
+import Heading from '@/components/ui/heading/Heading';
+import UserInfo from '@/components/ui/user-info/UserInfo';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import useUser from '@/hooks/useUser';
+import authService from '@/services/auth/auth.service';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { clsx } from 'clsx';
+import { NextPage } from 'next';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
+import toast from 'react-hot-toast';
 
 const Profile: NextPage = () => {
-	const { user, isLoading } = useUser()
-	const { replace } = useRouter()
-	const queryClient = useQueryClient()
+	const { user, isLoading } = useUser();
+	const { replace } = useRouter();
+	const queryClient = useQueryClient();
 
-	const [isPending, startTransition] = useTransition()
+	const [isPending, startTransition] = useTransition();
 
 	const { mutate: mutateLogout, isPending: isLogoutPending } = useMutation(
 		{
@@ -26,15 +26,15 @@ const Profile: NextPage = () => {
 			mutationFn: () => authService.logout(),
 			onSuccess() {
 				startTransition(() => {
-					toast.success('Logout')
-					queryClient.clear()
-					replace(PUBLIC_PAGES.LOGIN)
-				})
+					toast.success('Logout');
+					queryClient.clear();
+					replace(PUBLIC_PAGES.LOGIN);
+				});
 			}
 		}
-	)
+	);
 
-	const isLogoutLoading = isLogoutPending || isPending
+	const isLogoutLoading = isLogoutPending || isPending;
 
 	return (
 		<div className={styles.wrapper}>
@@ -69,7 +69,7 @@ const Profile: NextPage = () => {
 				</>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default Profile
+export default Profile;

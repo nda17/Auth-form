@@ -1,12 +1,12 @@
-import LogoutButton from '@/components/layout/nav-menu/desktop/menu/logout-button/LogoutButton'
-import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem'
-import { ADMIN_PAGES } from '@/config/pages/admin.config'
-import { PUBLIC_PAGES } from '@/config/pages/public.config'
-import useUser from '@/hooks/useUser'
-import { NextPage } from 'next'
+import LogoutButton from '@/components/layout/nav-menu/desktop/menu/logout-button/LogoutButton';
+import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem';
+import { ADMIN_PAGES } from '@/config/pages/admin.config';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import useUser from '@/hooks/useUser';
+import { NextPage } from 'next';
 
 const AuthItems: NextPage = () => {
-	const { user, isLoading } = useUser()
+	const { user, isLoading } = useUser();
 
 	return (
 		<>
@@ -48,9 +48,11 @@ const AuthItems: NextPage = () => {
 						title: 'Login'
 					}}
 				/>
-			) : <LogoutButton />}
+			) : (
+				<LogoutButton />
+			)}
 		</>
-	)
-}
+	);
+};
 
-export default AuthItems
+export default AuthItems;

@@ -1,4 +1,4 @@
-import { axiosInterceptorsRequest } from '@/api/interceptors'
+import { axiosInterceptorsRequest } from '@/api/interceptors';
 
 class FileService {
 	async upload(file: FormData, folder?: string) {
@@ -13,8 +13,8 @@ class FileService {
 					'Content-Type': 'multipart/form-data'
 				}
 			}
-		)
+		);
 	}
 }
 
-export default new FileService()
+export default new FileService();

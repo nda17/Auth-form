@@ -1,10 +1,10 @@
-import styles from '@/components/screens/admin/statistics/count-users/CountUsers.module.scss'
-import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
-import useCountUsers from '@/hooks/useCountUsers'
-import { NextPage } from 'next'
+import styles from '@/components/screens/admin/statistics/count-users/CountUsers.module.scss';
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
+import useCountUsers from '@/hooks/useCountUsers';
+import { NextPage } from 'next';
 
 const CountUsers: NextPage = () => {
-	const { response, isLoading } = useCountUsers()
+	const { response, isLoading } = useCountUsers();
 
 	return (
 		<div className={styles.wrapper}>
@@ -18,7 +18,7 @@ const CountUsers: NextPage = () => {
 			)}
 			<p>users</p>
 		</div>
-	)
-}
+	);
+};
 
-export default CountUsers
+export default CountUsers;

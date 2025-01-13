@@ -1,6 +1,6 @@
-import AuthForm from '@/components/screens/(auth)/auth-form/AuthForm'
-import styles from '@/components/screens/(auth)/login/SignIn.module.scss'
-import { NextPage } from 'next'
+import AuthForm from '@/components/screens/(auth)/auth-form/AuthForm';
+import styles from '@/components/screens/(auth)/login/SignIn.module.scss';
+import { NextPage } from 'next';
 
 const SignIn: NextPage = () => {
 	return (
@@ -10,7 +10,7 @@ const SignIn: NextPage = () => {
 				<AuthForm isLogin />
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default SignIn
+export default SignIn;
