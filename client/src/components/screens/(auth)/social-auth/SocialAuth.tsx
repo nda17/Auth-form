@@ -19,7 +19,11 @@ const SocialAuth: NextPage = () => {
 		router.replace('/')
 	}, [])
 
-	return <div className={styles.wrapper}><SubHeading text="Redirecting..." /></div>
+	return (
+		<div className={styles.wrapper}>
+			<SubHeading text="Redirecting..." />
+		</div>
+	)
 }
 
 export default SocialAuth

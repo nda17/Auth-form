@@ -1,17 +1,17 @@
-import '@/assets/styles/globals.scss'
-import Layout from '@/components/layout/Layout'
-import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader'
-import MainProvider from '@/providers/main-provider/MainProvider'
-import { Metadata, Viewport } from 'next'
-import { Fira_Mono } from 'next/font/google'
-import { PropsWithChildren, Suspense } from 'react'
+import '@/assets/styles/globals.scss';
+import Layout from '@/components/layout/Layout';
+import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader';
+import MainProvider from '@/providers/main-provider/MainProvider';
+import { Metadata, Viewport } from 'next';
+import { Fira_Mono } from 'next/font/google';
+import { PropsWithChildren, Suspense } from 'react';
 
-const inter = Fira_Mono({ subsets: ['latin', 'cyrillic'], weight: '400' })
+const inter = Fira_Mono({ subsets: ['latin', 'cyrillic'], weight: '400' });
 
 export const metadata: Metadata = {
 	title: {
 		absolute: 'User-auth-template',
-		template: '%s | User-auth-template',
+		template: '%s | User-auth-template'
 	},
 	description: 'User-auth-template app.',
 	icons: {
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
 				url: '/your-image-for-demo',
 				width: 1200,
 				height: 630,
-				alt: 'User-auth-template app.',
-			},
+				alt: 'User-auth-template app.'
+			}
 		],
-		emails: ['mail@mail.com'],
+		emails: ['mail@mail.com']
 	},
 	manifest: '/manifest.json',
 	publisher: 'User-auth-template',
@@ -50,11 +50,11 @@ export const metadata: Metadata = {
 		url: 'http://localhost:3000'
 	},
 	applicationName: 'User-auth-template app.'
-}
+};
 
 export const viewport: Viewport = {
-	themeColor: '#ffffff',
-}
+	themeColor: '#ffffff'
+};
 
 const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
 	return (
@@ -62,14 +62,12 @@ const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
 			<body className={inter.className}>
 				<MainProvider>
 					<Layout>
-						<Suspense fallback={<CirclesLoader />}>
-							{children}
-						</Suspense>
+						<Suspense fallback={<CirclesLoader />}>{children}</Suspense>
 					</Layout>
 				</MainProvider>
 			</body>
 		</html>
-	)
-}
+	);
+};
 
-export default RootLayout
+export default RootLayout;

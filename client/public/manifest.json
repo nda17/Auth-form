@@ -24,7 +24,6 @@
 			"sizes": "256x256",
 			"type": "image/png",
 			"purpose": "maskable"
-
 		},
 		{
 			"src": "/touch-icons/512x512-mask.png",
