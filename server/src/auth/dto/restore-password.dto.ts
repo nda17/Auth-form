@@ -1,6 +1,6 @@
-import { IsObject } from 'class-validator'
+import { IsObject } from 'class-validator';
 
 export class RestorePasswordDto {
 	@IsObject()
-	email: string
+	email: string;
 }

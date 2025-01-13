@@ -1,6 +1,6 @@
-import { IsObject } from 'class-validator'
+import { IsObject } from 'class-validator';
 
 export class ConfirmationEmailDto {
 	@IsObject()
-	verificationToken: string
+	verificationToken: string;
 }

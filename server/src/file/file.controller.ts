@@ -1,5 +1,5 @@
-import { Auth } from '@/auth/decorators/auth.decorator'
-import { FileService } from '@/file/file.service'
+import { Auth } from '@/auth/decorators/auth.decorator';
+import { FileService } from '@/file/file.service';
 import {
 	Controller,
 	HttpCode,
@@ -7,8 +7,8 @@ import {
 	Query,
 	UploadedFile,
 	UseInterceptors
-} from '@nestjs/common'
-import { FileInterceptor } from '@nestjs/platform-express'
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('files')
 export class FileController {
@@ -22,6 +22,6 @@ export class FileController {
 		@UploadedFile() file: Express.Multer.File,
 		@Query('folder') folder?: string
 	) {
-		return this.fileService.saveFiles([file], folder)
+		return this.fileService.saveFiles([file], folder);
 	}
 }

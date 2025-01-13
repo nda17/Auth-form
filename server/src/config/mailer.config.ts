@@ -1,6 +1,6 @@
-import { isDev } from '@/utils/is-dev.util'
-import { MailerOptions } from '@nestjs-modules/mailer'
-import { ConfigService } from '@nestjs/config'
+import { isDev } from '@/utils/is-dev.util';
+import { MailerOptions } from '@nestjs-modules/mailer';
+import { ConfigService } from '@nestjs/config';
 
 export const getMailerConfig = async (
 	configService: ConfigService
@@ -17,4 +17,4 @@ export const getMailerConfig = async (
 	defaults: {
 		from: '"winwidget.ru" <no-reply@winwidget.ru>'
 	}
-})
+});

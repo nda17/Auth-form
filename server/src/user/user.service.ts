@@ -1,13 +1,13 @@
-import { AuthDto } from '@/auth/dto/auth.dto'
+import { AuthDto } from '@/auth/dto/auth.dto';
 import {
 	IGithubProfile,
 	IGoogleProfile
-} from '@/auth/social-media/social-media-auth.types'
-import { PrismaService } from '@/prisma.service'
-import { UpdateUserDto } from '@/user/dto/update-user.dto'
-import { Injectable, NotFoundException } from '@nestjs/common'
-import { Role, type User } from '@prisma/client'
-import { hash } from 'argon2'
+} from '@/auth/social-media/social-media-auth.types';
+import { PrismaService } from '@/prisma.service';
+import { UpdateUserDto } from '@/user/dto/update-user.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Role, type User } from '@prisma/client';
+import { hash } from 'argon2';
 
 @Injectable()
 export class UserService {
@@ -29,7 +29,7 @@ export class UserService {
 				createdAt: true,
 				password: false
 			}
-		})
+		});
 	}
 
 	async getUserById(id: string) {
@@ -37,7 +37,7 @@ export class UserService {
 			where: {
 				id
 			}
-		})
+		});
 	}
 
 	async getUserByEmail(email: string) {
@@ -45,26 +45,26 @@ export class UserService {
 			where: {
 				email
 			}
-		})
+		});
 	}
 
 	async findOrCreateSocialUser(profile: IGoogleProfile | IGithubProfile) {
-		let user = await this.getUserByEmail(profile.email)
+		let user = await this.getUserByEmail(profile.email);
 		if (!user) {
-			user = await this._createSocialUser(profile)
+			user = await this._createSocialUser(profile);
 		}
-		return user
+		return user;
 	}
 
 	private async _createSocialUser(
 		profile: IGoogleProfile | IGithubProfile
 	): Promise<User> {
-		const email = profile.email
+		const email = profile.email;
 		const name =
 			'firstName' in profile
 				? `${profile.firstName} ${profile.lastName}`
-				: profile.username
-		const picture = profile.picture || ''
+				: profile.username;
+		const picture = profile.picture || '';
 
 		return this.prisma.user.create({
 			data: {
@@ -74,7 +74,7 @@ export class UserService {
 				verificationToken: null,
 				avatarPath: picture
 			}
-		})
+		});
 	}
 
 	async createUser(dto: AuthDto) {
@@ -84,7 +84,7 @@ export class UserService {
 				email: dto.email.toLowerCase(),
 				password: await hash(dto.password)
 			}
-		})
+		});
 	}
 
 	async updateUser(id: string, dto?: UpdateUserDto) {
@@ -92,20 +92,20 @@ export class UserService {
 			where: {
 				id
 			}
-		})
+		});
 
 		if (!user) {
-			throw new NotFoundException('User not found')
+			throw new NotFoundException('User not found');
 		}
 
 		const isSameUser = await this.prisma.user.findFirst({
 			where: {
 				email: dto.email
 			}
-		})
+		});
 
 		if (isSameUser && id !== isSameUser.id) {
-			throw new NotFoundException('Email busy')
+			throw new NotFoundException('Email busy');
 		}
 
 		return this.prisma.user.update({
@@ -123,9 +123,9 @@ export class UserService {
 					dto.isAdmin ? Role.ADMIN : null,
 					dto.isManager ? Role.MANAGER : null,
 					dto.isPremium ? Role.PREMIUM : null
-				].filter((role) => role !== null)
+				].filter(role => role !== null)
 			}
-		})
+		});
 	}
 
 	async deleteUser(id: string) {
@@ -133,10 +133,10 @@ export class UserService {
 			where: {
 				id
 			}
-		})
+		});
 	}
 
 	async getCountUsers() {
-		return this.prisma.user.count()
+		return this.prisma.user.count();
 	}
 }

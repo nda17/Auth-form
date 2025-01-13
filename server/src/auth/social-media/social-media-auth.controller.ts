@@ -1,10 +1,10 @@
-import { AuthService } from '@/auth/auth.service'
-import { RefreshTokenService } from '@/auth/refresh-token.service'
-import { SocialMediaAuthService } from '@/auth/social-media/social-media-auth.service'
-import { TSocialProfile } from '@/auth/social-media/social-media-auth.types'
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common'
-import { AuthGuard } from '@nestjs/passport'
-import { Response } from 'express'
+import { AuthService } from '@/auth/auth.service';
+import { RefreshTokenService } from '@/auth/refresh-token.service';
+import { SocialMediaAuthService } from '@/auth/social-media/social-media-auth.service';
+import { TSocialProfile } from '@/auth/social-media/social-media-auth.types';
+import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Response } from 'express';
 
 @Controller('auth')
 export class SocialMediaAuthController {
@@ -14,7 +14,7 @@ export class SocialMediaAuthController {
 		private readonly refreshTokenService: RefreshTokenService
 	) {}
 
-	private _CLIENT_BASE_URL = `${process.env.RECAPTCHA_CLIENT_URL}/social-auth?accessToken=`
+	private _CLIENT_BASE_URL = `${process.env.RECAPTCHA_CLIENT_URL}/social-auth?accessToken=`;
 
 	@Get('google')
 	@UseGuards(AuthGuard('google'))
@@ -26,13 +26,13 @@ export class SocialMediaAuthController {
 		@Req() req: { user: TSocialProfile },
 		@Res({ passthrough: true }) res: Response
 	) {
-		const user = await this.socialMediaAuthService.login(req)
+		const user = await this.socialMediaAuthService.login(req);
 
 		const { accessToken, refreshToken } =
-			await this.authService.buildResponseObject(user)
-		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken)
+			await this.authService.buildResponseObject(user);
+		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken);
 
-		return res.redirect(`${this._CLIENT_BASE_URL}${accessToken}`)
+		return res.redirect(`${this._CLIENT_BASE_URL}${accessToken}`);
 	}
 
 	@Get('github')
@@ -45,12 +45,12 @@ export class SocialMediaAuthController {
 		@Req() req: { user: TSocialProfile },
 		@Res({ passthrough: true }) res: Response
 	) {
-		const user = await this.socialMediaAuthService.login(req)
+		const user = await this.socialMediaAuthService.login(req);
 
 		const { accessToken, refreshToken } =
-			await this.authService.buildResponseObject(user)
-		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken)
+			await this.authService.buildResponseObject(user);
+		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken);
 
-		return res.redirect(`${this._CLIENT_BASE_URL}${accessToken}`)
+		return res.redirect(`${this._CLIENT_BASE_URL}${accessToken}`);
 	}
 }

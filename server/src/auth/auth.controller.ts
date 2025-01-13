@@ -1,8 +1,8 @@
-import { AuthService } from '@/auth/auth.service'
-import { AuthDto } from '@/auth/dto/auth.dto'
-import { ConfirmationEmailDto } from '@/auth/dto/confirmation-email.dto'
-import { RestorePasswordDto } from '@/auth/dto/restore-password.dto'
-import { RefreshTokenService } from '@/auth/refresh-token.service'
+import { AuthService } from '@/auth/auth.service';
+import { AuthDto } from '@/auth/dto/auth.dto';
+import { ConfirmationEmailDto } from '@/auth/dto/confirmation-email.dto';
+import { RestorePasswordDto } from '@/auth/dto/restore-password.dto';
+import { RefreshTokenService } from '@/auth/refresh-token.service';
 import {
 	Body,
 	Controller,
@@ -15,9 +15,9 @@ import {
 	UnauthorizedException,
 	UsePipes,
 	ValidationPipe
-} from '@nestjs/common'
-import { Recaptcha } from '@nestlab/google-recaptcha'
-import { Request, Response } from 'express'
+} from '@nestjs/common';
+import { Recaptcha } from '@nestlab/google-recaptcha';
+import { Request, Response } from 'express';
 
 @Controller()
 export class AuthController {
@@ -34,11 +34,12 @@ export class AuthController {
 		@Body() dto: AuthDto,
 		@Res({ passthrough: true }) res: Response
 	) {
-		const { refreshToken, ...response } = await this.authService.login(dto)
+		const { refreshToken, ...response } =
+			await this.authService.login(dto);
 
-		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken)
+		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken);
 
-		return response
+		return response;
 	}
 
 	@UsePipes(new ValidationPipe())
@@ -50,19 +51,19 @@ export class AuthController {
 		@Res({ passthrough: true }) res: Response
 	) {
 		const { refreshToken, ...response } =
-			await this.authService.register(dto)
-		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken)
-		return response
+			await this.authService.register(dto);
+		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken);
+		return response;
 	}
 
 	@HttpCode(200)
 	@Patch('auth/confirmation-email')
 	async verifyEmail(@Body() dto: ConfirmationEmailDto) {
 		if (!dto) {
-			throw new NotFoundException('Token not passed')
+			throw new NotFoundException('Token not passed');
 		}
 
-		return this.authService.confirmationEmail(dto)
+		return this.authService.confirmationEmail(dto);
 	}
 
 	@HttpCode(200)
@@ -70,10 +71,10 @@ export class AuthController {
 	@Patch('auth/restore-password')
 	async restorePassword(@Body() dto: RestorePasswordDto) {
 		if (!dto) {
-			throw new NotFoundException('Email not passed')
+			throw new NotFoundException('Email not passed');
 		}
 
-		return this.authService.restorePassword(dto)
+		return this.authService.restorePassword(dto);
 	}
 
 	@HttpCode(200)
@@ -83,26 +84,26 @@ export class AuthController {
 		@Res({ passthrough: true }) res: Response
 	) {
 		const refreshTokenFromCookies =
-			req.cookies[this.refreshTokenService.REFRESH_TOKEN_NAME]
+			req.cookies[this.refreshTokenService.REFRESH_TOKEN_NAME];
 
 		if (!refreshTokenFromCookies) {
-			this.refreshTokenService.removeRefreshTokenFromResponse(res)
-			throw new UnauthorizedException('Refresh token not passed')
+			this.refreshTokenService.removeRefreshTokenFromResponse(res);
+			throw new UnauthorizedException('Refresh token not passed');
 		}
 
 		const { refreshToken, ...response } =
-			await this.authService.getNewTokens(refreshTokenFromCookies)
+			await this.authService.getNewTokens(refreshTokenFromCookies);
 
-		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken)
+		this.refreshTokenService.addRefreshTokenToResponse(res, refreshToken);
 
-		return response
+		return response;
 	}
 
 	@HttpCode(200)
 	@Post('auth/logout')
 	async logout(@Res({ passthrough: true }) res: Response) {
-		this.refreshTokenService.removeRefreshTokenFromResponse(res)
+		this.refreshTokenService.removeRefreshTokenFromResponse(res);
 
-		return true
+		return true;
 	}
 }

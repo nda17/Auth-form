@@ -1,4 +1,4 @@
 export interface IFileResponse {
-	url: string
-	name: string
+	url: string;
+	name: string;
 }

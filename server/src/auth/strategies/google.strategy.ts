@@ -1,9 +1,9 @@
-import { AuthService } from '@/auth/auth.service'
-import { IGoogleProfile } from '@/auth/social-media/social-media-auth.types'
-import { Injectable } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { PassportStrategy } from '@nestjs/passport'
-import { Strategy, VerifyCallback } from 'passport-google-oauth20'
+import { AuthService } from '@/auth/auth.service';
+import { IGoogleProfile } from '@/auth/social-media/social-media-auth.types';
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { PassportStrategy } from '@nestjs/passport';
+import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
@@ -16,7 +16,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 			clientSecret: configService.get('GOOGLE_CLIENT_SECRET'),
 			callbackURL: configService.get('GOOGLE_CALLBACK_URL'),
 			scope: ['email', 'profile']
-		})
+		});
 	}
 
 	async validate(
@@ -25,7 +25,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 		profile: any,
 		done: VerifyCallback
 	): Promise<any> {
-		const { name, emails, photos } = profile
+		const { name, emails, photos } = profile;
 
 		const user: IGoogleProfile = {
 			email: emails[0].value,
@@ -33,8 +33,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
 			lastName: name.familyName,
 			picture: photos[0].value,
 			accessToken
-		}
+		};
 
-		done(null, user)
+		done(null, user);
 	}
 }
