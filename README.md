@@ -1,9 +1,7 @@
 # Currently in development!
 README v0.1.0
 
-# Auth-form
-
-# Authorization-form
+# User authorization template
 
 refresh-token.service - настройки куки при деплое
 main ts - реализовать логирование winston
@@ -51,3 +49,25 @@ GitHub
 В разделе OAuth Apps нажмите New OAuth App.
 Заполните необходимые поля, такие как Application name, Homepage URL, и Authorization callback URL.
 Нажмите Register application и получите Client ID и Client Secret.
+
+
+
+
+
+
+
+
+
+Добавление FAVICON:
+
+Добавить свой файл favicon.svg в папку /public/
+
+
+
+
+Настройка конфигурации и добавление метаданных для СЕО оптимизации в файлах: 
+
+Добавить свои иконки в предпочтительных размерах в папку /public/touch-icons
+Добавить предпочтительные данные в файлы /public/robots.txt и /public/manifest.json
+Сконфигурировать карту сайта в файле /src/app/sitemap.xml/route.ts
+Добавить свои метаданные в файле /src/app/layout.tsx
