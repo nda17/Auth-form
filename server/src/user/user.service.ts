@@ -3,44 +3,81 @@ import {
 	IGithubProfile,
 	IGoogleProfile
 } from '@/auth/social-media/social-media-auth.types';
+import isHasMorePagination from '@/pagination/is-has-more';
+import { PaginationArgsWithSearchTerm } from '@/pagination/pagination.args';
 import { PrismaService } from '@/prisma.service';
 import { UpdateUserDto } from '@/user/dto/update-user.dto';
+import { UserResponse } from '@/user/user.response';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Role, type User } from '@prisma/client';
+import { Prisma, Role, type User } from '@prisma/client';
 import { hash } from 'argon2';
 
 @Injectable()
 export class UserService {
 	constructor(private prisma: PrismaService) {}
 
-	async getUserList(searchTerm: string) {
-		return this.prisma.user.findMany({
-			where: {
-				email: {
-					contains: searchTerm
+	private getSearchTermFilter(searchTerm: string): Prisma.UserWhereInput {
+		return {
+			OR: [
+				{
+					email: {
+						contains: searchTerm,
+						mode: 'insensitive'
+					}
+				},
+				{
+					name: {
+						contains: searchTerm,
+						mode: 'insensitive'
+					}
+				},
+				{
+					id: {
+						contains: searchTerm,
+						mode: 'insensitive'
+					}
 				}
-			},
-			select: {
-				id: true,
-				name: true,
-				email: true,
-				verificationToken: true,
-				rights: true,
-				createdAt: true,
-				password: false
-			}
-		});
+			]
+		};
 	}
 
-	async getUserById(id: string) {
-		return this.prisma.user.findUnique({
-			where: {
-				id
-			}
+	async getAll(
+		args?: PaginationArgsWithSearchTerm
+	): Promise<UserResponse> {
+		const searchTermQuery = args?.searchTerm
+			? this.getSearchTermFilter(args?.searchTerm)
+			: {};
+
+		const totalCount = await this.prisma.user.count({
+			where: searchTermQuery
 		});
+
+		const users = await this.prisma.user.findMany({
+			skip: +args?.skip,
+			take: +args?.take,
+			where: searchTermQuery
+		});
+
+		const isHasMore = isHasMorePagination(
+			totalCount,
+			+args?.skip,
+			+args.take
+		);
+
+		return { items: users, isHasMore };
 	}
 
-	async getUserByEmail(email: string) {
+	async getById(id: string) {
+		const user = await this.prisma.user.findUnique({
+			where: { id }
+		});
+
+		if (!user) throw new NotFoundException('User not found');
+
+		return user;
+	}
+
+	async getByEmail(email: string) {
 		return this.prisma.user.findUnique({
 			where: {
 				email
@@ -49,7 +86,7 @@ export class UserService {
 	}
 
 	async findOrCreateSocialUser(profile: IGoogleProfile | IGithubProfile) {
-		let user = await this.getUserByEmail(profile.email);
+		let user = await this.getByEmail(profile.email);
 		if (!user) {
 			user = await this._createSocialUser(profile);
 		}
@@ -77,7 +114,7 @@ export class UserService {
 		});
 	}
 
-	async createUser(dto: AuthDto) {
+	async create(dto: AuthDto) {
 		return this.prisma.user.create({
 			data: {
 				...dto,
@@ -87,7 +124,7 @@ export class UserService {
 		});
 	}
 
-	async updateUser(id: string, dto?: UpdateUserDto) {
+	async update(id: string, dto?: UpdateUserDto) {
 		const user = await this.prisma.user.findUnique({
 			where: {
 				id
@@ -128,7 +165,8 @@ export class UserService {
 		});
 	}
 
-	async deleteUser(id: string) {
+	async delete(id: string) {
+		await this.getById(id);
 		return this.prisma.user.delete({
 			where: {
 				id
@@ -136,7 +174,7 @@ export class UserService {
 		});
 	}
 
-	async getCountUsers() {
+	async getCount() {
 		return this.prisma.user.count();
 	}
 }
