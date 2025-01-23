@@ -1,4 +1,5 @@
 import { IUserEditInput } from '@/components/screens/admin/user/edit/user-edit.interface';
+import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import UserService from '@/services/user/user.service';
 import {
 	useMutation,
@@ -33,7 +34,7 @@ export const useUserEdit = (
 			UserService.updateUser(userId, data),
 		onSuccess() {
 			toast.success('Update user was successful');
-			router.push('/admin/user-list');
+			router.push(ADMIN_PAGES.USER_LIST);
 			queryClient.invalidateQueries({ queryKey: ['get-user-by-id'] });
 		},
 		onError(error) {

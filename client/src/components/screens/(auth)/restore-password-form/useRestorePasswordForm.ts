@@ -1,3 +1,4 @@
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import authService from '@/services/auth/auth.service';
 import { IEmail } from '@/shared/types/form.types';
 import { useMutation } from '@tanstack/react-query';
@@ -29,7 +30,7 @@ const useRestorePasswordForm = () => {
 				startTransition(() => {
 					toast.success('Temporary password sent by email');
 					reset();
-					router.replace('/login');
+					router.replace(PUBLIC_PAGES.LOGIN);
 				});
 			},
 			onError(error) {

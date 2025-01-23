@@ -55,7 +55,7 @@ const useAuthForm = (isLogin: boolean) => {
 						'Successful register. A link to confirm your Email has been sent to your email.'
 					);
 					reset();
-					router.replace('/profile');
+					router.replace(PUBLIC_PAGES.USER_PROFILE);
 				});
 			},
 			onError(error) {
