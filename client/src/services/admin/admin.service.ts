@@ -3,7 +3,7 @@ import { axiosInterceptorsRequest } from '@/api/interceptors';
 class AdminService {
 	private _BASE_URL = '/users';
 
-	async fetchCountUsers() {
+	async getCount() {
 		return axiosInterceptorsRequest.get<number>(`${this._BASE_URL}/count`);
 	}
 }

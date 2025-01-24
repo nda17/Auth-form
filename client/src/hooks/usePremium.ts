@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 const usePremium = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-user-premium-rights'],
-		queryFn: () => UserService.fetchPremium(),
+		queryFn: () => UserService.getPremium(),
 		select: ({ data }) => data.access
 	});
 

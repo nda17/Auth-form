@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 const useCountUsers = () => {
 	const { data: response, isLoading } = useQuery({
 		queryKey: ['get-count-users'],
-		queryFn: () => adminService.fetchCountUsers()
+		queryFn: () => adminService.getCount()
 	});
 
 	return { response, isLoading };

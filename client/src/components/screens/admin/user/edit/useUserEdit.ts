@@ -20,7 +20,7 @@ export const useUserEdit = (
 
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ['get-user-by-id', userId],
-		queryFn: () => UserService.fetchUserById(userId),
+		queryFn: () => UserService.getById(userId),
 		select: ({ data }) => data
 	});
 
@@ -30,8 +30,7 @@ export const useUserEdit = (
 
 	const { mutateAsync } = useMutation({
 		mutationKey: ['update-user'],
-		mutationFn: (data: IUserEditInput) =>
-			UserService.updateUser(userId, data),
+		mutationFn: (data: IUserEditInput) => UserService.update(userId, data),
 		onSuccess() {
 			toast.success('Update user was successful');
 			router.push(ADMIN_PAGES.USER_LIST);

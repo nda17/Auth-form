@@ -15,7 +15,7 @@ const useUser = () => {
 
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-profile', auth],
-		queryFn: () => userService.fetchProfile(),
+		queryFn: () => userService.getProfile(),
 		refetchInterval: 1800000, // 30 minutes in milliseconds
 
 		enabled: () => getAccessToken() !== null
