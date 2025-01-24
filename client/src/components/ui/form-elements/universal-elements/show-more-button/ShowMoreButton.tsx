@@ -12,7 +12,7 @@ const ShowMoreButton: NextPage<IShowMoreButton> = ({
 			disabled={isLoading}
 			className={styles.button}
 		>
-			{isLoading ? 'Wait..' : 'Show more'}
+			{isLoading ? 'Wait...' : 'Show more'}
 		</button>
 	);
 };
