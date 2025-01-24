@@ -12,7 +12,7 @@ export const SearchField: NextPage<ISearchField> = ({
 		<div className={styles.searchField}>
 			<MaterialIcon name="MdSearch" />
 			<input
-				placeholder="Search email"
+				placeholder="Email, id, name"
 				value={searchTerm}
 				onChange={handleSearch}
 			/>
