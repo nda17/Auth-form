@@ -15,7 +15,7 @@ const useUserListQuery = () => {
 	const debouncedSearch = useDebounce(searchTerm, 500);
 	const queryClient = useQueryClient();
 
-	const { data, isPending, refetch } = useQuery({
+	const { data, isPending } = useQuery({
 		queryKey: ['get-user-list', debouncedSearch],
 		queryFn: () =>
 			UserService.getAll({
