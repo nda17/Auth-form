@@ -60,7 +60,6 @@ const useUserListQuery = () => {
 		isPending,
 		searchTerm,
 		deleteUser,
-		setSearchTerm,
 		setPage,
 		isHasMore: data?.isHasMore,
 		handleClear,
