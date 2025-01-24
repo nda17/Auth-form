@@ -8,6 +8,7 @@ const ShowMoreButton: NextPage<IShowMoreButton> = ({
 }) => {
 	return (
 		<button
+			aria-label="Show more"
 			onClick={onLoadMore}
 			disabled={isLoading}
 			className={styles.button}

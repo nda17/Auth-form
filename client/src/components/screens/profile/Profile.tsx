@@ -60,6 +60,7 @@ const Profile: NextPage = () => {
 						</i>
 					</p>
 					<button
+						aria-label="Logout"
 						onClick={() => mutateLogout()}
 						disabled={isLogoutLoading}
 						className={clsx(styles['logout-button'])}

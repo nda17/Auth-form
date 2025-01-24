@@ -33,6 +33,7 @@ const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
 				<span className={styles.text}>{text}</span>
 				<div className={clsx(styles['buttons-wrapper'])}>
 					<button
+						aria-label="Delete"
 						className={styles.button}
 						type="button"
 						onClick={() => {
@@ -44,6 +45,7 @@ const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
 						Delete
 					</button>
 					<button
+						aria-label="Cancel"
 						className={styles.button}
 						type="button"
 						onClick={() => {

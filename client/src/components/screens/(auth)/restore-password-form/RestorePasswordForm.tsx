@@ -43,6 +43,7 @@ const RestorePasswordForm: NextPage = () => {
 
 			<div className={clsx(styles['wrapper-button'])}>
 				<button
+					aria-label="Recover password"
 					type="submit"
 					className={clsx(
 						styles['button-primary'],

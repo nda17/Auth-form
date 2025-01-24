@@ -45,6 +45,7 @@ const LogoutButton: NextPage = () => {
 
 	return (
 		<button
+			aria-label="Logout"
 			onClick={logoutHandler}
 			disabled={isLogoutPending}
 			className={clsx(styles['link-auth-button'])}

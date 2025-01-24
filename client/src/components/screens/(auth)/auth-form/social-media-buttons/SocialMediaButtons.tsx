@@ -9,16 +9,18 @@ const SocialMediaButtons = () => {
 	return (
 		<div className={styles.wrapper}>
 			<button
+				aria-label="Google login page"
+				type="button"
 				onClick={() => router.push(SOCIAL_AUTH_PAGES.GOOGLE)}
 				className={styles.button}
-				type="button"
 			>
 				<FontAwesomeIcon name="FaGoogle" fill="#000000" />
 			</button>
 			<button
+				aria-label="Github login page"
+				type="button"
 				onClick={() => router.push(SOCIAL_AUTH_PAGES.GITHUB)}
 				className={styles.button}
-				type="button"
 			>
 				<FontAwesomeIcon name="FaGithub" fill="#000000" />
 			</button>

@@ -22,10 +22,15 @@ const AdminActions: NextPage<IAdminActions> = ({ editUrl, userId }) => {
 
 	return (
 		<div className={styles.wrapper}>
-			<button className={styles.item} onClick={() => push(editUrl)}>
+			<button
+				aria-label="Edit"
+				className={styles.item}
+				onClick={() => push(editUrl)}
+			>
 				<MaterialIcon name="MdEdit" />
 			</button>
 			<button
+				aria-label="Delete"
 				className={styles.item}
 				onClick={() => {
 					changeStatePopup();

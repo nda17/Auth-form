@@ -45,6 +45,7 @@ const CookieConsentPopup: NextPage<ICookieConsent> = status => {
 				</div>
 			</div>
 			<button
+				aria-label="Accept"
 				type="button"
 				onClick={(e: any) => accept(e)}
 				className={clsx(styles['button-accept'])}

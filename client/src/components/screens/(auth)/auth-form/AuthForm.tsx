@@ -60,6 +60,7 @@ const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
 
 			<div className={clsx(styles['wrapper-button'])}>
 				<button
+					aria-label={isLogin ? 'Sign in' : 'Sign up'}
 					type="submit"
 					className={clsx(
 						styles['button-primary'],
