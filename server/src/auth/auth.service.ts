@@ -36,11 +36,11 @@ export class AuthService {
 	}
 
 	async register(dto: AuthDto) {
-		const userExists = await this.userService.getUserByEmail(dto.email);
+		const userExists = await this.userService.getByEmail(dto.email);
 		if (userExists) {
 			throw new BadRequestException('User already exists');
 		}
-		const user = await this.userService.createUser(dto);
+		const user = await this.userService.create(dto);
 
 		await this.emailService.sendVerification(
 			user.email,
@@ -55,7 +55,7 @@ export class AuthService {
 		if (!result) {
 			throw new UnauthorizedException('Invalid refresh token');
 		}
-		const user = await this.userService.getUserById(result.id);
+		const user = await this.userService.getById(result.id);
 		return this.buildResponseObject(user);
 	}
 
@@ -136,7 +136,7 @@ export class AuthService {
 	}
 
 	private async validateUser(dto: AuthDto) {
-		const user = await this.userService.getUserByEmail(dto.email);
+		const user = await this.userService.getByEmail(dto.email);
 		if (!user) {
 			throw new UnauthorizedException('Email or password invalid');
 		}
