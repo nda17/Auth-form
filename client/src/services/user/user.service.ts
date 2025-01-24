@@ -2,53 +2,58 @@ import { axiosInterceptorsRequest } from '@/api/interceptors';
 import { IUserEditInput } from '@/components/screens/admin/user/edit/user-edit.interface';
 import { IUser } from '@/shared/types/user.types';
 
+export interface IPaginationResponse<T> {
+	items: T[];
+	isHasMore: boolean;
+}
+
+export interface IPaginationParams {
+	skip?: number;
+	take?: number;
+	searchTerm?: string;
+}
+
 class UserService {
 	private _BASE_URL = '/users';
 
-	async fetchProfile() {
+	async getProfile() {
 		return axiosInterceptorsRequest.get<IUser>(
 			`${this._BASE_URL}/profile`
 		);
 	}
 
-	async fetchPremium() {
+	async getPremium() {
 		return axiosInterceptorsRequest.get<{ access: true }>(
 			`${this._BASE_URL}/premium`
 		);
 	}
 
-	async fetchManager() {
+	async getManager() {
 		return axiosInterceptorsRequest.get<{ access: true }>(
 			`${this._BASE_URL}/manager`
 		);
 	}
 
-	async fetchUserList(searchTerm?: string) {
-		return axiosInterceptorsRequest.get<IUser[]>(
+	async getAll(params?: IPaginationParams) {
+		return axiosInterceptorsRequest.get<IPaginationResponse<IUser>>(
 			`${this._BASE_URL}/user-list`,
-			{
-				params: searchTerm
-					? {
-							searchTerm
-						}
-					: {}
-			}
+			{ params }
 		);
 	}
 
-	async fetchUserById(id: string) {
+	async getById(id: string) {
 		return axiosInterceptorsRequest.get<IUser>(
 			`${this._BASE_URL}/edit/${id}`
 		);
 	}
 
-	async deleteUser(id: string) {
+	async delete(id: string) {
 		return axiosInterceptorsRequest.delete<string>(
 			`${this._BASE_URL}/user/${id}`
 		);
 	}
 
-	async updateUser(id: string, data: IUserEditInput) {
+	async update(id: string, data: IUserEditInput) {
 		return axiosInterceptorsRequest.patch<string>(
 			`${this._BASE_URL}/user/${id}`,
 			data
