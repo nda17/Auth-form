@@ -1,16 +1,16 @@
-import MaterialIcon from '@/components/ui/icons/MaterialIcon';
+import LucideIcon from '@/components/ui/icons/lucide-icon/LucideIcon';
 import styles from '@/components/ui/search-field/SearchField.module.scss';
 import { ISearchField } from '@/components/ui/search-field/search-field.interface';
 import { NextPage } from 'next';
 
-export const SearchField: NextPage<ISearchField> = ({
+const SearchField: NextPage<ISearchField> = ({
 	searchTerm,
 	handleSearch,
 	handleClear
 }) => {
 	return (
 		<div className={styles.searchField}>
-			<MaterialIcon name="MdSearch" />
+			<LucideIcon name="Search" />
 			<input
 				placeholder="Email, id, name"
 				value={searchTerm}
@@ -18,9 +18,11 @@ export const SearchField: NextPage<ISearchField> = ({
 			/>
 			{!searchTerm ? null : (
 				<span onClick={handleClear}>
-					<MaterialIcon name="MdClose" />
+					<LucideIcon name="X" color="red" />
 				</span>
 			)}
 		</div>
 	);
 };
+
+export default SearchField;
