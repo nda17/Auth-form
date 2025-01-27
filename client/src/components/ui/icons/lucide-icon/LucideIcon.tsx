@@ -5,13 +5,14 @@ import { NextPage } from 'next';
 const LucideIcon: NextPage<ILucideIcon> = ({
 	name,
 	fill = 'transparent',
+	color,
 	className
 }) => {
 	const IconComponent = icons[name];
 	const DefaultIcon = icons['GripVertical'];
 
 	return icons[name] ? (
-		<IconComponent fill={fill} className={className} />
+		<IconComponent fill={fill} color={color} className={className} />
 	) : (
 		<DefaultIcon />
 	);
