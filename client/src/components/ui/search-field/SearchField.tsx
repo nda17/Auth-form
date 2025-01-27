@@ -9,7 +9,7 @@ const SearchField: NextPage<ISearchField> = ({
 	handleClear
 }) => {
 	return (
-		<div className={styles.searchField}>
+		<div className={styles.wrapper}>
 			<LucideIcon name="Search" />
 			<input
 				placeholder="Email, id, name"
