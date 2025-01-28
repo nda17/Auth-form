@@ -1,9 +1,9 @@
-import styles from '@/components/ui/form-elements/admin-page/field-name/FieldName.module.scss';
-import { IField } from '@/components/ui/form-elements/form.interface';
+import styles from '@/components/screens/admin/users/(form)/fields/field-id/FieldId.module.scss';
+import { IField } from '@/components/screens/admin/users/(form)/fields/fields.interface';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-const FieldName = forwardRef<HTMLInputElement, IField>(
+const FieldId = forwardRef<HTMLInputElement, IField>(
 	({ error, placeholder, type = 'text', style, ...rest }, ref) => {
 		return (
 			<div className={clsx(styles['wrapper-input'])} style={style}>
@@ -18,7 +18,7 @@ const FieldName = forwardRef<HTMLInputElement, IField>(
 					/>
 				</label>
 				{error?.message ===
-					'Min length must be greater than 2 characters. Numbers from the second character and the special character "-" can be used' && (
+					'Min and max length 25 characters. First 2 characters of letters. Next are letters and numbers' && (
 					<p className={clsx(styles['error-message'])}>{error.message}</p>
 				)}
 			</div>
@@ -26,4 +26,4 @@ const FieldName = forwardRef<HTMLInputElement, IField>(
 	}
 );
 
-export default FieldName;
+export default FieldId;

@@ -1,6 +1,6 @@
-import { IUploadField } from '@/components/ui/form-elements/form.interface';
-import styles from '@/components/ui/form-elements/universal-elements/field-upload-file/FieldUploadFile.module.scss';
-import { useUploadFile } from '@/components/ui/form-elements/universal-elements/field-upload-file/useUploadFile';
+import styles from '@/components/screens/admin/users/(form)/fields/field-upload-file/FieldUploadFile.module.scss';
+import { useUploadFile } from '@/components/screens/admin/users/(form)/fields/field-upload-file/useUploadFile';
+import { IUploadField } from '@/components/screens/admin/users/(form)/fields/fields.interface';
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import clsx from 'clsx';
 import { NextPage } from 'next';

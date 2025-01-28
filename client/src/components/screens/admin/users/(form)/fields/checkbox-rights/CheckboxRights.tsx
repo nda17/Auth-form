@@ -1,4 +1,4 @@
-import { IField } from '@/components/ui/form-elements/form.interface';
+import { IField } from '@/components/screens/admin/users/(form)/fields/fields.interface';
 import { forwardRef } from 'react';
 
 const CheckboxRights = forwardRef<HTMLInputElement, IField>(
