@@ -1,4 +1,4 @@
-import ShowMoreButton from '@/components/ui/form-elements/universal-elements/show-more-button/ShowMoreButton';
+import ShowMoreButton from '@/components/ui/form-elements/show-more-button/ShowMoreButton';
 import { Dispatch, SetStateAction } from 'react';
 
 interface IManageUsersShowMore {
