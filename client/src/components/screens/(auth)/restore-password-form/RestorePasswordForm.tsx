@@ -1,7 +1,7 @@
 'use client';
 import styles from '@/components/screens/(auth)/auth-form/AuthForm.module.scss';
+import FieldEmail from '@/components/screens/(auth)/fields/field-email/FieldEmail';
 import useRestorePasswordForm from '@/components/screens/(auth)/restore-password-form/useRestorePasswordForm';
-import FieldEmail from '@/components/ui/form-elements/auth-page/field-email/FieldEmail';
 import { validEmail } from '@/shared/regex';
 import clsx from 'clsx';
 import { NextPage } from 'next';
