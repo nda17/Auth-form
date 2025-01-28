@@ -1,4 +1,4 @@
-import UserEdit from '@/components/screens/admin/users/(form)/edit/UserEdit';
+import UserForm from '@/components/screens/admin/users/(form)/user-form/UserForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const UserEditPage = async ({ params }) => {
-	return <UserEdit params={params} />;
+	return <UserForm type="admin-edit" params={params} />;
 };
 
 export default UserEditPage;
