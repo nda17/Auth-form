@@ -1,4 +1,4 @@
-import { IShowMoreButton } from '@/components/ui/form-elements/universal-elements/show-more-button/show-more-button.interface';
+import { IShowMoreButton } from '@/components/ui/form-elements/show-more-button/show-more-button.interface';
 import styles from '@/components/ui/form-elements/universal-elements/show-more-button/ShowMoreButton.module.scss';
 import { NextPage } from 'next';
 
