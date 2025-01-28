@@ -1,0 +1,83 @@
+.wrapper {
+	@apply w-full rounded mb-[1.25rem] text-left;
+
+	tbody,
+	thead {
+		width: 100%;
+		border-spacing: 0 7px;
+
+		> tr {
+			> th {
+				@media (max-width: 991px) {
+					background-color: #d9dae8;
+				}
+			}
+		}
+
+		> tr {
+			> th,
+			> td {
+				border-width: 1px;
+				border-style: solid;
+				border-color: gray;
+				padding: 10px 20px;
+
+				@media (min-width: 992px) {
+					font-size: 0.65rem;
+				}
+
+				@media (min-width: 1200px) {
+					font-size: 0.83rem;
+				}
+
+				@media (min-width: 1400px) {
+					font-size: inherit;
+				}
+
+				@media (max-width: 991px) {
+					padding: 8px 10px;
+				}
+
+				@media (max-width: 991px) {
+					display: block;
+					border-width: 1px;
+					border-bottom-width: 0;
+				}
+
+				&.actions {
+					width: 105px;
+
+					@media (max-width: 991px) {
+						width: 100%;
+					}
+				}
+
+				&:first-child {
+					border-left-width: 1px;
+				}
+
+				&:last-child {
+					border-right-width: 1px;
+
+					@media (max-width: 991px) {
+						border-bottom-width: 1px;
+					}
+				}
+			}
+		}
+
+		.not-found {
+			color: red;
+
+			@media (min-width: 992px) {
+				border: none;
+			}
+		}
+	}
+
+	thead > tr {
+		> th {
+			font-weight: 900;
+		}
+	}
+}
