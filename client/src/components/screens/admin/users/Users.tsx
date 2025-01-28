@@ -84,12 +84,12 @@ const Users: NextPage = () => {
 					headerActions={['Edit', 'Delete']}
 					columns={[
 						{
-							title: 'ID:',
+							title: 'ID',
 							dataIndex: 'id',
 							render: record => record.id
 						},
 						{
-							title: 'Registration date:',
+							title: 'Registration date',
 							dataIndex: 'createdAt',
 							render: record => {
 								const date = new Date(record.createdAt);
@@ -101,7 +101,7 @@ const Users: NextPage = () => {
 							}
 						},
 						{
-							title: 'Verified:',
+							title: 'Verified',
 							dataIndex: 'verificationToken',
 							render: record =>
 								(record.verificationToken && (
@@ -109,7 +109,7 @@ const Users: NextPage = () => {
 								)) || <LucideIcon name="UserRoundCheck" color="green" />
 						},
 						{
-							title: 'Avatar:',
+							title: 'Avatar',
 							dataIndex: 'avatarPath',
 							render: record => (
 								<Image
@@ -126,17 +126,17 @@ const Users: NextPage = () => {
 							)
 						},
 						{
-							title: 'Name:',
+							title: 'Name',
 							dataIndex: 'name',
 							render: record => record.name || 'No data'
 						},
 						{
-							title: 'Email:',
+							title: 'Email',
 							dataIndex: 'email',
 							render: record => record.email || 'No data'
 						},
 						{
-							title: 'Role:',
+							title: 'Role',
 							dataIndex: 'rights',
 							render: record =>
 								record.rights.length > 1
