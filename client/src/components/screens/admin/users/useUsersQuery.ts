@@ -9,7 +9,7 @@ import axios from 'axios';
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const useUserListQuery = () => {
+const useUsersQuery = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [page, setPage] = useState(1);
 	const debouncedSearch = useDebounce(searchTerm, 500);
@@ -67,4 +67,4 @@ const useUserListQuery = () => {
 	};
 };
 
-export default useUserListQuery;
+export default useUsersQuery;
