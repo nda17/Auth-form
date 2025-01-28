@@ -1,0 +1,7 @@
+.user-form-heading {
+	@apply font-semibold mb-[1.1rem] text-[1.05rem] select-none transition-all;
+
+	&:hover {
+		@apply text-gray-700;
+	}
+}
