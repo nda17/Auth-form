@@ -2,14 +2,14 @@
 	@apply w-full flex flex-col relative;
 
 	.header-wrapper {
-		@apply flex justify-between items-center mb-[1.1rem];
+		@apply flex flex-col md:flex-row justify-between items-center mb-[1.1rem];
 
 		.skeleton-wrapper-create {
-			@apply w-[10rem] h-6;
+			@apply w-[10rem] h-6 mb-[1.1rem] lg:mb-0;
 		}
 
 		.create-link {
-			@apply bg-red-500 text-white px-4 py-2 rounded-md max-w-[12.2rem];
+			@apply bg-red-500 text-white px-4 py-2 rounded-md max-w-[12.2rem] mb-[1.1rem] md:mb-0;
 		}
 
 		.skeleton-wrapper-search {
