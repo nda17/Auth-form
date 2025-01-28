@@ -19,5 +19,3 @@ export interface IUploadField {
 	error?: FieldError;
 	style?: CSSProperties;
 }
-
-// export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
