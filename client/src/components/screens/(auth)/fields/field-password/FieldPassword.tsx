@@ -1,5 +1,5 @@
-import styles from '@/components/ui/form-elements/auth-page/field-password/FieldPassword.module.scss';
-import { IField } from '@/components/ui/form-elements/form.interface';
+import styles from '@/components/screens/(auth)/fields/field-password/FieldPassword.module.scss';
+import { IField } from '@/components/screens/(auth)/fields/fields.interface';
 import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon';
 import clsx from 'clsx';
 import { forwardRef, useState } from 'react';

@@ -1,5 +1,5 @@
-import styles from '@/components/ui/form-elements/auth-page/field-email/FieldEmail.module.scss';
-import { IField } from '@/components/ui/form-elements/form.interface';
+import styles from '@/components/screens/(auth)/fields/field-email/FieldEmail.module.scss';
+import { IField } from '@/components/screens/(auth)/fields/fields.interface';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
