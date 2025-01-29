@@ -93,7 +93,7 @@ const Users: NextPage = () => {
 							title: 'Creation date',
 							dataIndex: 'createdAt',
 							render: record => {
-								return formatDate(record.createdAt);
+								return formatDate(record.createdAt) || 'No data';
 							}
 						},
 						{
