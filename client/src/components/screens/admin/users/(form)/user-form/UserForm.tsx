@@ -5,7 +5,7 @@ import { IUserForm } from '@/components/screens/admin/users/(form)/user-form/use
 import { NextPage } from 'next';
 
 const UserForm: NextPage<IUserForm> = ({ type, params }) => {
-	const id = params.id;
+	const id = params?.id;
 	const result = useCreateUpdateUser(
 		id,
 		type === 'admin-create',
