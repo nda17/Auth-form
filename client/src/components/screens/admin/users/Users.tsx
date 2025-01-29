@@ -89,7 +89,7 @@ const Users: NextPage = () => {
 							render: record => record.id
 						},
 						{
-							title: 'Registration date',
+							title: 'Creation date',
 							dataIndex: 'createdAt',
 							render: record => {
 								const date = new Date(record.createdAt);
