@@ -1,6 +1,7 @@
 import { Auth } from '@/auth/decorators/auth.decorator';
 import { CurrentUser } from '@/auth/decorators/user.decorator';
 import { PaginationArgsWithSearchTerm } from '@/pagination/pagination.args';
+import { CreateUserDto } from '@/user/dto/create-user.dto';
 import { UpdateUserDto } from '@/user/dto/update-user.dto';
 import { UserService } from '@/user/user.service';
 import {
@@ -11,6 +12,7 @@ import {
 	HttpCode,
 	Param,
 	Patch,
+	Post,
 	Query
 } from '@nestjs/common';
 import { Role } from '@prisma/client';
@@ -59,6 +61,13 @@ export class UserController {
 	@Get('count')
 	async getCount() {
 		return this.userService.getCount();
+	}
+
+	@HttpCode(200)
+	@Auth(Role.ADMIN)
+	@Post('create')
+	async create(@Body() dto: CreateUserDto) {
+		return this.userService.adminCreateUser(dto);
 	}
 
 	@HttpCode(200)
