@@ -6,9 +6,14 @@ import {
 import isHasMorePagination from '@/pagination/is-has-more';
 import { PaginationArgsWithSearchTerm } from '@/pagination/pagination.args';
 import { PrismaService } from '@/prisma.service';
+import { CreateUserDto } from '@/user/dto/create-user.dto';
 import { UpdateUserDto } from '@/user/dto/update-user.dto';
 import { UserResponse } from '@/user/user.response';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+	BadRequestException,
+	Injectable,
+	NotFoundException
+} from '@nestjs/common';
 import { Prisma, Role, type User } from '@prisma/client';
 import { hash } from 'argon2';
 
@@ -72,7 +77,9 @@ export class UserService {
 			where: { id }
 		});
 
-		if (!user) throw new NotFoundException('User not found');
+		if (!user) {
+			throw new NotFoundException('User not found');
+		}
 
 		return user;
 	}
@@ -124,6 +131,42 @@ export class UserService {
 		});
 	}
 
+	async adminCreateUser(dto: CreateUserDto) {
+		const isSameUser = await this.prisma.user.findFirst({
+			where: {
+				email: dto.email
+			}
+		});
+
+		if (isSameUser && dto.id !== isSameUser.id) {
+			throw new BadRequestException('Email already exists');
+		}
+
+		const identifierExists = await this.prisma.user.findFirst({
+			where: { id: dto.id }
+		});
+
+		if (identifierExists) {
+			throw new BadRequestException('Identifier already exists');
+		}
+
+		return this.prisma.user.create({
+			data: {
+				id: dto.id,
+				email: dto.email.toLowerCase(),
+				password: await hash(dto.password),
+				name: dto.name,
+				avatarPath: dto.avatarPath,
+				rights: [
+					dto.isUser ? Role.USER : null,
+					dto.isAdmin ? Role.ADMIN : null,
+					dto.isManager ? Role.MANAGER : null,
+					dto.isPremium ? Role.PREMIUM : null
+				].filter(role => role !== null)
+			}
+		});
+	}
+
 	async update(id: string, dto?: UpdateUserDto) {
 		const user = await this.prisma.user.findUnique({
 			where: {
@@ -142,7 +185,15 @@ export class UserService {
 		});
 
 		if (isSameUser && id !== isSameUser.id) {
-			throw new NotFoundException('Email busy');
+			throw new BadRequestException('Email already exists');
+		}
+
+		const identifierExists = await this.prisma.user.findFirst({
+			where: { id: dto.id }
+		});
+
+		if (identifierExists) {
+			throw new BadRequestException('Identifier already exists');
 		}
 
 		return this.prisma.user.update({
