@@ -14,6 +14,7 @@ import DashboardTable from '@/components/ui/table/DashboardTable';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import { useAlertPopupStore } from '@/store/alert-popup-store/alert-popup-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
+import { formatDate } from '@/utils/format.date';
 import clsx from 'clsx';
 import { NextPage } from 'next';
 import Image from 'next/image';
@@ -92,12 +93,7 @@ const Users: NextPage = () => {
 							title: 'Creation date',
 							dataIndex: 'createdAt',
 							render: record => {
-								const date = new Date(record.createdAt);
-								const day = String(date.getDate()).padStart(2, '0');
-								const month = String(date.getMonth() + 1).padStart(2, '0');
-								const year = date.getFullYear();
-								const formatDateString = `${day}/${month}/${year}`;
-								return formatDateString || 'No data';
+								return formatDate(record.createdAt);
 							}
 						},
 						{
