@@ -32,14 +32,17 @@ export class AuthService {
 
 	async login(dto: AuthDto) {
 		const user = await this.validateUser(dto);
+
 		return this.buildResponseObject(user);
 	}
 
 	async register(dto: AuthDto) {
 		const userExists = await this.userService.getByEmail(dto.email);
+
 		if (userExists) {
 			throw new BadRequestException('User already exists');
 		}
+
 		const user = await this.userService.create(dto);
 
 		await this.emailService.sendVerification(
@@ -52,10 +55,13 @@ export class AuthService {
 
 	async getNewTokens(refreshToken: string) {
 		const result = await this.jwt.verifyAsync(refreshToken);
+
 		if (!result) {
 			throw new UnauthorizedException('Invalid refresh token');
 		}
+
 		const user = await this.userService.getById(result.id);
+
 		return this.buildResponseObject(user);
 	}
 
@@ -121,29 +127,37 @@ export class AuthService {
 
 	async buildResponseObject(user: User) {
 		const tokens = await this.issueTokens(user.id, user.rights);
+
 		return { user: this.omitPassword(user), ...tokens };
 	}
 
 	private async issueTokens(userId: string, rights: Role[]) {
 		const payload = { id: userId, rights };
+		
 		const accessToken = this.jwt.sign(payload, {
 			expiresIn: this.TOKEN_EXPIRATION_ACCESS
 		});
+
 		const refreshToken = this.jwt.sign(payload, {
 			expiresIn: this.TOKEN_EXPIRATION_REFRESH
 		});
+
 		return { accessToken, refreshToken };
 	}
 
 	private async validateUser(dto: AuthDto) {
 		const user = await this.userService.getByEmail(dto.email);
+
 		if (!user) {
 			throw new UnauthorizedException('Email or password invalid');
 		}
+
 		const isValid = await verify(user.password, dto.password);
+
 		if (!isValid) {
 			throw new UnauthorizedException('Email or password invalid');
 		}
+
 		return user;
 	}
 
