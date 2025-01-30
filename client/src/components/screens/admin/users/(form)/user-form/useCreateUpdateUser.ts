@@ -53,7 +53,7 @@ export const useCreateUpdateUser = (
 
 	const { mutateAsync: adminUpdateUser } = useMutation({
 		mutationKey: ['update-user'],
-		mutationFn: (data: IUserEditInput) => UserService.update(userId, data),
+		mutationFn: (data: IUserEditInput) => UserService.update(userId, {isAdminRequest: true, ...data}),
 		onSuccess() {
 			toast.success('Update user was successful');
 			router.push(ADMIN_PAGES.USERS);
