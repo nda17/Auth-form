@@ -1,9 +1,9 @@
 'use client';
 import styles from '@/components/screens/manager/Manager.module.scss';
+import useManager from '@/components/screens/manager/useManager';
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader';
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
-import useManager from '@/hooks/useManager';
 import { NextPage } from 'next';
 
 const Manager: NextPage = () => {
