@@ -8,6 +8,7 @@ import {
 	useQuery,
 	useQueryClient
 } from '@tanstack/react-query';
+import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -40,8 +41,13 @@ export const useCreateUpdateUser = (
 			toast.success('User successfully created');
 			router.push(ADMIN_PAGES.USERS);
 		},
-		onError(error) {
-			toast.error(`Create user: ${error.message}`);
+
+		onError(error: AxiosError<AxiosError>) {
+			if (axios.isAxiosError(error)) {
+				toast.error(
+					`Create user: ${error.message}, ${error.response?.data?.message}`
+				);
+			}
 		}
 	});
 
@@ -52,8 +58,12 @@ export const useCreateUpdateUser = (
 			toast.success('Update user was successful');
 			router.push(ADMIN_PAGES.USERS);
 		},
-		onError(error) {
-			toast.error(`Update user: ${error.message}`);
+		onError(error: AxiosError<AxiosError>) {
+			if (axios.isAxiosError(error)) {
+				toast.error(
+					`Update user: ${error.message}, ${error.response?.data?.message}`
+				);
+			}
 		}
 	});
 
@@ -65,8 +75,12 @@ export const useCreateUpdateUser = (
 			router.push(PUBLIC_PAGES.USER_PROFILE);
 			queryClient.invalidateQueries({ queryKey: ['get-user-by-id'] });
 		},
-		onError(error) {
-			toast.error(`Update user: ${error.message}`);
+		onError(error: AxiosError<AxiosError>) {
+			if (axios.isAxiosError(error)) {
+				toast.error(
+					`Update user: ${error.message}, ${error.response?.data?.message}`
+				);
+			}
 		}
 	});
 

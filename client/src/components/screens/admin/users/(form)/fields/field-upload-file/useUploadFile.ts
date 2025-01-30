@@ -1,6 +1,6 @@
 import fileService from '@/services/file/file.service';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -16,10 +16,11 @@ export const useUploadFile = (
 		onSuccess({ data }) {
 			onChange(data[0].url);
 		},
-
-		onError(error) {
+		onError(error: AxiosError<AxiosError>) {
 			if (axios.isAxiosError(error)) {
-				toast.error(`Upload failed: ${error.response?.data?.message}`);
+				toast.error(
+					`Upload file: ${error.message}, ${error.response?.data?.message}`
+				);
 			}
 		}
 	});

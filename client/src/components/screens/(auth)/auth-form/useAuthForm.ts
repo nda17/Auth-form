@@ -2,7 +2,7 @@ import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import authService from '@/services/auth/auth.service';
 import { IFormData } from '@/shared/types/form.types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useRef, useTransition } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -30,11 +30,12 @@ const useAuthForm = (isLogin: boolean) => {
 				queryClient.invalidateQueries({ queryKey: ['get-profile'] });
 			});
 		},
-		onError(error) {
+		onError(error: AxiosError<AxiosError>) {
 			if (axios.isAxiosError(error)) {
 				toast.error(
-					`Unsuccessful login: ${error.response?.data?.message}`
+					`Unsuccessful login: ${error.message}, ${error.response?.data?.message}`
 				);
+
 				recaptchaRef.current.reset();
 			}
 		}
@@ -58,10 +59,10 @@ const useAuthForm = (isLogin: boolean) => {
 					router.replace(PUBLIC_PAGES.USER_PROFILE);
 				});
 			},
-			onError(error) {
+			onError(error: AxiosError<AxiosError>) {
 				if (axios.isAxiosError(error)) {
 					toast.error(
-						`Unsuccessful register: ${error.response?.data?.message}`
+						`Unsuccessful register: ${error.message}, ${error.response?.data?.message}`
 					);
 
 					recaptchaRef.current.reset();

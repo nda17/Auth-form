@@ -2,7 +2,7 @@ import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import authService from '@/services/auth/auth.service';
 import { IEmail } from '@/shared/types/form.types';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useRef, useTransition } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -33,11 +33,12 @@ const useRestorePasswordForm = () => {
 					router.replace(PUBLIC_PAGES.LOGIN);
 				});
 			},
-			onError(error) {
+			onError(error: AxiosError<AxiosError>) {
 				if (axios.isAxiosError(error)) {
 					toast.error(
-						`Restore password: ${error.response?.data?.message}`
+						`Restore password: ${error.message}, ${error.response?.data?.message}`
 					);
+
 					recaptchaRef.current.reset();
 				}
 			}

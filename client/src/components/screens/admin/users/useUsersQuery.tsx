@@ -5,7 +5,7 @@ import {
 	useQuery,
 	useQueryClient
 } from '@tanstack/react-query';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -38,9 +38,11 @@ const useUsersQuery = () => {
 			toast.success('Delete user was successful');
 			queryClient.invalidateQueries({ queryKey: ['get-user-list'] });
 		},
-		onError(error) {
+		onError(error: AxiosError<AxiosError>) {
 			if (axios.isAxiosError(error)) {
-				toast.error(error.response?.data?.message);
+				toast.error(
+					`Delete user: ${error.message}, ${error.response?.data?.message}`
+				);
 			}
 		}
 	});
