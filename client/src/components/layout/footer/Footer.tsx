@@ -22,12 +22,14 @@ const Footer: NextPage = () => {
 							<Link
 								href={PUBLIC_PAGES.SOCIALS_LINK_VK}
 								className={clsx(styles['link-icon'])}
+								aria-label="Vkontakte"
 							>
 								<FontAwesomeIcon name="FaVk" fill="gray" />
 							</Link>
 							<Link
 								href={PUBLIC_PAGES.SOCIALS_LINK_TG}
 								className={clsx(styles['link-icon'])}
+								aria-label="Telegram"
 							>
 								<FontAwesomeIcon name="FaTelegram" fill="gray" />
 							</Link>
@@ -60,12 +62,14 @@ const Footer: NextPage = () => {
 						<Link
 							href={PUBLIC_PAGES.PRIVACY_POLICY}
 							className={clsx(styles['link-legal'])}
+							aria-label="Privacy policy"
 						>
 							Privacy policy
 						</Link>
 						<Link
 							href={PUBLIC_PAGES.COOKIE_NOTICE}
 							className={clsx(styles['link-legal'])}
+							aria-label="Cookie notice"
 						>
 							Cookie notice
 						</Link>
