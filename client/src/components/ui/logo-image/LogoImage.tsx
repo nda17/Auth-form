@@ -7,7 +7,11 @@ import Link from 'next/link';
 
 const LogoImage: NextPage = () => {
 	return (
-		<Link href={PUBLIC_PAGES.HOME} className={styles.logo}>
+		<Link
+			href={PUBLIC_PAGES.HOME}
+			className={styles.logo}
+			aria-label="Home page"
+		>
 			<Image
 				src={logoImage}
 				alt="Auth-form"
