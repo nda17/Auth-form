@@ -66,8 +66,8 @@ export class UserController {
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
 	@Post('create')
-	async create(@Body() dto: CreateUserDto) {
-		return this.userService.adminCreateUser(dto);
+	async create(@Body() id: string, dto: CreateUserDto) {
+		return this.userService.adminCreateUser(id, dto);
 	}
 
 	@HttpCode(200)
