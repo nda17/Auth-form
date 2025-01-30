@@ -61,6 +61,7 @@ const Users: NextPage = () => {
 					<Link
 						href={`${ADMIN_PAGES.USERS}/create`}
 						className={clsx(styles['create-link'])}
+						aria-label='Create a new user'
 					>
 						Create a new user
 					</Link>
