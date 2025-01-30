@@ -16,4 +16,5 @@ export interface IUserEditInput
 	isAdmin?: boolean;
 	isManager?: boolean;
 	isPremium?: boolean;
+	isAdminRequest?: boolean;
 }
