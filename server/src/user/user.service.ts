@@ -131,7 +131,7 @@ export class UserService {
 		});
 	}
 
-	async adminCreateUser(id:string, dto?: CreateUserDto) {
+	async adminCreateUser(id: string, dto?: CreateUserDto) {
 		const isSameUser = await this.prisma.user.findFirst({
 			where: {
 				email: dto.email
@@ -180,44 +180,63 @@ export class UserService {
 			throw new NotFoundException('User not found');
 		}
 
-		const isSameUser = await this.prisma.user.findFirst({
-			where: {
-				email: dto.email
-			}
-		});
+		const isAdminRequest = dto.isAdminRequest || false;
 
-		if (isSameUser && id !== isSameUser.id) {
-			throw new BadRequestException('Email already exists');
+		if (isAdminRequest) {
+			const isSameUser = await this.prisma.user.findFirst({
+				where: {
+					email: dto.email
+				}
+			});
+
+			if (isSameUser && id !== isSameUser.id) {
+				throw new BadRequestException('Email already exists');
+			}
+
+			const existingId = await this.prisma.user.findFirst({
+				where: {
+					id: dto.id
+				}
+			});
+
+			if (existingId && id !== existingId.id) {
+				throw new BadRequestException('Identifier already exists');
+			}
+
+			return this.prisma.user.update({
+				where: {
+					id
+				},
+				data: {
+					id: dto.id ? dto.id : user.id,
+					email: dto.email ? dto.email.toLowerCase() : user.email,
+					password: dto.password
+						? await hash(dto.password)
+						: user.password,
+					name: dto.name,
+					avatarPath: dto.avatarPath ? dto.avatarPath : user.avatarPath,
+					rights: [
+						dto.isUser ? Role.USER : null,
+						dto.isAdmin ? Role.ADMIN : null,
+						dto.isManager ? Role.MANAGER : null,
+						dto.isPremium ? Role.PREMIUM : null
+					].filter(role => role !== null)
+				}
+			});
+		} else {
+			return this.prisma.user.update({
+				where: {
+					id
+				},
+				data: {
+					password: dto.password
+						? await hash(dto.password)
+						: user.password,
+					name: dto.name,
+					avatarPath: dto.avatarPath ? dto.avatarPath : user.avatarPath
+				}
+			});
 		}
-
-		const existingId = await this.prisma.user.findFirst({
-			where: {
-				id: dto.id
-			}
-		});
-
-		if (existingId && id !== existingId.id) {
-			throw new BadRequestException('Identifier already exists');
-		}
-
-		return this.prisma.user.update({
-			where: {
-				id
-			},
-			data: {
-				id: dto.id ? dto.id : user.id,
-				email: dto.email ? dto.email.toLowerCase() : user.email,
-				password: dto.password ? await hash(dto.password) : user.password,
-				name: dto.name,
-				avatarPath: dto.avatarPath ? dto.avatarPath : user.avatarPath,
-				rights: [
-					dto.isUser ? Role.USER : null,
-					dto.isAdmin ? Role.ADMIN : null,
-					dto.isManager ? Role.MANAGER : null,
-					dto.isPremium ? Role.PREMIUM : null
-				].filter(role => role !== null)
-			}
-		});
 	}
 
 	async delete(id: string) {
