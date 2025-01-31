@@ -61,7 +61,7 @@ const Users: NextPage = () => {
 					<Link
 						href={`${ADMIN_PAGES.USERS}/create`}
 						className={clsx(styles['create-link'])}
-						aria-label='Create a new user'
+						aria-label="Create a new user"
 					>
 						Create a new user
 					</Link>
@@ -94,7 +94,11 @@ const Users: NextPage = () => {
 							title: 'Creation date',
 							dataIndex: 'createdAt',
 							render: record => {
-								return formatDate(record.createdAt) || 'No data';
+								return (
+									formatDate(record.createdAt) || (
+										<LucideIcon name="Minus" color="firebrick" />
+									)
+								);
 							}
 						},
 						{
@@ -125,12 +129,18 @@ const Users: NextPage = () => {
 						{
 							title: 'Name',
 							dataIndex: 'name',
-							render: record => record.name || 'No data'
+							render: record =>
+								record.name || (
+									<LucideIcon name="Minus" color="firebrick" />
+								)
 						},
 						{
 							title: 'Email',
 							dataIndex: 'email',
-							render: record => record.email || 'No data'
+							render: record =>
+								record.email || (
+									<LucideIcon name="Minus" color="firebrick" />
+								)
 						},
 						{
 							title: 'Role',
@@ -138,7 +148,9 @@ const Users: NextPage = () => {
 							render: record =>
 								record.rights.length > 1
 									? record.rights?.join(', ')
-									: record.rights || 'No data'
+									: record.rights || (
+											<LucideIcon name="Minus" color="firebrick" />
+										)
 						}
 					]}
 					data={
