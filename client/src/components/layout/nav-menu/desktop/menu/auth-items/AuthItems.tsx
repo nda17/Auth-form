@@ -1,6 +1,6 @@
 import LogoutButton from '@/components/layout/nav-menu/desktop/menu/logout-button/LogoutButton';
 import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem';
-import useUser from '@/components/screens/profile/useUser';
+import { useUser } from '@/components/screens/profile/useUser';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import { NextPage } from 'next';
