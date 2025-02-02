@@ -1,7 +1,7 @@
 'use client';
 import styles from '@/components/screens/premium-content/premium-content-item/PremiumContentItem.module.scss';
-import usePremium from '@/components/screens/premium-content/usePremium';
-import useUser from '@/components/screens/profile/useUser';
+import { usePremium } from '@/components/screens/premium-content/usePremium';
+import { useUser } from '@/components/screens/profile/useUser';
 import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader';
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
