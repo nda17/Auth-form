@@ -2,7 +2,7 @@
 import ManageUsersShowMore from '@/components/screens/admin/users/ManageUsersShowMore';
 import { IUsersTable } from '@/components/screens/admin/users/users.interface';
 import styles from '@/components/screens/admin/users/Users.module.scss';
-import useUsersQuery from '@/components/screens/admin/users/useUsersQuery';
+import { useUsersQuery } from '@/components/screens/admin/users/useUsersQuery';
 import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation';
 import AlertPopup from '@/components/ui/alert-popup/AlertPopup';
 import Heading from '@/components/ui/heading/Heading';
