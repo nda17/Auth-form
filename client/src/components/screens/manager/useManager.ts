@@ -1,7 +1,7 @@
 import UserService from '@/services/user/user.service';
 import { useQuery } from '@tanstack/react-query';
 
-const useManager = () => {
+export const useManager = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: ['get-user-manager-rights'],
 		queryFn: () => UserService.getManager(),
@@ -10,5 +10,3 @@ const useManager = () => {
 
 	return { data, isLoading };
 };
-
-export default useManager;
