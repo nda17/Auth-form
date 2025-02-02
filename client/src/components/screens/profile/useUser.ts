@@ -10,7 +10,7 @@ import { transformUserToState } from '@/utils/transform-user-to-state';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
-const useUser = () => {
+export const useUser = () => {
 	const auth = useAuthStore(state => state.auth);
 
 	const { data, isLoading } = useQuery({
@@ -48,5 +48,3 @@ const useUser = () => {
 		}
 	};
 };
-
-export default useUser;
