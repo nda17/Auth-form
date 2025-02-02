@@ -247,8 +247,4 @@ export class UserService {
 			}
 		});
 	}
-
-	async getCount() {
-		return this.prisma.user.count();
-	}
 }
