@@ -6,7 +6,7 @@
 	}
 
 	.wrapper-button {
-		@apply mb-3;
+		@apply mb-3 px-12;
 
 		.button-primary {
 			@apply w-full py-2 text-white font-semibold rounded transition duration-300 ease-in-out mt-1;
