@@ -13,7 +13,7 @@
 		}
 
 		.icon {
-			@apply flex items-end;
+			@apply translate-y-[10px] translate-x-[10px] flex items-end;
 		}
 	}
 }
