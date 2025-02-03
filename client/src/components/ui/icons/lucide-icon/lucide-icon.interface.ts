@@ -5,4 +5,5 @@ export interface ILucideIcon {
 	fill?: string;
 	color?: string;
 	className?: string;
+	size?: number;
 }

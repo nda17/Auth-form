@@ -6,13 +6,19 @@ const LucideIcon: NextPage<ILucideIcon> = ({
 	name,
 	fill = 'transparent',
 	color,
-	className
+	className,
+	size
 }) => {
 	const IconComponent = icons[name];
 	const DefaultIcon = icons['GripVertical'];
 
 	return icons[name] ? (
-		<IconComponent fill={fill} color={color} className={className} />
+		<IconComponent
+			fill={fill}
+			color={color}
+			className={className}
+			size={size}
+		/>
 	) : (
 		<DefaultIcon />
 	);
