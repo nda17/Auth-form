@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('files')
+@Controller('/files')
 export class FileController {
 	constructor(private readonly fileService: FileService) {}
 

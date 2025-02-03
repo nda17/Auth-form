@@ -17,69 +17,62 @@ import {
 } from '@nestjs/common';
 import { Role } from '@prisma/client';
 
-@Controller('users')
+@Controller('/users')
 export class UserController {
 	constructor(private readonly userService: UserService) {}
 
 	@HttpCode(200)
 	@Auth()
-	@Get('profile')
+	@Get('/profile')
 	async getProfile(@CurrentUser('id') id: string) {
 		return this.userService.getById(id);
 	}
 
 	@HttpCode(200)
 	@Auth(Role.PREMIUM)
-	@Get('premium')
+	@Get('/premium')
 	async getPremium() {
 		return { access: true };
 	}
 
 	@HttpCode(200)
 	@Auth([Role.ADMIN, Role.MANAGER])
-	@Get('manager')
+	@Get('/manager')
 	async getManager() {
 		return { access: true };
 	}
 
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
-	@Get('user-list')
+	@Get('/user-list')
 	async getAll(@Query() params: PaginationArgsWithSearchTerm) {
 		return this.userService.getAll(params);
 	}
 
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
-	@Get('edit/:id')
+	@Get('/edit/:id')
 	async getById(@Param('id') id: string) {
 		return this.userService.getById(id);
 	}
 
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
-	@Get('count')
-	async getCount() {
-		return this.userService.getCount();
-	}
-
-	@HttpCode(200)
-	@Auth(Role.ADMIN)
-	@Post('create')
+	@Post('/create')
 	async create(@Body() id: string, dto: CreateUserDto) {
 		return this.userService.adminCreateUser(id, dto);
 	}
 
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
-	@Patch('user/:id')
+	@Patch('/user/:id')
 	async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {
 		return this.userService.update(id, dto);
 	}
 
 	@HttpCode(200)
 	@Auth(Role.ADMIN)
-	@Delete('user/:id')
+	@Delete('/user/:id')
 	async delete(@Param('id') id: string) {
 		return this.userService.delete(id);
 	}

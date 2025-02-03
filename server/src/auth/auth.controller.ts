@@ -29,7 +29,7 @@ export class AuthController {
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Recaptcha()
-	@Post('auth/login')
+	@Post('/auth/login')
 	async login(
 		@Body() dto: AuthDto,
 		@Res({ passthrough: true }) res: Response
@@ -45,7 +45,7 @@ export class AuthController {
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Recaptcha()
-	@Post('auth/register')
+	@Post('/auth/register')
 	async register(
 		@Body() dto: AuthDto,
 		@Res({ passthrough: true }) res: Response
@@ -57,7 +57,7 @@ export class AuthController {
 	}
 
 	@HttpCode(200)
-	@Patch('auth/confirmation-email')
+	@Patch('/auth/confirmation-email')
 	async verifyEmail(@Body() dto: ConfirmationEmailDto) {
 		if (!dto) {
 			throw new NotFoundException('Token not passed');
@@ -68,7 +68,7 @@ export class AuthController {
 
 	@HttpCode(200)
 	@Recaptcha()
-	@Patch('auth/restore-password')
+	@Patch('/auth/restore-password')
 	async restorePassword(@Body() dto: RestorePasswordDto) {
 		if (!dto) {
 			throw new NotFoundException('Email not passed');
@@ -78,7 +78,7 @@ export class AuthController {
 	}
 
 	@HttpCode(200)
-	@Post('auth/access-token')
+	@Post('/auth/access-token')
 	async getNewTokens(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
@@ -100,7 +100,7 @@ export class AuthController {
 	}
 
 	@HttpCode(200)
-	@Post('auth/logout')
+	@Post('/auth/logout')
 	async logout(@Res({ passthrough: true }) res: Response) {
 		this.refreshTokenService.removeRefreshTokenFromResponse(res);
 
