@@ -10,12 +10,16 @@ const AdminNavItem: NextPage<{ item: INavItem }> = ({
 }) => {
 	const pathname = usePathname();
 
+	const isMatch = (pathname: string, option: string[]) => {
+		return option?.some(el => pathname.includes(el));
+	};
+
 	return (
 		<li>
 			<Link href={link}>
 				<span
 					className={clsx({
-						[styles.active]: pathname === link || pathname.includes(option)
+						[styles.active]: isMatch(pathname, option) || pathname === link
 					})}
 				>
 					{title}
