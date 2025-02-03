@@ -1,0 +1,19 @@
+.wrapper {
+	@apply grid grid-cols-4 gap-5 mb-8;
+
+	.wrapper-item {
+		@apply bg-gray-500 rounded-md p-5 grid grid-cols-2 gap-10;
+
+		.count {
+			@apply h-full;
+
+			.value-count {
+				@apply font-bold;
+			}
+		}
+
+		.icon {
+			@apply flex items-end;
+		}
+	}
+}
