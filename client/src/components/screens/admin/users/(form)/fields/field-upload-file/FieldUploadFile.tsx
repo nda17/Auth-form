@@ -12,9 +12,10 @@ const FieldUploadFile: NextPage<IUploadField> = ({
 	style,
 	value,
 	folder,
+	id,
 	onChange
 }) => {
-	const { uploadFile, isLoading } = useUploadFile(onChange, folder);
+	const { uploadFile, isLoading } = useUploadFile(onChange, folder, id);
 
 	return (
 		<div className={styles.wrapper} style={style}>
