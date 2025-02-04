@@ -13,6 +13,7 @@ export interface IField extends TypeInputPropsField {}
 export interface IUploadField {
 	currentFile?: string;
 	folder?: string;
+	id: string;
 	value?: string;
 	onChange: (...event: any[]) => void;
 	placeholder: string;
