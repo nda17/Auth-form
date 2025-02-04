@@ -1,7 +1,7 @@
 import { IFileResponse } from '@/file/file.interface';
 import { Injectable } from '@nestjs/common';
 import { path } from 'app-root-path';
-import { ensureDir, writeFile } from 'fs-extra';
+import { ensureDir, exists, remove, writeFile } from 'fs-extra';
 import { extname } from 'path';
 
 @Injectable()
@@ -31,5 +31,17 @@ export class FileService {
 		);
 
 		return res;
+	}
+
+	async deleteFile(avatarPath: string) {
+		const avatarFile = `${path}${avatarPath}`;
+
+		if (await exists(avatarFile)) {
+			try {
+				await remove(avatarFile);
+			} catch (err) {
+				console.error(`File ${avatarPath} deletion error:`, err);
+			}
+		}
 	}
 }
