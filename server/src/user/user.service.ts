@@ -3,6 +3,7 @@ import {
 	IGithubProfile,
 	IGoogleProfile
 } from '@/auth/social-media/social-media-auth.types';
+import { FileService } from '@/file/file.service';
 import isHasMorePagination from '@/pagination/is-has-more';
 import { PaginationArgsWithSearchTerm } from '@/pagination/pagination.args';
 import { PrismaService } from '@/prisma.service';
@@ -15,14 +16,14 @@ import {
 	NotFoundException
 } from '@nestjs/common';
 import { Prisma, Role, type User } from '@prisma/client';
-import { path } from 'app-root-path';
 import { hash } from 'argon2';
-import { exists, remove } from 'fs-extra';
-import { promisify } from 'util';
 
 @Injectable()
 export class UserService {
-	constructor(private prisma: PrismaService) {}
+	constructor(
+		private prisma: PrismaService,
+		private fileService: FileService
+	) {}
 
 	private getSearchTermFilter(searchTerm: string): Prisma.UserWhereInput {
 		return {
@@ -244,16 +245,10 @@ export class UserService {
 
 	async delete(id: string) {
 		const user = await this.getById(id);
-		const avatarFile = `${path}${user?.avatarPath}`;
+		const avatarPath = user?.avatarPath;
 
-		if (await exists(avatarFile)) {
-			const deleteFile = promisify(remove);
-
-			try {
-				await deleteFile(avatarFile);
-			} catch (err) {
-				console.error(`File ${user?.avatarPath} deletion error:`, err);
-			}
+		if (avatarPath) {
+			await this.fileService.deleteFile(avatarPath);
 		}
 
 		return this.prisma.user.delete({
