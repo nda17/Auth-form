@@ -15,7 +15,10 @@ import {
 	NotFoundException
 } from '@nestjs/common';
 import { Prisma, Role, type User } from '@prisma/client';
+import { path } from 'app-root-path';
 import { hash } from 'argon2';
+import { exists, remove } from 'fs-extra';
+import { promisify } from 'util';
 
 @Injectable()
 export class UserService {
@@ -240,7 +243,19 @@ export class UserService {
 	}
 
 	async delete(id: string) {
-		await this.getById(id);
+		const user = await this.getById(id);
+		const avatarFile = `${path}${user?.avatarPath}`;
+
+		if (await exists(avatarFile)) {
+			const deleteFile = promisify(remove);
+
+			try {
+				await deleteFile(avatarFile);
+			} catch (err) {
+				console.error(`File ${user?.avatarPath} deletion error:`, err);
+			}
+		}
+
 		return this.prisma.user.delete({
 			where: {
 				id
