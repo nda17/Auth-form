@@ -80,6 +80,7 @@ const UserEditingForm: NextPage<IUserEditingForm> = ({
 											data?.avatarPath ||
 											'/uploads/user-avatar/avatar-default.png'
 										}
+										id={data?.id}
 										folder="user-avatar"
 										placeholder="Avatar"
 									/>
