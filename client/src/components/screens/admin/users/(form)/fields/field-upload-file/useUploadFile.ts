@@ -6,13 +6,14 @@ import toast from 'react-hot-toast';
 
 export const useUploadFile = (
 	onChange: (...event: any[]) => void,
-	folder?: string
+	folder?: string,
+	id?: string
 ) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const { mutateAsync } = useMutation({
 		mutationKey: ['upload-file'],
-		mutationFn: (data: FormData) => fileService.upload(data, folder),
+		mutationFn: (data: FormData) => fileService.upload(data, folder, id),
 		onSuccess({ data }) {
 			onChange(data[0].url);
 		},
