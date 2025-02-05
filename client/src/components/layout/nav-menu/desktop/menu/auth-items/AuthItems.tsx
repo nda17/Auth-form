@@ -3,10 +3,10 @@ import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuIt
 import { useUser } from '@/components/screens/profile/useUser';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const AuthItems: NextPage = () => {
-	const { user, isLoading } = useUser();
+const AuthItems: FC = () => {
+	const { user } = useUser();
 
 	return (
 		<>
@@ -40,7 +40,7 @@ const AuthItems: NextPage = () => {
 				/>
 			)}
 
-			{!isLoading && !user?.isLoggedIn ? (
+			{!user?.isLoggedIn && (
 				<MenuItem
 					item={{
 						icon: 'MdLogout',
@@ -48,9 +48,9 @@ const AuthItems: NextPage = () => {
 						title: 'Login'
 					}}
 				/>
-			) : (
-				<LogoutButton />
 			)}
+
+			{user?.isLoggedIn && <LogoutButton />}
 		</>
 	);
 };
