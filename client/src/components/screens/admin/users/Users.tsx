@@ -121,7 +121,7 @@ const Users: NextPage = () => {
 									}
 									width={50}
 									height={50}
-									objectFit="cover"
+									style={{ objectFit: 'cover' }}
 									className="w-[50px] h-[50px] object-cover rounded-full"
 								/>
 							)
