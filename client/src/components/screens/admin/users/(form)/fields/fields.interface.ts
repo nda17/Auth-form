@@ -14,6 +14,7 @@ export interface IUploadField {
 	currentFile?: string;
 	folder?: string;
 	id: string;
+	isAdminEdit: boolean;
 	value?: string;
 	onChange: (...event: any[]) => void;
 	placeholder: string;
