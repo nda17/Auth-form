@@ -207,6 +207,10 @@ export class UserService {
 				throw new BadRequestException('Identifier already exists');
 			}
 
+			if (user?.avatarPath && id !== dto.id && dto.id) {
+				await this.fileService.changeFileName(id, dto.id, user.avatarPath);
+			}
+
 			return this.prisma.user.update({
 				where: {
 					id
@@ -218,7 +222,6 @@ export class UserService {
 						? await hash(dto.password)
 						: user.password,
 					name: dto.name,
-					avatarPath: dto.avatarPath ? dto.avatarPath : user.avatarPath,
 					rights: [
 						dto.isUser ? Role.USER : null,
 						dto.isAdmin ? Role.ADMIN : null,
