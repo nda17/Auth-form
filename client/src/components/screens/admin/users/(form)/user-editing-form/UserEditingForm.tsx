@@ -81,6 +81,7 @@ const UserEditingForm: NextPage<IUserEditingForm> = ({
 											'/uploads/user-avatar/avatar-default.png'
 										}
 										id={data?.id}
+										isAdminEdit={isAdminEdit}
 										folder="user-avatar"
 										placeholder="Avatar"
 									/>
@@ -236,11 +237,7 @@ const UserEditingForm: NextPage<IUserEditingForm> = ({
 								type="password"
 								error={errors.password}
 								placeholder="Password"
-								// dasdasdasdas
-								// dasdas
 								required
-								// dsadasdsa
-								// dasdasdas
 								{...register('password', {
 									pattern: {
 										value: validPassword,
