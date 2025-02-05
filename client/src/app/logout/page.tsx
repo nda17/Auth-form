@@ -16,11 +16,11 @@ const LogoutPage = () => {
 		onSuccess() {
 			queryClient.clear();
 			setAuth();
+			replace(PUBLIC_PAGES.LOGIN);
 		}
 	});
 
 	mutateLogout();
-	replace(PUBLIC_PAGES.LOGIN);
 };
 
 export default LogoutPage;
