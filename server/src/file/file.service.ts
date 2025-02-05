@@ -1,11 +1,14 @@
 import { IFileResponse } from '@/file/file.interface';
+import { PrismaService } from '@/prisma.service';
 import { Injectable } from '@nestjs/common';
 import { path } from 'app-root-path';
-import { ensureDir, exists, remove, writeFile } from 'fs-extra';
+import { ensureDir, exists, remove, rename, writeFile } from 'fs-extra';
 import { extname } from 'path';
 
 @Injectable()
 export class FileService {
+	constructor(private prisma: PrismaService) {}
+
 	async saveFiles(
 		files: Express.Multer.File[],
 		folder: string = 'default',
@@ -21,7 +24,37 @@ export class FileService {
 				const extension = extname(originalFileName);
 				const newFileName = `${id}${extension}`;
 
+				const user = await this.prisma.user.findFirst({
+					where: {
+						id: id
+					}
+				});
+
+				if (user?.avatarPath) {
+					const avatarFile = `${path}${user.avatarPath}`;
+
+					if (await exists(avatarFile)) {
+						try {
+							await remove(avatarFile);
+						} catch (err) {
+							console.error(
+								`File ${user.avatarPath} deletion error:`,
+								err
+							);
+						}
+					}
+				}
+
 				await writeFile(`${uploadFolder}/${newFileName}`, file.buffer);
+
+				await this.prisma.user.update({
+					where: {
+						id: id
+					},
+					data: {
+						avatarPath: `/uploads/user-avatar/${id}${extension}`
+					}
+				});
 
 				return {
 					url: `/uploads/${folder}/${newFileName}`,
@@ -41,6 +74,29 @@ export class FileService {
 				await remove(avatarFile);
 			} catch (err) {
 				console.error(`File ${avatarPath} deletion error:`, err);
+			}
+		}
+	}
+
+	async changeFileName(id: string, dtoId: string, avatarPath: string) {
+		const originalFileName = `${path}${avatarPath}`;
+		const extension = extname(originalFileName);
+		const newFileName = `${path}/uploads/user-avatar/${dtoId}${extension}`;
+
+		if (await exists(originalFileName)) {
+			try {
+				await rename(originalFileName, newFileName);
+
+				await this.prisma.user.update({
+					where: {
+						id: id
+					},
+					data: {
+						avatarPath: `/uploads/user-avatar/${dtoId}${extension}`
+					}
+				});
+			} catch (err) {
+				console.error(`Error renaming file ${avatarPath}:`, err);
 			}
 		}
 	}
