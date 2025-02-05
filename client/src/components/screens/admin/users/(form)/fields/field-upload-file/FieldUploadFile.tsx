@@ -13,15 +13,18 @@ const FieldUploadFile: NextPage<IUploadField> = ({
 	value,
 	folder,
 	id,
+	isAdminEdit,
 	onChange
 }) => {
 	const { uploadFile, isLoading } = useUploadFile(onChange, folder, id);
 
 	return (
 		<div className={styles.wrapper} style={style}>
-			<p className={clsx(styles['field-path'])}>
-				{value ? value : currentFile}
-			</p>
+			{isAdminEdit && (
+				<p className={clsx(styles['field-path'])}>
+					{value ? value : currentFile}
+				</p>
+			)}
 			<label className={clsx(styles['label-input'])}>
 				<div className={clsx(styles['custom-input'])}>
 					<span className={styles.button}>Choose file</span>
