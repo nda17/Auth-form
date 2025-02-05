@@ -1,5 +1,6 @@
 import { IFileResponse } from '@/file/file.interface';
 import { PrismaService } from '@/prisma.service';
+import { timeStamp } from '@/utils/time-stamp.util';
 import { Injectable } from '@nestjs/common';
 import { path } from 'app-root-path';
 import { ensureDir, exists, remove, rename, writeFile } from 'fs-extra';
@@ -22,15 +23,15 @@ export class FileService {
 			files.map(async file => {
 				const originalFileName = file.originalname;
 				const extension = extname(originalFileName);
-				const newFileName = `${id}${extension}`;
-
+				const getTimeStamp = timeStamp();
+				const newFileName = `${id}.${getTimeStamp}${extension}`;
 				const user = await this.prisma.user.findFirst({
 					where: {
 						id: id
 					}
 				});
 
-				if (user?.avatarPath) {
+				if (user.avatarPath) {
 					const avatarFile = `${path}${user.avatarPath}`;
 
 					if (await exists(avatarFile)) {
@@ -46,13 +47,13 @@ export class FileService {
 				}
 
 				await writeFile(`${uploadFolder}/${newFileName}`, file.buffer);
-
+				
 				await this.prisma.user.update({
 					where: {
 						id: id
 					},
 					data: {
-						avatarPath: `/uploads/user-avatar/${id}${extension}`
+						avatarPath: `/uploads/user-avatar/${id}.${getTimeStamp}${extension}`
 					}
 				});
 
@@ -81,7 +82,8 @@ export class FileService {
 	async changeFileName(id: string, dtoId: string, avatarPath: string) {
 		const originalFileName = `${path}${avatarPath}`;
 		const extension = extname(originalFileName);
-		const newFileName = `${path}/uploads/user-avatar/${dtoId}${extension}`;
+		const getTimeStamp = timeStamp();
+		const newFileName = `${path}/uploads/user-avatar/${dtoId}.${getTimeStamp}${extension}`;
 
 		if (await exists(originalFileName)) {
 			try {
@@ -92,7 +94,7 @@ export class FileService {
 						id: id
 					},
 					data: {
-						avatarPath: `/uploads/user-avatar/${dtoId}${extension}`
+						avatarPath: `/uploads/user-avatar/${dtoId}.${getTimeStamp}${extension}`
 					}
 				});
 			} catch (err) {
