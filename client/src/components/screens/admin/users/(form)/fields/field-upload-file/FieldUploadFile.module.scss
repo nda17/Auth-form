@@ -1,8 +1,8 @@
 .wrapper {
-	@apply flex gap-2 items-end border-b border-b-black p-1 border-solid mb-[1.85rem];
+	@apply flex gap-2 flex-wrap lg:flex-nowrap overflow-hidden items-end border-b border-b-black p-1 border-solid mb-[1.85rem];
 
 	.field-path {
-		@apply w-full whitespace-nowrap overflow-scroll text-gray-600;
+		@apply w-full whitespace-nowrap text-gray-600;
 	}
 
 	.label-input {
