@@ -4,6 +4,8 @@ class PublicPages {
 	REGISTER = '/register';
 	RESTORE_PASSWORD = '/restore-password';
 	USER_PROFILE = '/profile';
+	USER_PROFILE_EDIT = '/profile/edit';
+	USER_AVATAR_DEFAULT = '/uploads/user-avatar/avatar-default.png'
 	MANAGER = '/manager';
 	FREE_CONTENT = '/free-content';
 	PREMIUM_CONTENT = '/premium-content';
