@@ -1,4 +1,4 @@
-import LogoutButton from '@/components/layout/nav-menu/desktop/menu/logout-button/LogoutButton';
+import ActionButton from '@/components/layout/nav-menu/desktop/menu/auth-items/action-auth-button/ActionAuthButton';
 import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem';
 import { useUser } from '@/components/screens/profile/useUser';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
@@ -40,17 +40,7 @@ const AuthItems: FC = () => {
 				/>
 			)}
 
-			{!user?.isLoggedIn && (
-				<MenuItem
-					item={{
-						icon: 'MdLogout',
-						link: PUBLIC_PAGES.LOGIN,
-						title: 'Login'
-					}}
-				/>
-			)}
-
-			{user?.isLoggedIn && <LogoutButton />}
+			<ActionButton isLoggedIn={user?.isLoggedIn} />
 		</>
 	);
 };
