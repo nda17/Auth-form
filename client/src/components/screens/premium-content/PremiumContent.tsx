@@ -1,12 +1,10 @@
 import styles from '@/components/screens/premium-content/PremiumContent.module.scss';
 import Heading from '@/components/ui/heading/Heading';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
-import { NextPage } from 'next';
 import Link from 'next/link';
+import { FC } from 'react';
 
-const PremiumContent: NextPage = () => {
-	// In a real project, we make a request to the server and receive an entity object from the server and generate a component
-
+const PremiumContent: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Page for users with a purchased Premium subscription" />

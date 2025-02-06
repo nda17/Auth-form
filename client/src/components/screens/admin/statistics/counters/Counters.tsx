@@ -3,9 +3,9 @@ import { useCounters } from '@/components/screens/admin/statistics/counters/useC
 import LucideIcon from '@/components/ui/icons/lucide-icon/LucideIcon';
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Counters: NextPage = () => {
+const Counters: FC = () => {
 	const { data, isPending } = useCounters();
 
 	return isPending ? (
@@ -21,9 +21,7 @@ const Counters: NextPage = () => {
 				<div key={number.name} className={clsx(styles['wrapper-item'])}>
 					<div className={styles.count}>
 						<p>{number.name}</p>
-						<p className={clsx(styles['value-count'])}>
-							{number.value}
-						</p>
+						<p className={clsx(styles['value-count'])}>{number.value}</p>
 					</div>
 					<div className={styles.icon}>
 						{index % 2 === 0 ? (

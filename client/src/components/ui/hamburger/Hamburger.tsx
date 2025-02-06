@@ -2,9 +2,9 @@ import styles from '@/components/ui/hamburger/Hamburger.module.scss';
 import MaterialIcon from '@/components/ui/icons/MaterialIcon';
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Hamburger: NextPage = () => {
+const Hamburger: FC = () => {
 	const visibleVeilBackground = useVeilBackgroundStore(
 		state => state.visible
 	);

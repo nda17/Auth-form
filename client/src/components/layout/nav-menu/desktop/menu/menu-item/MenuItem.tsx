@@ -2,11 +2,11 @@ import styles from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem
 import { IMenuItem } from '@/components/layout/nav-menu/desktop/menu/menu-item/menu-item.interface';
 import MaterialIcon from '@/components/ui/icons/MaterialIcon';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FC } from 'react';
 
-const MenuItem: NextPage<{ item: IMenuItem }> = ({ item }) => {
+const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const pathname = usePathname();
 
 	return (

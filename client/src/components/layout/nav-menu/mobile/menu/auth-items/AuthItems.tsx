@@ -3,9 +3,9 @@ import MenuItem from '@/components/layout/nav-menu/mobile/menu/menu-item/MenuIte
 import { useUser } from '@/components/screens/profile/useUser';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const AuthItems: NextPage = () => {
+const AuthItems: FC = () => {
 	const { user } = useUser();
 
 	return (

@@ -1,9 +1,9 @@
 import LucideIcon from '@/components/ui/icons/lucide-icon/LucideIcon';
 import styles from '@/components/ui/search-field/SearchField.module.scss';
 import { ISearchField } from '@/components/ui/search-field/search-field.interface';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const SearchField: NextPage<ISearchField> = ({
+const SearchField: FC<ISearchField> = ({
 	searchTerm,
 	handleSearch,
 	handleClear

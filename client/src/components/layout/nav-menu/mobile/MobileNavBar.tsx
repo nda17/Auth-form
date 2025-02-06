@@ -4,10 +4,9 @@ import Navigation from '@/components/layout/nav-menu/mobile/navigation/Navigatio
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
-import { NextPage } from 'next';
-import { useRef } from 'react';
+import { FC, useRef } from 'react';
 
-const MobileNavbar: NextPage = () => {
+const MobileNavbar: FC = () => {
 	const visibleVeilBackground = useVeilBackgroundStore(
 		state => state.visible
 	);

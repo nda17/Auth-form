@@ -2,9 +2,9 @@
 import UserEditingForm from '@/components/screens/admin/users/(form)/user-editing-form/UserEditingForm';
 import { useCreateUpdateUser } from '@/components/screens/admin/users/(form)/user-form/useCreateUpdateUser';
 import { IUserForm } from '@/components/screens/admin/users/(form)/user-form/user-form.types';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const UserForm: NextPage<IUserForm> = ({ type, params }) => {
+const UserForm: FC<IUserForm> = ({ type, params }) => {
 	const id = params?.id;
 	const result = useCreateUpdateUser(
 		id,

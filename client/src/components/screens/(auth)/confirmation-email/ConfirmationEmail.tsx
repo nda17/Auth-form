@@ -3,10 +3,10 @@ import styles from '@/components/screens/(auth)/confirmation-email/ConfirmationE
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
-import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 
-const ConfirmationEmail: NextPage = () => {
+const ConfirmationEmail: FC = () => {
 	const { replace } = useRouter();
 
 	setTimeout(() => {

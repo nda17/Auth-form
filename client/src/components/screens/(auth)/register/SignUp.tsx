@@ -1,8 +1,8 @@
 import AuthForm from '@/components/screens/(auth)/auth-form/AuthForm';
 import styles from '@/components/screens/(auth)/register/SignUp.module.scss';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const SignUp: NextPage = () => {
+const SignUp: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.form}>

@@ -1,8 +1,8 @@
 import styles from '@/components/screens/legal-documentation/cookie-notice/CookieNotice.module.scss';
 import Heading from '@/components/ui/heading/Heading';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const CookieNotice: NextPage = () => {
+const CookieNotice: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Cookie Notice" />

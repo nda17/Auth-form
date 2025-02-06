@@ -1,7 +1,7 @@
 import styles from '@/components/ui/veil-background/VeilBackground.module.scss';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const VeilBackground: NextPage = () => {
+const VeilBackground: FC = () => {
 	return <div className={styles.background}></div>;
 };
 

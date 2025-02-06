@@ -5,12 +5,11 @@ import authService from '@/services/auth/auth.service';
 import { useAuthStore } from '@/store/auth-store/auth-store';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
-import { MouseEvent } from 'react';
+import { FC, MouseEvent } from 'react';
 import toast from 'react-hot-toast';
 
-const LogoutButton: NextPage = () => {
+const LogoutButton: FC = () => {
 	const setAuth = useAuthStore(state => state.setAuth);
 	const { replace } = useRouter();
 	const queryClient = useQueryClient();

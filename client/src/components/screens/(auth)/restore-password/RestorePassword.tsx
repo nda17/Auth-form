@@ -1,8 +1,8 @@
 import styles from '@/components/screens/(auth)/login/SignIn.module.scss';
 import RestorePasswordForm from '@/components/screens/(auth)/restore-password-form/RestorePasswordForm';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const RestorePassword: NextPage = () => {
+const RestorePassword: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.form}>

@@ -1,6 +1,7 @@
 class PublicPages {
 	HOME = '/';
 	LOGIN = '/login';
+	LOGOUT = '/logout'
 	REGISTER = '/register';
 	RESTORE_PASSWORD = '/restore-password';
 	USER_PROFILE = '/profile';

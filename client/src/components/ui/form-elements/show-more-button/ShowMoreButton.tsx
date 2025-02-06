@@ -1,8 +1,8 @@
 import { IShowMoreButton } from '@/components/ui/form-elements/show-more-button/show-more-button.interface';
 import styles from '@/components/ui/form-elements/show-more-button/ShowMoreButton.module.scss';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const ShowMoreButton: NextPage<IShowMoreButton> = ({
+const ShowMoreButton: FC<IShowMoreButton> = ({
 	isLoading,
 	onLoadMore
 }) => {

@@ -1,9 +1,9 @@
 import { IUserFormHeading } from '@/components/screens/admin/users/(form)/user-form-heading/user-form-heading.interface';
 import styles from '@/components/screens/admin/users/(form)/user-form-heading/UserFormHeading.module.scss';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const UserFormHeading: NextPage<IUserFormHeading> = ({
+const UserFormHeading: FC<IUserFormHeading> = ({
 	type,
 	email
 }: {

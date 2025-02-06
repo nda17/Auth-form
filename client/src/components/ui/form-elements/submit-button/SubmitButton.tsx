@@ -1,8 +1,8 @@
 import { ISubmitButton } from '@/components/ui/form-elements/submit-button/submit-button.interface';
 import styles from '@/components/ui/form-elements/submit-button/SubmitButton.module.scss';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const SubmitButton: NextPage<ISubmitButton> = ({
+const SubmitButton: FC<ISubmitButton> = ({
 	children,
 	className,
 	...rest

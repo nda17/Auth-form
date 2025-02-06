@@ -1,8 +1,8 @@
 import { ILucideIcon } from '@/components/ui/icons/lucide-icon/lucide-icon.interface';
 import { icons } from 'lucide-react';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const LucideIcon: NextPage<ILucideIcon> = ({
+const LucideIcon: FC<ILucideIcon> = ({
 	name,
 	fill = 'transparent',
 	color,

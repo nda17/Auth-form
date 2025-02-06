@@ -2,9 +2,9 @@ import styles from '@/components/layout/nav-menu/mobile/navigation/Navigation.mo
 import Hamburger from '@/components/ui/hamburger/Hamburger';
 import LogoImage from '@/components/ui/logo-image/LogoImage';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Navigation: NextPage = () => {
+const Navigation: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={clsx(styles['layout-container'])}>

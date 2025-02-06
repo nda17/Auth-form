@@ -5,10 +5,9 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 import { useAlertPopupStore } from '@/store/alert-popup-store/alert-popup-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
 import clsx from 'clsx';
-import { NextPage } from 'next';
-import { useRef } from 'react';
+import { FC, useRef } from 'react';
 
-const AlertPopup: NextPage<IAlertPopup> = ({ removeHandler, text }) => {
+const AlertPopup: FC<IAlertPopup> = ({ removeHandler, text }) => {
 	const popupRef = useRef(null);
 
 	const changeVisibleVeilBackground = useVeilBackgroundStore(

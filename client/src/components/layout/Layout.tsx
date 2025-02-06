@@ -5,9 +5,9 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import { ILayout } from '@/components/layout/layout.interface';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Layout: NextPage<ILayout> = ({ children }) => {
+const Layout: FC<ILayout> = ({ children }) => {
 	const visibleVeilBackground = useVeilBackgroundStore(
 		state => state.visible
 	);

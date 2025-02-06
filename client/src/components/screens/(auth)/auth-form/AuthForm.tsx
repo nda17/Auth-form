@@ -8,10 +8,10 @@ import FieldEmail from '@/components/screens/(auth)/fields/field-email/FieldEmai
 import FieldPassword from '@/components/screens/(auth)/fields/field-password/FieldPassword';
 import { validEmail, validPassword } from '@/shared/regex';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const AuthForm: NextPage<IAuthFormProps> = ({ isLogin }) => {
+const AuthForm: FC<IAuthFormProps> = ({ isLogin }) => {
 	const {
 		handleSubmit,
 		isLoading,

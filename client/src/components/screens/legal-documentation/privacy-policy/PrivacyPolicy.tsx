@@ -1,9 +1,9 @@
 import styles from '@/components/screens/legal-documentation/privacy-policy/PrivacyPolicy.module.scss';
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const PrivacyPolicy: NextPage = () => {
+const PrivacyPolicy: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Privacy Policy" />

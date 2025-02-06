@@ -2,7 +2,7 @@ import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import { ISitemapField, getServerSideSitemap } from 'next-sitemap';
 
 export async function GET(request: Request) {
-	const url = 'http://localhost:3000';
+	const url = process.env.SITE_MAP_HOST;
 
 	const fields: ISitemapField[] = [
 		{

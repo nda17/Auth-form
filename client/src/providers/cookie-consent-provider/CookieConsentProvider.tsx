@@ -1,10 +1,9 @@
 import CookieConsentPopup from '@/components/ui/cookie-consent-popup/CookieConsentPopup';
 import Cookies from 'js-cookie';
-import { NextPage } from 'next';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-const CookieConsentProvider: NextPage = () => {
+const CookieConsentProvider: FC = () => {
 	const [confirm, setConfirm] = useState(true);
 	const pathname = usePathname();
 

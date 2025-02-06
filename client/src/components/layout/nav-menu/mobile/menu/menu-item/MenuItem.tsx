@@ -4,11 +4,11 @@ import MaterialIcon from '@/components/ui/icons/MaterialIcon';
 import { useHamburgerStore } from '@/store/hamburger-store/hamburger-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FC } from 'react';
 
-const MenuItem: NextPage<{ item: IMenuItem }> = ({ item }) => {
+const MenuItem: FC<{ item: IMenuItem }> = ({ item }) => {
 	const pathname = usePathname();
 	const changeVisibleVeilBackground = useVeilBackgroundStore(
 		state => state.setVisible

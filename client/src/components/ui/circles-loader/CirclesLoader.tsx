@@ -1,8 +1,8 @@
 import styles from '@/components/ui/circles-loader/CirclesLoader.module.scss';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const CirclesLoader: NextPage = () => {
+const CirclesLoader: FC = () => {
 	return <div className={clsx(styles['circles-loader'])}></div>;
 };
 

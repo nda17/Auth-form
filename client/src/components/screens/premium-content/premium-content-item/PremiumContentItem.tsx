@@ -6,11 +6,11 @@ import CirclesLoader from '@/components/ui/circles-loader/CirclesLoader';
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
-import { NextPage } from 'next';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { FC } from 'react';
 
-const PremiumContentItem: NextPage = () => {
+const PremiumContentItem: FC = () => {
 	const searchParams = useSearchParams();
 	const id = searchParams.get('id') || undefined;
 	const { user, isLoading: isLoadingProfile } = useUser();

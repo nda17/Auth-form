@@ -1,8 +1,8 @@
 import { IMaterialIcon } from '@/components/ui/icons/material-icon.interface';
-import { NextPage } from 'next';
+import { FC } from 'react';
 import * as MaterialIcons from 'react-icons/md';
 
-const MaterialIcon: NextPage<IMaterialIcon> = ({ name, fill = 'red' }) => {
+const MaterialIcon: FC<IMaterialIcon> = ({ name, fill = 'red' }) => {
 	const IconComponent = MaterialIcons[name];
 
 	return MaterialIcons[name] ? (

@@ -4,9 +4,9 @@ import Statistics from '@/components/screens/admin/statistics/Statistics';
 import AdminNavigation from '@/components/ui/admin/admin-navigation/AdminNavigation';
 import Heading from '@/components/ui/heading/Heading';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Admin: NextPage = () => {
+const Admin: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<Heading text="Admin page" />

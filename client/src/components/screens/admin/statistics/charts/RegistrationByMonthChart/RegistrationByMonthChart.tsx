@@ -9,7 +9,7 @@ import {
 	PointElement,
 	Tooltip
 } from 'chart.js';
-import { NextPage } from 'next';
+import { FC } from 'react';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -21,7 +21,7 @@ ChartJS.register(
 	Legend
 );
 
-const RegistrationByMonthChart: NextPage = () => {
+const RegistrationByMonthChart: FC = () => {
 	const { data, isPending } = useRegistrationsByMonth();
 
 	return isPending ? (

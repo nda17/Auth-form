@@ -3,10 +3,10 @@ import { useUploadFile } from '@/components/screens/admin/users/(form)/fields/fi
 import { IUploadField } from '@/components/screens/admin/users/(form)/fields/fields.interface';
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Image from 'next/image';
+import { FC } from 'react';
 
-const FieldUploadFile: NextPage<IUploadField> = ({
+const FieldUploadFile: FC<IUploadField> = ({
 	currentFile,
 	placeholder,
 	style,

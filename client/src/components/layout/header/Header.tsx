@@ -2,9 +2,9 @@
 import styles from '@/components/layout/header/Header.module.scss';
 import DesktopNavBar from '@/components/layout/nav-menu/desktop/DesktopNavBar';
 import MobileNavBar from '@/components/layout/nav-menu/mobile/MobileNavBar';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Header: NextPage = () => {
+const Header: FC = () => {
 	return (
 		<header className={styles.header}>
 			<MobileNavBar />

@@ -2,9 +2,9 @@ import styles from '@/components/layout/nav-menu/desktop/DesktopNavBar.module.sc
 import Menu from '@/components/layout/nav-menu/desktop/menu/Menu';
 import LogoImage from '@/components/ui/logo-image/LogoImage';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const DesktopNavBar: NextPage = () => {
+const DesktopNavBar: FC = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={clsx(styles['layout-container'])}>

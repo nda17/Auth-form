@@ -3,10 +3,10 @@ import FontAwesomeIcon from '@/components/ui/icons/FontAwesomeIcon';
 import LogoImage from '@/components/ui/logo-image/LogoImage';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Link from 'next/link';
+import { FC } from 'react';
 
-const Footer: NextPage = () => {
+const Footer: FC = () => {
 	const year = 2023;
 	const currentYear = new Date().getFullYear();
 

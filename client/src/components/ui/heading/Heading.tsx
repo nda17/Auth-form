@@ -1,8 +1,8 @@
 import styles from '@/components/ui/heading/Heading.module.scss';
 import { IHeading } from '@/components/ui/heading/heading.interface';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
-const Heading: NextPage<IHeading> = ({ text }) => {
+const Heading: FC<IHeading> = ({ text }) => {
 	return <h1 className={styles.heading}>{text}</h1>;
 };
 

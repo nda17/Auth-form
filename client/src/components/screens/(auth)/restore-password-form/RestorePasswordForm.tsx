@@ -4,10 +4,10 @@ import FieldEmail from '@/components/screens/(auth)/fields/field-email/FieldEmai
 import useRestorePasswordForm from '@/components/screens/(auth)/restore-password-form/useRestorePasswordForm';
 import { validEmail } from '@/shared/regex';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-const RestorePasswordForm: NextPage = () => {
+const RestorePasswordForm: FC = () => {
 	const {
 		handleSubmit,
 		isLoading,

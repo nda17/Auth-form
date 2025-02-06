@@ -2,10 +2,10 @@ import { IAuthToggle } from '@/components/screens/(auth)/auth-form/auth-toggle/a
 import styles from '@/components/screens/(auth)/auth-form/auth-toggle/AuthToggle.module.scss';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 
-const AuthToggle: NextPage<IAuthToggle> = ({ isLogin }) => {
+const AuthToggle: FC<IAuthToggle> = ({ isLogin }) => {
 	const router = useRouter();
 
 	return (

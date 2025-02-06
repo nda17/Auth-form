@@ -5,11 +5,10 @@ import MaterialIcon from '@/components/ui/icons/MaterialIcon';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import clsx from 'clsx';
 import Cookies from 'js-cookie';
-import { NextPage } from 'next';
 import Link from 'next/link';
-import { MouseEvent, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 
-const CookieConsentPopup: NextPage<ICookieConsent> = status => {
+const CookieConsentPopup: FC<ICookieConsent> = status => {
 	const [showPopup, setShowPopup] = useState(`${status}`);
 
 	const accept = (e: MouseEvent<HTMLAnchorElement>) => {

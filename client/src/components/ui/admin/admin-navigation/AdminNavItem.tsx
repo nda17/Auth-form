@@ -1,11 +1,11 @@
 import styles from '@/components/ui/admin/admin-navigation/AdminNavigation.module.scss';
 import { INavItem } from '@/components/ui/admin/admin-navigation/admin-navigation.interface';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FC } from 'react';
 
-const AdminNavItem: NextPage<{ item: INavItem }> = ({
+const AdminNavItem: FC<{ item: INavItem }> = ({
 	item: { link, title, option }
 }) => {
 	const pathname = usePathname();
