@@ -16,6 +16,7 @@ import SubmitButton from '@/components/ui/form-elements/submit-button/SubmitButt
 import Heading from '@/components/ui/heading/Heading';
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import UserInfo from '@/components/ui/user-info/UserInfo';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import { UserRole } from '@/services/auth/auth.types';
 import {
 	validEmail,
@@ -25,10 +26,10 @@ import {
 } from '@/shared/regex';
 import { cuidGenerate } from '@/utils/cuid.generate';
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-const UserEditingForm: NextPage<IUserEditingForm> = ({
+const UserEditingForm: FC<IUserEditingForm> = ({
 	queriesResult: { onSubmit, data, isLoading },
 	isCreateForm,
 	isAdminEdit,
@@ -77,8 +78,7 @@ const UserEditingForm: NextPage<IUserEditingForm> = ({
 										onChange={onChange}
 										value={value}
 										currentFile={
-											data?.avatarPath ||
-											'/uploads/user-avatar/avatar-default.png'
+											data?.avatarPath || PUBLIC_PAGES.USER_AVATAR_DEFAULT
 										}
 										id={data?.id}
 										isAdminEdit={isAdminEdit}
