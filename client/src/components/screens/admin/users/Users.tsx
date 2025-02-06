@@ -12,15 +12,16 @@ import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import SubHeading from '@/components/ui/sub-heading/SubHeading';
 import DashboardTable from '@/components/ui/table/DashboardTable';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
 import { useAlertPopupStore } from '@/store/alert-popup-store/alert-popup-store';
 import { useVeilBackgroundStore } from '@/store/veil-background-store/veil-background-store';
 import { formatDate } from '@/utils/format.date';
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FC } from 'react';
 
-const Users: NextPage = () => {
+const Users: FC = () => {
 	const changeVisibleVeilBackground = useVeilBackgroundStore(
 		state => state.setVisible
 	);
@@ -59,7 +60,7 @@ const Users: NextPage = () => {
 					</div>
 				) : (
 					<Link
-						href={`${ADMIN_PAGES.USERS}/create`}
+						href={`${ADMIN_PAGES.USERS_CREATE}`}
 						className={clsx(styles['create-link'])}
 						aria-label="Create a new user"
 					>
@@ -116,8 +117,7 @@ const Users: NextPage = () => {
 								<Image
 									alt="Avatar"
 									src={
-										record.avatarPath ||
-										'/uploads/user-avatar/avatar-default.png'
+										record.avatarPath || PUBLIC_PAGES.USER_AVATAR_DEFAULT
 									}
 									width={50}
 									height={50}
@@ -162,7 +162,7 @@ const Users: NextPage = () => {
 							email: user.email,
 							avatarPath: user.avatarPath,
 							rights: user.rights,
-							editUrl: `${ADMIN_PAGES.USERS}/edit/${id}`,
+							editUrl: `${ADMIN_PAGES.USERS_EDIT}/${id}`,
 							deleteHandler: () => {
 								changeStatePopup();
 								addIdInPopup(id);
