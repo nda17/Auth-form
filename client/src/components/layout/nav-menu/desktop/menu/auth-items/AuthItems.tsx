@@ -1,12 +1,28 @@
-import ActionButton from '@/components/layout/nav-menu/desktop/menu/auth-items/action-auth-button/ActionAuthButton';
 import MenuItem from '@/components/layout/nav-menu/desktop/menu/menu-item/MenuItem';
 import { useUser } from '@/components/screens/profile/useUser';
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 import { ADMIN_PAGES } from '@/config/pages/admin.config';
 import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import dynamic from 'next/dynamic';
 import { FC } from 'react';
 
+const DynamicActionAuthButton = dynamic(
+	() =>
+		import(
+			'@/components/layout/nav-menu/desktop/menu/auth-items/action-auth-button/ActionAuthButton'
+		),
+	{
+		loading: () => (
+			<div className="w-[78.453px] h-full flex flex-col justify-center">
+				<SkeletonLoader count={1} className="w-full h-4" />
+			</div>
+		),
+		ssr: false
+	}
+);
+
 const AuthItems: FC = () => {
-	const { user } = useUser();
+	const { user, isLoading } = useUser();
 
 	return (
 		<>
@@ -40,7 +56,10 @@ const AuthItems: FC = () => {
 				/>
 			)}
 
-			<ActionButton isLoggedIn={user?.isLoggedIn} />
+			<DynamicActionAuthButton
+				isLoggedIn={user?.isLoggedIn}
+				isLoading={isLoading}
+			/>
 		</>
 	);
 };
