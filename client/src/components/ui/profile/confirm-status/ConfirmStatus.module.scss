@@ -1,0 +1,11 @@
+.wrapper {
+	@apply mb-5;
+
+	.info-required {
+		@apply text-firebrick;
+	}
+
+	.info-not-required {
+		@apply text-green-500;
+	}
+}
