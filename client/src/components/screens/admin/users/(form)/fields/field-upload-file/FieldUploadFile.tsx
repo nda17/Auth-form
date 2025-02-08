@@ -14,20 +14,23 @@ const FieldUploadFile: FC<IUploadField> = ({
 	folder,
 	id,
 	isAdminEdit,
+	isCreateForm,
 	onChange
 }) => {
 	const { uploadFile, isLoading } = useUploadFile(onChange, folder, id);
 
 	return (
 		<div className={styles.wrapper} style={style}>
-			{isAdminEdit && (
+			{isCreateForm || isAdminEdit ? (
 				<p className={clsx(styles['field-path'])}>
 					{value ? value : currentFile}
 				</p>
-			)}
+			) : null}
 			<label className={clsx(styles['label-input'])}>
 				<div className={clsx(styles['custom-input'])}>
-					<span className={styles.button}>Choose file</span>
+					<span aria-label="Choose file button" className={styles.button}>
+						Choose file
+					</span>
 				</div>
 				<input
 					type="file"
