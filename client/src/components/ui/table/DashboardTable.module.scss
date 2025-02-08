@@ -20,7 +20,14 @@
 				border-width: 1px;
 				border-style: solid;
 				border-color: gray;
-				padding: 10px 20px;
+				padding: 5px;
+
+				@media (max-width: 991px) {
+					display: block;
+					border-width: 1px;
+					border-bottom-width: 0;
+					padding: 8px 10px;
+				}
 
 				@media (min-width: 992px) {
 					font-size: 0.65rem;
@@ -32,16 +39,6 @@
 
 				@media (min-width: 1400px) {
 					font-size: inherit;
-				}
-
-				@media (max-width: 991px) {
-					padding: 8px 10px;
-				}
-
-				@media (max-width: 991px) {
-					display: block;
-					border-width: 1px;
-					border-bottom-width: 0;
 				}
 
 				&.actions {
