@@ -1,8 +1,8 @@
 .wrapper {
-	@apply grid grid-cols-4 gap-5 mb-8;
+	@apply flex flex-wrap justify-center sm:grid sm:grid-cols-4 gap-5 mb-8;
 
 	.wrapper-item {
-		@apply bg-[#d8d8d8] rounded-md p-5 grid grid-cols-2 gap-10;
+		@apply bg-[#d8d8d8] max-w-[46%] sm:max-w-[inherit] w-full rounded-md p-5 grid grid-cols-2 gap-10;
 
 		.count {
 			@apply h-full;
