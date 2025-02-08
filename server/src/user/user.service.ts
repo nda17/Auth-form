@@ -135,14 +135,14 @@ export class UserService {
 		});
 	}
 
-	async adminCreateUser(id: string, dto?: CreateUserDto) {
-		const isSameUser = await this.prisma.user.findFirst({
+	async adminCreateUser(dto: CreateUserDto) {
+		const existingEmail = await this.prisma.user.findFirst({
 			where: {
 				email: dto.email
 			}
 		});
 
-		if (isSameUser && dto.id !== isSameUser.id) {
+		if (existingEmail) {
 			throw new BadRequestException('Email already exists');
 		}
 
@@ -152,7 +152,7 @@ export class UserService {
 			}
 		});
 
-		if (existingId && id !== existingId.id) {
+		if (existingId) {
 			throw new BadRequestException('Identifier already exists');
 		}
 
