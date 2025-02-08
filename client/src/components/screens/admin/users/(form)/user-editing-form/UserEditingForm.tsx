@@ -59,17 +59,19 @@ const UserEditingForm: FC<IUserEditingForm> = ({
 			) : (
 				<UserFormHeading type={type} email={data?.email} />
 			)}
-			<UserInfo
-				avatarPath={data?.avatarPath || null}
-				name={data?.name || null}
-				isLoading={isLoading}
-			/>
+			{!isCreateForm && (
+				<UserInfo
+					avatarPath={data?.avatarPath || null}
+					name={data?.name || null}
+					isLoading={isLoading}
+				/>
+			)}
 			{isLoading ? (
 				<SkeletonLoader count={6} className="h-6 mb-4" />
 			) : (
 				<>
 					<form onSubmit={handleSubmit(onSubmit)}>
-						{isCreateForm || isAdminEdit || isUserEdit ? (
+						{isAdminEdit || isUserEdit ? (
 							<Controller
 								control={control}
 								name="avatarPath"

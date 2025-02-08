@@ -14,14 +14,13 @@ const FieldUploadFile: FC<IUploadField> = ({
 	folder,
 	id,
 	isAdminEdit,
-	isCreateForm,
 	onChange
 }) => {
 	const { uploadFile, isLoading } = useUploadFile(onChange, folder, id);
 
 	return (
 		<div className={styles.wrapper} style={style}>
-			{isCreateForm || isAdminEdit ? (
+			{isAdminEdit ? (
 				<p className={clsx(styles['field-path'])}>
 					{value ? value : currentFile}
 				</p>

@@ -15,7 +15,6 @@ export interface IUploadField {
 	folder?: string;
 	id: string;
 	isAdminEdit: boolean;
-	isCreateForm: boolean;
 	value?: string;
 	onChange: (...event: any[]) => void;
 	placeholder: string;
