@@ -48,16 +48,14 @@ export class FileService {
 
 				await writeFile(`${uploadFolder}/${newFileName}`, file.buffer);
 
-				if (user && user?.avatarPath) {
-					await this.prisma.user.update({
-						where: {
-							id: id
-						},
-						data: {
-							avatarPath: `/uploads/${folder}/${id}.${getTimeStamp}${extension}`
-						}
-					});
-				}
+				await this.prisma.user.update({
+					where: {
+						id: id
+					},
+					data: {
+						avatarPath: `/uploads/${folder}/${id}.${getTimeStamp}${extension}`
+					}
+				});
 
 				return {
 					url: `/uploads/${folder}/${newFileName}`,
